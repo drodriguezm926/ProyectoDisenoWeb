@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EFOOD.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,6 +13,15 @@ namespace EFOOD.Controllers
         public ActionResult Consecutivo()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult ConsecutivoAdd(ConsecutivoModel model)
+        {
+            //ConsecutivoModel.addDB(model);
+            var data = ViewBag.lala;
+
+            return View("Consecutivo");
         }
 
         [HttpGet]
