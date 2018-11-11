@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2050
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFOOD", "EFOOD\EFOOD.csproj", "{11536CAB-F41B-4BCC-A3C8-317F7CEE7637}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{11536CAB-F41B-4BCC-A3C8-317F7CEE7637}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11536CAB-F41B-4BCC-A3C8-317F7CEE7637}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11536CAB-F41B-4BCC-A3C8-317F7CEE7637}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11536CAB-F41B-4BCC-A3C8-317F7CEE7637}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9D5A4C33-C235-4055-83CC-0F8F972078A7}
+	EndGlobalSection
+EndGlobal

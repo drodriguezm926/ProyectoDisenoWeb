@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+
+    <!--=======================================
+    =            NAV opciones Menu            =
+    ========================================-->
+
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
+            <a class="navbar-brand" href="Inicio.html">Sistema de comidas</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
+                    aria-expanded="false" aria-label="Toggle navigation"></button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+
+                    <!-- Opcion Inicio -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/Views/Home/About.cshtml">Inicio <span class="sr-only">(current)</span></a>
+                    </li>
+
+                    <!-- Opcion Seguridad -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="menuDrop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Seguridad</a>
+                        <div class="dropdown-menu" aria-labelledby="menuDrop">
+                            <a href="@Url.Action( "Usuario", "Seguridad")" class="dropdown-item">Usuarios</a>
+                            <a href="@Url.Action( "AsignarRol", "Seguridad")" class="dropdown-item">Asignar rol</a>
+                            <a href="@Url.Action( "CambiarContrasena", "Seguridad")" class="dropdown-item">Cambiar contraseña</a>
+                        </div>
+                    </li>
+
+                    <!-- Opcion Administración -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="menuDrop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administración</a>
+                        <div class="dropdown-menu" aria-labelledby="menuDrop">
+                            <a href="Admin_Consecutivo.html" class="dropdown-item">Consecutivos</a>
+                            <a href="Admin_TiposPrecio.html" class="dropdown-item">Tipos de precio</a>
+                            <a href="Admin_Tarjetas.html" class="dropdown-item">Tarjetas de crédito y débito</a>
+                            <a href="Admin_MetodosPago.html" class="dropdown-item">Medios de pago</a>
+                            <a href="Admin_Tickets.html" class="dropdown-item">Tiquetes de descuento</a>
+                            <a href="Admin_LineaProducto.html" class="dropdown-item">Líneas de comida</a>
+                            <a href="Admin_Productos.html" class="dropdown-item">Productos</a>
+                        </div>
+                    </li>
+                    <!-- Opcion Consultas -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="menuDrop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Consultas</a>
+                        <div class="dropdown-menu" aria-labelledby="menuDrop">
+                            <a href="#" class="dropdown-item">Pedidos</a>
+                            <a href="#" class="dropdown-item">Productos</a>
+                            <a href="#" class="dropdown-item">Bitácora</a>
+                            <a href="#" class="dropdown-item">Errores</a>
+                        </div>
+                    </li>
+
+                </ul>
+                <ul class="navbar-nav mr-lg-5">
+                    <li class="nav-iten dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Usuario<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li class="well">
+                                <div>
+                                    <img class="img-responsive" style="padding:2%;" src="" /><a class="change"
+                                                                                                href="">Change Picture</a>
+                                </div>
+                                <a href="#" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-lock"></span> Security</a>
+                                <a href="#" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-log-out"></span> Logout</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+
+
+        </nav>
+    </header>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
