@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "TipoPrecio";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<main role="main" class="container pt-5">
+
+
+    <div class="row pt-5 justify-content-center "></div>
+    <div class="row pt-3 justify-content-center bg-secondary" style="border-radius: 20px">
+        <div class="col-5">
+            <h1 class="lead text text-white text-center">Gestión de Tipos de Precio</h1>
+        </div>
+    </div>
+
+
+
+    <div class="input-group input-group-sm mb-3 justify-content-center pt-5">
+        <button type="button" class="btn btn-outline-info rounded-bottom" style="border-radius: 12px">Agregar Tipo de Precio</button>
+    </div>
+
+
+    <div class="row pt-5">
+        <div class="col">
+            <table class="table table-sm table-hover table-bordered table-responsive-lg">
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Nombre</th>
+                    </tr>
+                </thead>
+
+                <tr>
+                    <td>AE-045</td>
+                    <td>Regular</td>
+                    <td>
+                        <button class="btn btn-sm btn-info">Editar</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>AE-069</td>
+                    <td>Agrandado</td>
+                    <td>
+                        <button class="btn btn-sm btn-info">Editar</button>
+                    </td>
+                </tr>
+
+            </table>
+
+        </div>
+    </div>
+</main>

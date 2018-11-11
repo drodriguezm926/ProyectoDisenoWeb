@@ -23,7 +23,7 @@
 
                     <!-- Opcion Inicio -->
                     <li class="nav-item">
-                        <a class="nav-link" href="~/Views/Home/About.cshtml">Inicio <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="@Url.Action( "Index", "Home")">Inicio <span class="sr-only">(current)</span></a>
                     </li>
 
                     <!-- Opcion Seguridad -->
@@ -40,23 +40,23 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="menuDrop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administración</a>
                         <div class="dropdown-menu" aria-labelledby="menuDrop">
-                            <a href="Admin_Consecutivo.html" class="dropdown-item">Consecutivos</a>
-                            <a href="Admin_TiposPrecio.html" class="dropdown-item">Tipos de precio</a>
-                            <a href="Admin_Tarjetas.html" class="dropdown-item">Tarjetas de crédito y débito</a>
-                            <a href="Admin_MetodosPago.html" class="dropdown-item">Medios de pago</a>
-                            <a href="Admin_Tickets.html" class="dropdown-item">Tiquetes de descuento</a>
-                            <a href="Admin_LineaProducto.html" class="dropdown-item">Líneas de comida</a>
-                            <a href="Admin_Productos.html" class="dropdown-item">Productos</a>
+                            <a href="@Url.Action( "Consecutivo", "Administracion")" class="dropdown-item">Consecutivos</a>
+                            <a href="@Url.Action( "TipoPrecio", "Administracion")" class="dropdown-item">Tipos de precio</a>
+                            <a href="@Url.Action( "TarjetaCreditoDebito", "Administracion")" class="dropdown-item" >Tarjetas de crédito y débito</a>
+                            <a href="@Url.Action( "MediosPago", "Administracion")" class="dropdown-item" >Medios de pago</a>
+                            <a href="@Url.Action( "TiqueteDescuento", "Administracion")" class="dropdown-item" >Tiquetes de descuento</a>
+                            <a href="@Url.Action( "LineaComida", "Administracion")" class="dropdown-item">Líneas de comida</a>
+                            <a href="@Url.Action( "Producto", "Administracion")" class="dropdown-item">Productos</a>
                         </div>
                     </li>
                     <!-- Opcion Consultas -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="menuDrop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Consultas</a>
                         <div class="dropdown-menu" aria-labelledby="menuDrop">
-                            <a href="#" class="dropdown-item">Pedidos</a>
-                            <a href="#" class="dropdown-item">Productos</a>
-                            <a href="#" class="dropdown-item">Bitácora</a>
-                            <a href="#" class="dropdown-item">Errores</a>
+                            <a href="@Url.Action( "Pedidos", "Consultas")" class="dropdown-item">Pedidos</a>
+                            <a href="@Url.Action( "Productos", "Consultas")" class="dropdown-item">Productos</a>
+                            <a href="@Url.Action( "Bitacora", "Consultas")" class="dropdown-item">Bitácora</a>
+                            <a href="@Url.Action( "Errores", "Consultas")" class="dropdown-item">Errores</a>
                         </div>
                     </li>
 

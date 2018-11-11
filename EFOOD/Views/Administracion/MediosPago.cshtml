@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewBag.Title = "MediosPago";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<main role="main" class="container pt-5">
+
+
+    <div class="row pt-5 justify-content-center "></div>
+    <div class="row pt-3 justify-content-center bg-secondary" style="border-radius: 20px">
+        <div class="col-5">
+            <h1 class="lead text text-white text-center">Metodos de Pago</h1>
+        </div>
+    </div>
+
+
+    <div class="input-group input-group-sm mb-3 justify-content-center pt-5">
+        <button type="button" class="btn btn-outline-info rounded-bottom" style="border-radius: 12px">Agregar metodo</button>
+    </div>
+
+
+    <div class="row pt-5">
+        <div class="col">
+            <table class="table table-sm table-hover table-bordered table-responsive-lg">
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Procesador</th>
+                        <th>Tipo</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+
+                <tr>
+                    <td>DO-908</td>
+                    <td>Efectivo</td>
+                    <td>Activo</td>
+                    <td>
+                        <button class="btn btn-sm btn-info">Editar</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>DO-908</td>
+                    <td>Electronic Check</td>
+                    <td>Inactivo</td>
+                    <td>
+                        <button class="btn btn-sm btn-info">Editar</button>
+                    </td>
+                </tr>
+
+            </table>
+
+        </div>
+    </div>
+</main>

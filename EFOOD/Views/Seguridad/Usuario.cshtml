@@ -4,5 +4,33 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Usuario</h2>
+<main role="main" class="container pt-5">
+    <div class="row pt-3 justify-content-center bg-secondary mt-5 mb-5" style="border-radius: 20px">
+        <div class="col-5">
+            <h1 class="lead text text-white text-center">Usuarios</h1>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col justify-content-center">
+            <div class="row justify-content-center">
+                <a href="@Url.Action( "CrearUsuario", "Seguridad")">
+                    <img src="~/Asset/AddUser.png" class="rounded-circle" style="display:inline" alt="NewUser" width="200" height="200">
+                </a>
+            </div>
+            <div class="row justify-content-center">
+                <h2>Crear usuario</h2>
+            </div>
+        </div>
+        <div class="col justify-content-center">
+            <div class="row justify-content-center">
+                <a href="@Url.Action( "AsignarRol", "Seguridad")">
+                    <img src="~/Asset/ListUser.png" class="rounded-circle" style="display:inline" alt="ListUsers" width="200" height="200">
+                </a>
+            </div>
+            <div class="row justify-content-center">
+                <h2>Ver usuarios</h2>
+            </div>
+        </div>
+    </div>
+</main>
 

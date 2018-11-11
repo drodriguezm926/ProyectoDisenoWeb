@@ -28,5 +28,19 @@ namespace EFOOD.Controllers
 
             return View();
         }
+
+        [HttpGet]
+        public ActionResult CrearUsuario()
+        {
+
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult VerUsuario()
+        {
+
+            return View();
+        }
     }
 }

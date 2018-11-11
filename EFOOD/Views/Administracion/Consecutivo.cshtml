@@ -1,0 +1,91 @@
+﻿
+@{
+    ViewBag.Title = "Consecutivo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<main class="container pt-5" role="main">
+    <div class="row pt-5 justify-content-center ">
+    </div>
+    <div class="row pt-3 justify-content-center bg-secondary" style="border-radius: 20px">
+        <div class="col-5">
+            <h1 class="lead text text-white text-center">
+                Gestión de consecutivos
+            </h1>
+        </div>
+    </div>
+    <div class="row pt-1 justify-content-center">
+        <div class="col-4">
+            <!--=====================================
+            =            Inicio inputs              =
+            ======================================-->
+            <!-- Usuario -->
+            <div class="input-group input-group-sm mb-3 pt-4">
+                <select class="form-control">
+                    <option class="form-control" value="Precios">
+                        Precios
+                    </option>
+                    <option class="form-control" value="Tarjetas">
+                        Tarjetas
+                    </option>
+                    <option class="form-control" value="Medios de pago">
+                        Medios de pago
+                    </option>
+                    <option class="form-control" value="Descuentos">
+                        Descuentos
+                    </option>
+                    <option class="form-control" value="Comidas">
+                        Comidas
+                    </option>
+                    <option class="form-control" value="Productos">
+                        Productos
+                    </option>
+                </select>
+                <div class="input-group-append">
+                    <span class="input-group-text text-info">
+                        Descripción
+                    </span>
+                </div>
+            </div>
+            <!-- Contraseña -->
+            <div class="input-group input-group-sm mb-3">
+                <input class="form-control" id="" name="" type="text">
+                <div class="input-group-append">
+                    <span class="input-group-text text-info">
+                        Consecutivo
+                    </span>
+                </div>
+                </input>
+            </div>
+            <!-- Confirma -->
+            <div class="input-group input-group-sm mb-3">
+                <label class="form-group list-group">
+                    <input class="form-check-input" id="optionscheckbox1" name="optionsRadios" type="checkbox" value="option1">
+                    Si
+                    </input>
+                </label>
+                <div class="input-group-append">
+                    <span class="input-group-text text-info">
+                        Posee prefijo
+                    </span>
+                </div>
+            </div>
+            <!-- Correo -->
+            <div class="input-group input-group-sm mb-3">
+                <input class="form-control" id="" name="" type="text">
+                <div class="input-group-append">
+                    <span class="input-group-text text-info">
+                        Prefijo
+                    </span>
+                </div>
+                </input>
+            </div>
+            <!-- Guardar boton -->
+            <div class="input-group input-group-sm mb-3 justify-content-center pt-3">
+                <button class="btn btn-outline-info rounded-bottom" style="border-radius: 12px" type="button">
+                    Crear usuario
+                </button>
+            </div>
+            <!--====  End of inputs  ====-->
+        </div>
+    </div>
+</main>
