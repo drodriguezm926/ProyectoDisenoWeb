@@ -18,7 +18,7 @@ namespace EFOOD.Controllers
         [HttpPost]
         public ActionResult ConsecutivoAdd(ConsecutivoModel model)
         {
-            //ConsecutivoModel.addDB(model);
+            ConsecutivoModel.addDB(model);
             var data = ViewBag.lala;
 
             return View("Consecutivo");

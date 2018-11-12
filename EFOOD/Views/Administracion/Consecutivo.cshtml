@@ -23,84 +23,99 @@
     <div class="row pt-1 justify-content-center">
         <div class="col-4">
             <!--=====================================
-            =            Inicio inputs              =
-            ======================================-->
-            <!-- Usuario -->
+    =            Inicio inputs              =
+    ======================================-->
+
+            @using (Html.BeginForm("ConsecutivoAdd", "Administracion"))
+            {
+                List<SelectListItem> listItems = new List<SelectListItem>();
+                listItems.Add(new SelectListItem
+                {
+                    Text = "Precios",
+                    Value = "Precios"
+                });
+                listItems.Add(new SelectListItem
+                {
+                    Text = "Tarjetas",
+                    Value = "Tarjetas",
+                    Selected = true
+                });
+                listItems.Add(new SelectListItem
+                {
+                    Text = "Medios de pago",
+                    Value = "Medios de pago"
+                });
+
+                listItems.Add(new SelectListItem
+                {
+                    Text = "Descuentos",
+                    Value = "Descuentos"
+                });
+
+                listItems.Add(new SelectListItem
+                {
+                    Text = "Comidas",
+                    Value = "Comidas"
+                });
+
+                listItems.Add(new SelectListItem
+                {
+                    Text = "Productos",
+                    Value = "Productos"
+                });
+
+
+                <!-- Descripcion -->
             <div class="input-group input-group-sm mb-3 pt-4">
-                <select class="form-control" id="txtDescripcion">
-                    <option class="form-control" value="Precios">
-                        Precios
-                    </option>
-                    <option class="form-control" value="Tarjetas">
-                        Tarjetas
-                    </option>
-                    <option class="form-control" value="Medios de pago">
-                        Medios de pago
-                    </option>
-                    <option class="form-control" value="Descuentos">
-                        Descuentos
-                    </option>
-                    <option class="form-control" value="Comidas">
-                        Comidas
-                    </option>
-                    <option class="form-control" value="Productos">
-                        Productos
-                    </option>
-                </select>
+                @Html.DropDownListFor(model => model.Description, listItems, "-- Seleciona descripcion --", new { htmlAttributes = new { @class = "form-control", @type = "text" } })
                 <div class="input-group-append">
                     <span class="input-group-text text-info">
                         Descripción
                     </span>
                 </div>
             </div>
-            <!-- Contraseña -->
-            <div class="input-group input-group-sm mb-3">
-                <input class="form-control" id="txtConcecutivo" name="" type="text" value="@txtConsecutivoResult"/>
-                <div class="input-group-append">
-                    <span class="input-group-text text-info">
-                        Consecutivo
-                    </span>
-                </div>
-            </div>
-            <!-- Confirma -->
-            <div class="input-group input-group-sm mb-3">
-                <label class="form-group list-group">
-                    <input class="form-check-input" id="optionscheckbox" name="optionsRadios" type="checkbox" value="option1">
-                    Si
-                   
-                </label>
-                <div class="input-group-append">
-                    <span class="input-group-text text-info">
-                        Posee prefijo
-                    </span>
-                </div>
-            </div>
-            <!-- Correo -->
-            <div class="input-group input-group-sm mb-3">
-                <input class="form-control" id="txtPrefijo" name="" type="text">
-                <div class="input-group-append">
-                    <span class="input-group-text text-info">
-                        Prefijo
-                    </span>
-                </div>
 
-            </div>
-            <!-- Guardar boton -->
-            <div class="input-group input-group-sm mb-3 justify-content-center pt-3">
-
-                        
-                    
-                @using (Html.BeginForm("ConsecutivoAdd", "Administracion"))
-                {
-                    ViewBag.lala = txtConsecutivoResult;
+                <!-- Consecutivo -->
+                <div class="input-group input-group-sm mb-3">
+                    @Html.EditorFor(x => x.CurrentConsecutive)
+                    <div class="input-group-append">
+                        <span class="input-group-text text-info">
+                            Consecutivo
+                        </span>
+                    </div>
+                </div>
+                <!-- Confirma -->
+                <div class="input-group input-group-sm mb-3">
+                    <label class="form-group list-group">
+                        @Html.CheckBoxFor(x => x.HasPrefix)
+                        Si
+                    </label>
+                    <div class="input-group-append">
+                        <span class="input-group-text text-info">
+                            Posee prefijo
+                        </span>
+                    </div>
+                </div>
+                <!-- Correo -->
+                <div class="input-group input-group-sm mb-3">
+                    @Html.EditorFor(x => x.Prefix)
+                    <div class="input-group-append">
+                        <span class="input-group-text text-info">
+                            Prefijo
+                        </span>
+                    </div>
+                </div>
+                <!-- Guardar boton -->
+                <div class="input-group input-group-sm mb-3 justify-content-center pt-3"> 
                     <button class="btn btn-outline-info rounded-bottom" style="border-radius: 12px" type="submit">
                         Guardar
                     </button>
 
-                }
+                </div>
+            }
 
-            </div>
             <!--====  End of inputs  ====-->
+
         </div>
     </div>
 

@@ -210,6 +210,7 @@
       <DependentUpon>ModelFood.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ConsecutivoModel.cs" />
+    <Compile Include="Models\TipoPrecioModelo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="App_Data\Role.cs">
       <DependentUpon>ModelFood.tt</DependentUpon>
