@@ -21,8 +21,8 @@ namespace EFOOD.Models
                 try
                 {
                     //Toda la data de la base de datos, se almacena en la lista numeroConsecutivo
-                    var numeroConsecutivo = (from valor in db.Consecutives 
-                                            select valor);
+                    var numeroConsecutivo = (from valor in db.Consecutives
+                                             select valor);
 
                     //Primary key
                     int code = numeroConsecutivo.Count() + 1;
@@ -36,7 +36,7 @@ namespace EFOOD.Models
                     consecutive.CurrentConsecutive = consecutivoM.CurrentConsecutive;
                     consecutive.HasPrefix = consecutivoM.HasPrefix;
                     consecutive.Prefix = consecutivoM.Prefix;
-                    
+
                     //Se agrega el objeto a la base de datos
                     db.Consecutives.Add(consecutive);
                     //Commit a la base de datos
@@ -45,6 +45,24 @@ namespace EFOOD.Models
                 catch (Exception e) { }
             }
         }
+
+        public static string getConsecutivo(string descripcionConsecutivo) {
+                    //Instancia base datos
+                    DB_EfoodEntities db = new DB_EfoodEntities();
+                    //Se consulta el currentConsecutive
+                    var data = (from valor in db.Consecutives
+                                 where valor.Description == descripcionConsecutivo
+                                select valor).SingleOrDefault();
+                    //Se cambia de formato
+                    int n = int.Parse(data.CurrentConsecutive);
+                    //Consecutivo
+                    string resultado = data.Prefix + n;
+                    //--Aumenta consecutivo en la base de datos--//
+                    data.CurrentConsecutive = "" + (n+1);
+                    //Actualiza
+                    db.SaveChanges();
+            return resultado;
+        } 
 
         /*
         public static List<Territorio> ObtenerTerritorio()

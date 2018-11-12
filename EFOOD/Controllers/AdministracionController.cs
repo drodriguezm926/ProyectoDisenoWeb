@@ -27,7 +27,32 @@ namespace EFOOD.Controllers
         [HttpGet]
         public ActionResult TipoPrecio()
         {
+            ViewBag.lista = TipoPrecioModelo.ObtenerTerritorio();
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult TipoPrecioAdd(TipoPrecioModelo model)
+        {
+            TipoPrecioModelo.addDB(model);
+            ViewBag.lista = TipoPrecioModelo.ObtenerTerritorio();
+            return View("TipoPrecio");
+        }
+
+        [HttpPost]
+        public ActionResult TipoPrecioEdit(TipoPrecioModelo model)
+        {
+            TipoPrecioModelo.editDB(model);
+            ViewBag.lista = TipoPrecioModelo.ObtenerTerritorio();
+            return View("TipoPrecio");
+        }
+
+        [HttpPost]
+        public ActionResult TipoPrecioDelete(TipoPrecioModelo model)
+        {
+            TipoPrecioModelo.deletetDB(model);
+            ViewBag.lista = TipoPrecioModelo.ObtenerTerritorio();
+            return View("TipoPrecio");
         }
 
         [HttpGet]
