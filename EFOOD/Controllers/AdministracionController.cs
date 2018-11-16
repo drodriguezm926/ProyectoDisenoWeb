@@ -79,6 +79,30 @@ namespace EFOOD.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult LineaComidaAdd(LineaComidaModel model)
+        {
+            LineaComidaModel.addDB(model);
+            ViewBag.lista = LineaComidaModel.ObtenerTerritorio();
+            return View("TipoPrecio");
+        }
+
+        [HttpPost]
+        public ActionResult LineaComidaEdit(LineaComidaModel model)
+        {
+            LineaComidaModel.editDB(model);
+            ViewBag.lista = LineaComidaModel.ObtenerTerritorio();
+            return View("TipoPrecio");
+        }
+
+        [HttpPost]
+        public ActionResult LineaComidaDelete(LineaComidaModel model)
+        {
+            LineaComidaModel.deletetDB(model);
+            ViewBag.lista = TipoPrecioModelo.ObtenerTerritorio();
+            return View("TipoPrecio");
+        }
+
         [HttpGet]
         public ActionResult Producto()
         {

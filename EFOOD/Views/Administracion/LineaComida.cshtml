@@ -40,7 +40,7 @@
                         {
                             <div class="input-group">
                                 <label>Tipo de precio&nbsp;&nbsp;</label>
-                                @Html.EditorFor(Model => Model.PriceTypeDescription, new { htmlAttributes = new { @class = "form-control", @type = "text" } })
+                                @Html.EditorFor(Model => Model.FoodOptionDescription, new { htmlAttributes = new { @class = "form-control", @type = "text" } })
                             </div>
                             <br />
                             <div class="row justify-content-center">
@@ -72,14 +72,14 @@
                         string nombreModal = string.Empty;
                         foreach (var item in @ViewBag.lista)
                         {
-                            btnEditar = "btnEditar_" + item.PriceTypeCode;
-                            nombreModal = "fm-btn-modal_" + item.PriceTypeDescription;
+                            btnEditar = "btnEditar_" + item.FoodOptionCode;
+                            nombreModal = "fm-btn-modal_" + item.FoodOptionDescription;
                             <tr>
                                 <td>
-                                    @item.PriceTypeCode
+                                    @item.FoodOptionCode
                                 </td>
                                 <td>
-                                    @item.PriceTypeDescription
+                                    @item.FoodOptionDescription
                                 </td>
                                 <td>
                                     <div class="btn-group btn-group-sm">
@@ -101,8 +101,8 @@
                                                             <div>
 
                                                                 <label>Nuevo tipo de precio </label>
-                                                                @Html.HiddenFor(Model => Model.PriceTypeCode, new { Value = btnEditar.Split('_')[1] })
-                                                                @Html.EditorFor(Model => Model.PriceTypeDescription, new { htmlAttributes = new { @class = "form-control", @type = "text" } })
+                                                                @Html.HiddenFor(Model => Model.FoodOptionCode, new { Value = btnEditar.Split('_')[1] })
+                                                                @Html.EditorFor(Model => Model.FoodOptionDescription, new { htmlAttributes = new { @class = "form-control", @type = "text" } })
 
                                                                 <br />
 
@@ -119,7 +119,7 @@
                                         {
                                             string valor = btnEditar.Split('_')[1];
 
-                                            @Html.HiddenFor(Model => Model.PriceTypeCode, new { Value = valor })
+                                            @Html.HiddenFor(Model => Model.FoodOptionCode, new { Value = valor })
 
                                             <button class="btn btn-sm btn-success btn-outline-danger text-sm-center" style="border-radius: 8px" type="submit">Eliminar</button>
 
