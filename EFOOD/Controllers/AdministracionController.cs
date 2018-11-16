@@ -74,11 +74,38 @@ namespace EFOOD.Controllers
             return View();
         }
 
+        // Inicia controladores de tiquetes de descuento
         [HttpGet]
         public ActionResult TiqueteDescuento()
         {
+            ViewBag.lista = TiqueteDescuentoModel.ObtenerTiquetesDescuento();
             return View();
         }
+
+        [HttpPost]
+        public ActionResult TiqueteDescuentoAdd(TiqueteDescuentoModel model)
+        {
+            TiqueteDescuentoModel.addDB(model);
+            ViewBag.lista = TiqueteDescuentoModel.ObtenerTiquetesDescuento();
+            return View("TiqueteDescuento");
+        }
+
+        [HttpPost]
+        public ActionResult TiqueteDescuentoEdit(TiqueteDescuentoModel model)
+        {
+            TiqueteDescuentoModel.editDB(model);
+            ViewBag.lista = TiqueteDescuentoModel.ObtenerTiquetesDescuento();
+            return View("TiqueteDescuento");
+        }
+
+        [HttpPost]
+        public ActionResult TiqueteDescuentoDelete(TiqueteDescuentoModel model)
+        {
+            TiqueteDescuentoModel.deletetDB(model);
+            ViewBag.lista = TiqueteDescuentoModel.ObtenerTiquetesDescuento();
+            return View("TiqueteDescuento");
+        }
+        // Termina controladores de tiquetes de descuento
 
         [HttpGet]
         public ActionResult LineaComida()
