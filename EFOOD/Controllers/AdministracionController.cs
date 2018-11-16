@@ -9,6 +9,7 @@ namespace EFOOD.Controllers
 {
     public class AdministracionController : Controller
     {
+        // Inicia controladores de consecutivo.
         [HttpGet]
         public ActionResult Consecutivo()
         {
@@ -23,7 +24,9 @@ namespace EFOOD.Controllers
 
             return View("Consecutivo");
         }
+        // Termina controladores de consecutivos
 
+        // Inicia controladores de tipo de precio.
         [HttpGet]
         public ActionResult TipoPrecio()
         {
@@ -54,12 +57,16 @@ namespace EFOOD.Controllers
             ViewBag.lista = TipoPrecioModelo.ObtenerTerritorio();
             return View("TipoPrecio");
         }
+        // Termina controladores de tipo de precio.
 
+        // Inicia controladores de tarjetaCreditoDebito
         [HttpGet]
         public ActionResult TarjetaCreditoDebito()
         {
+            
             return View();
         }
+        // Termina controladores de TarjetaCreditoDebito
 
         [HttpGet]
         public ActionResult MediosPago()
@@ -79,10 +86,37 @@ namespace EFOOD.Controllers
             return View();
         }
 
+        // Inicia controladores de producto
         [HttpGet]
         public ActionResult Producto()
         {
+            ViewBag.lista = ProductoModel.ObtenerProductos();
             return View();
         }
+
+        [HttpPost]
+        public ActionResult ProductoAdd(ProductoModel model)
+        {
+            ProductoModel.addDB(model);
+            ViewBag.lista = ProductoModel.ObtenerProductos();
+            return View("Producto");
+        }
+
+        [HttpPost]
+        public ActionResult ProductoEdit(ProductoModel model)
+        {
+            ProductoModel.editDB(model);
+            ViewBag.lista = ProductoModel.ObtenerProductos();
+            return View("Producto");
+        }
+
+        [HttpPost]
+        public ActionResult ProductoDelete(ProductoModel model)
+        {
+            ProductoModel.deletetDB(model);
+            ViewBag.lista = ProductoModel.ObtenerProductos();
+            return View("Producto");
+        }
+        // Termina controladores de producto
     }
 }
