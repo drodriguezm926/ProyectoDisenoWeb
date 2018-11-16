@@ -1,4 +1,6 @@
-﻿
+﻿@model EFOOD.Models.LineaComidaModel
+
+
 @{
     ViewBag.Title = "LineaComida";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -16,39 +18,125 @@
 
 
 
-    <div class="input-group input-group-sm mb-3 justify-content-center pt-5">
-        <button type="button" class="btn btn-outline-info rounded-bottom" style="border-radius: 12px">Agregar Linea de Producto</button>
+
+    @*            Cuerpo de edicion inicia aca, template             *@
+
+    <div class="row justify-content-center pt-5">
+        <button type="button" class="btn btn-outline-primary rounded-bottom" style="border-radius: 12px" data-toggle="modal" data-target="#fm-modal">Agregar Tipo de Precio</button>
+
+    </div>
+    <div class="input-group input-group-sm mb-3 justify-content-center pt-1">
+        <div class="modal fade" id="fm-modal" tabindex="-1" role="dialog" aria-labelledby="fm-modal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-secondary">
+                        <h5 class="modal-title text-white text-center" id="">Agregar</h5>
+                        <button class="close" data-dismiss="modal" aria-label="Cerrar">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        @using (Html.BeginForm("TipoPrecioAdd", "Administracion"))
+                        {
+                            <div class="input-group">
+                                <label>Tipo de precio&nbsp;&nbsp;</label>
+                                @Html.EditorFor(Model => Model.PriceTypeDescription, new { htmlAttributes = new { @class = "form-control", @type = "text" } })
+                            </div>
+                            <br />
+                            <div class="row justify-content-center">
+                                <input class="btn btn-sm btn-secondary" type="submit" value="Guardar" />
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
 
-    <div class="row pt-5">
+    <div class="row pt-1">
         <div class="col">
             <table class="table table-sm table-hover table-bordered table-responsive-lg">
                 <thead>
                     <tr>
-                        <th>Código</th>
+                        <th>Codigo</th>
                         <th>Nombre</th>
+                        <th>Acción</th>
                     </tr>
                 </thead>
+                @*            Inicia la carga de datos en la tabla             *@
+                <tbody>
+                    @{
+                        string btnEditar = string.Empty;
+                        string nombreModal = string.Empty;
+                        foreach (var item in @ViewBag.lista)
+                        {
+                            btnEditar = "btnEditar_" + item.PriceTypeCode;
+                            nombreModal = "fm-btn-modal_" + item.PriceTypeDescription;
+                            <tr>
+                                <td>
+                                    @item.PriceTypeCode
+                                </td>
+                                <td>
+                                    @item.PriceTypeDescription
+                                </td>
+                                <td>
+                                    <div class="btn-group btn-group-sm">
+                                        <button type="button" class="btn btn-sm btn-success btn-outline-secondary rounded-bottom text-sm-center" style="border-radius: 8px" id="@btnEditar" data-toggle="modal" data-target="#@nombreModal">Editar</button>
+                                        <div class="modal fade" id="@nombreModal" tabindex="-1" role="dialog" aria-labelledby="fm-modal2" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header bg-secondary">
+                                                        <h5 class="modal-title text-white text-center" id="">Editar   @btnEditar.Split('_')[1]</h5>
+                                                        <button class="close" data-dismiss="modal" aria-label="Cerrar">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
 
-                <tr>
-                    <td>AE-045</td>
-                    <td>Postres</td>
-                    <td>
-                        <button class="btn btn-sm btn-info">Editar</button>
-                    </td>
-                </tr>
+                                                        @using (Html.BeginForm("TipoPrecioEdit", "Administracion", new { id = "" }))
+                                                        {
 
-                <tr>
-                    <td>AE-069</td>
-                    <td>Fast Food</td>
-                    <td>
-                        <button class="btn btn-sm btn-info">Editar</button>
-                    </td>
-                </tr>
+                                                            <div>
 
+                                                                <label>Nuevo tipo de precio </label>
+                                                                @Html.HiddenFor(Model => Model.PriceTypeCode, new { Value = btnEditar.Split('_')[1] })
+                                                                @Html.EditorFor(Model => Model.PriceTypeDescription, new { htmlAttributes = new { @class = "form-control", @type = "text" } })
+
+                                                                <br />
+
+                                                                <input class="btn btn-sm btn-secondary" type="submit" value="Guardar" />
+                                                            </div>
+
+                                                        }
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        @using (Html.BeginForm("TipoPrecioDelete", "Administracion"))
+                                        {
+                                            string valor = btnEditar.Split('_')[1];
+
+                                            @Html.HiddenFor(Model => Model.PriceTypeCode, new { Value = valor })
+
+                                            <button class="btn btn-sm btn-success btn-outline-danger text-sm-center" style="border-radius: 8px" type="submit">Eliminar</button>
+
+
+                                        }
+
+                                    </div>
+
+                                </td>
+                            </tr>
+                        }
+
+                    }
+
+                </tbody>
             </table>
-
         </div>
     </div>
+    @*            Cuerpo de edicion finaliza aca, template             *@
 </main>

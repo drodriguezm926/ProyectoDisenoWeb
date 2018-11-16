@@ -12,8 +12,8 @@
         <EntityTypeShape EntityType="efooddatabaseModel.FoodOption" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
         <EntityTypeShape EntityType="efooddatabaseModel.LogBook" Width="1.5" PointX="12.25" PointY="7.25" IsExpanded="true" />
         <EntityTypeShape EntityType="efooddatabaseModel.Payment" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="efooddatabaseModel.PaymentProcessor" Width="1.5" PointX="12" PointY="2.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="efooddatabaseModel.PaymentToCustomer" Width="1.5" PointX="7.5" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="efooddatabaseModel.PaymentProcessor" Width="2.25" PointX="12" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="efooddatabaseModel.PaymentToCustomer" Width="2" PointX="7.5" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="efooddatabaseModel.PriceType" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="efooddatabaseModel.PriceTypeToProduct" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="efooddatabaseModel.Product" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />

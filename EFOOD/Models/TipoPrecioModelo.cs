@@ -16,7 +16,7 @@ namespace EFOOD.Models
             using (DB_EfoodEntities db = new DB_EfoodEntities())
             {
                 try
-                {
+                {   //Entidades de la base de datos
                     PriceType priceType = new PriceType();
                     priceType.PriceTypeCode = ConsecutivoModel.getConsecutivo("Precios");
                     priceType.PriceTypeDescription = modelo.PriceTypeDescription;
