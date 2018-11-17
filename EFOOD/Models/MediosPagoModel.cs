@@ -37,23 +37,28 @@ namespace EFOOD.Models
             }
         }
 
-        /* public static void editDB(TipoPrecioModelo modelo)
+        public static void editDB(MediosPagoModel modelo)
          {
              try
              {
-                 using (DB_EfoodEntitie vuelosDB = new DB_EfoodEntitie())
+                 using (DB_EfoodEntitie db = new DB_EfoodEntitie())
                  {
-                     var datos = (from valor in vuelosDB.PriceTypes
-                                  where valor.PriceTypeCode == modelo.PriceTypeCode
+                     var datos = (from valor in db.PaymentProcessors
+                                  where valor.PaymentProcessorCode == modelo.PaymentProcessorCode
                                   select valor).SingleOrDefault();
-
-                     datos.PriceTypeDescription = modelo.PriceTypeDescription;
-                     vuelosDB.SaveChanges();
+                    
+                    datos.PaymentProcessorName = modelo.PaymentProcessorName;
+                    datos.PaymentProcessorDescription = modelo.PaymentProcessorDescription;
+                    datos.PaymentProcessorType = modelo.PaymentProcessorType;
+                    datos.PaymentProcessorMethod = modelo.PaymentProcessorMethod;
+                    datos.PaymentProcessorStatus = false;
+                    datos.PaymentProcessorVerify = false;
+                    db.SaveChanges();
                  }
 
              }
              catch (Exception x) { ErrorLogModel.addError(x); }
-         }*/
+         }
 
         public static List<MediosPagoModel> ObtenerMediosDePago()
         {
@@ -78,22 +83,22 @@ namespace EFOOD.Models
             catch (Exception x) { ErrorLogModel.addError(x); return null; }
         }
 
-        /*public static void deletetDB(TipoPrecioModelo modelo)
+        public static void deletetDB(MediosPagoModel modelo)
         {
             try
             {
-                using (DB_EfoodEntitie vuelosDB = new DB_EfoodEntitie())
+                using (DB_EfoodEntitie db = new DB_EfoodEntitie())
                 {
-                    var datos = (from valor in vuelosDB.PriceTypes
-                                 where valor.PriceTypeCode == modelo.PriceTypeCode
+                    var datos = (from valor in db.PaymentProcessors
+                                 where valor.PaymentProcessorCode == modelo.PaymentProcessorCode
                                  select valor).SingleOrDefault();
 
-                    vuelosDB.PriceTypes.Remove(datos);
-                    vuelosDB.SaveChanges();
+                    db.PaymentProcessors.Remove(datos);
+                    db.SaveChanges();
                 }
 
             }
             catch (Exception x) { ErrorLogModel.addError(x); }
-        }*/
+        }
     }
 }

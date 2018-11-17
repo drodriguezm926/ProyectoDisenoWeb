@@ -108,6 +108,22 @@ namespace EFOOD.Controllers
             ViewBag.lista = MediosPagoModel.ObtenerMediosDePago();
             return View("MediosPago");
         }
+
+        [HttpPost]
+        public ActionResult MediosPagoEdit(MediosPagoModel model)
+        {
+            MediosPagoModel.editDB(model);
+            ViewBag.lista = MediosPagoModel.ObtenerMediosDePago();
+            return View("MediosPago");
+        }
+
+        [HttpPost]
+        public ActionResult MediosPagoDelete(MediosPagoModel model)
+        {
+            MediosPagoModel.deletetDB(model);
+            ViewBag.lista = MediosPagoModel.ObtenerMediosDePago();
+            return View("MediosPago");
+        }
         // Termina controladores de tipo de precio.
 
         // Inicia controladores de tiquetes de descuento
