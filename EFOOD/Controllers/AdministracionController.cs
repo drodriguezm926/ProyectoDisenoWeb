@@ -107,11 +107,38 @@ namespace EFOOD.Controllers
         }
         // Termina controladores de tiquetes de descuento
 
+        // Inicia controladores de linea de comida
         [HttpGet]
         public ActionResult LineaComida()
         {
+            ViewBag.listaLineaComida = LineaComidaModel.ObtenerLineasComida();
             return View();
         }
+
+        [HttpPost]
+        public ActionResult LineaComidaAdd(LineaComidaModel model)
+        {
+            LineaComidaModel.addDB(model);
+            ViewBag.listaLineaComida = LineaComidaModel.ObtenerLineasComida();
+            return View("LineaComida");
+        }
+
+        [HttpPost]
+        public ActionResult LineaComidaEdit(LineaComidaModel model)
+        {
+            LineaComidaModel.editDB(model);
+            ViewBag.listaLineaComida = LineaComidaModel.ObtenerLineasComida();
+            return View("LineaComida");
+        }
+
+        [HttpPost]
+        public ActionResult LineaComidaDelete(LineaComidaModel model)
+        {
+            LineaComidaModel.deletetDB(model);
+            ViewBag.listaLineaComida = LineaComidaModel.ObtenerLineasComida();
+            return View("LineaComida");
+        }
+        // Termina controladores de linea de comida
 
         // Inicia controladores de producto
         [HttpGet]

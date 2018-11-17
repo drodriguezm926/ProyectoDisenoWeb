@@ -65,7 +65,7 @@ namespace EFOOD.Models
         } 
 
         /*
-        public static List<Territorio> ObtenerTerritorio()
+        public static List<Territorio> ObtenerLineasComida()
         {
             try
             {

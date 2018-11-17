@@ -1,6 +1,7 @@
 ﻿using EFOOD.App_Data;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 
@@ -13,7 +14,7 @@ namespace EFOOD.Models
         public string FoodOptionCode { get; set; }
         public string ProductContent { get; set; }
         public byte[] ProductImage { get; set; }
-
+        public string ruta { get; set; }
         public static void addDB(ProductoModel modelo)
         {
             using (DB_EfoodEntities db = new DB_EfoodEntities())
@@ -25,7 +26,8 @@ namespace EFOOD.Models
                     product.ProductDescription = modelo.ProductDescription;
                     product.FoodOptionCode = modelo.FoodOptionCode;
                     product.ProductContent = modelo.ProductContent;
-                    product.ProductImage = null;
+                    byte[] imagen = File.ReadAllBytes(modelo.ruta);
+                    product.ProductImage = imagen;
                     db.Products.Add(product);
                     db.SaveChanges();
                 }

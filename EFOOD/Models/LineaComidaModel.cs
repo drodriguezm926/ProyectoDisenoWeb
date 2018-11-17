@@ -45,17 +45,17 @@ namespace EFOOD.Models
             catch (Exception x) { }
         }
 
-        public static List<TipoPrecioModelo> ObtenerTerritorio()
+        public static List<LineaComidaModel> ObtenerLineasComida()
         {
             try
             {
                 using (DB_EfoodEntities db = new DB_EfoodEntities())
                 {
                     return (from valor in db.FoodOptions
-                            select new TipoPrecioModelo
+                            select new LineaComidaModel
                             {
-                                PriceTypeCode = valor.FoodOptionCode,
-                                PriceTypeDescription = valor.FoodOptionDescription,
+                                FoodOptionCode = valor.FoodOptionCode,
+                                FoodOptionDescription = valor.FoodOptionDescription,
                             }).ToList();
                 }
 

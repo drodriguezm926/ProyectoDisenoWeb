@@ -36,10 +36,10 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        @using (Html.BeginForm("TipoPrecioAdd", "Administracion"))
+                        @using (Html.BeginForm("LineaComidaAdd", "Administracion"))
                         {
                             <div class="input-group">
-                                <label>Tipo de precio&nbsp;&nbsp;</label>
+                                <label>Linea de comida&nbsp;&nbsp;</label>
                                 @Html.EditorFor(Model => Model.FoodOptionDescription, new { htmlAttributes = new { @class = "form-control", @type = "text" } })
                             </div>
                             <br />
@@ -70,7 +70,7 @@
                     @{
                         string btnEditar = string.Empty;
                         string nombreModal = string.Empty;
-                        foreach (var item in @ViewBag.lista)
+                        foreach (var item in ViewBag.listaLineaComida)
                         {
                             btnEditar = "btnEditar_" + item.FoodOptionCode;
                             nombreModal = "fm-btn-modal_" + item.FoodOptionDescription;
@@ -95,12 +95,12 @@
                                                     </div>
                                                     <div class="modal-body">
 
-                                                        @using (Html.BeginForm("TipoPrecioEdit", "Administracion", new { id = "" }))
+                                                        @using (Html.BeginForm("LineaComidaEdit", "Administracion", new { id = "" }))
                                                         {
 
                                                             <div>
 
-                                                                <label>Nuevo tipo de precio </label>
+                                                                <label>Nueva linea de comida </label>
                                                                 @Html.HiddenFor(Model => Model.FoodOptionCode, new { Value = btnEditar.Split('_')[1] })
                                                                 @Html.EditorFor(Model => Model.FoodOptionDescription, new { htmlAttributes = new { @class = "form-control", @type = "text" } })
 
@@ -115,7 +115,7 @@
                                             </div>
                                         </div>
 
-                                        @using (Html.BeginForm("TipoPrecioDelete", "Administracion"))
+                                        @using (Html.BeginForm("LineaComidaDelete", "Administracion"))
                                         {
                                             string valor = btnEditar.Split('_')[1];
 

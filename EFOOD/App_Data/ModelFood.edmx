@@ -126,7 +126,7 @@
           <Property Name="ProductDescription" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="FoodOptionCode" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="ProductContent" Type="nvarchar" MaxLength="200" Nullable="false" />
-          <Property Name="ProductImage" Type="varbinary" MaxLength="1" />
+          <Property Name="ProductImage" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -507,7 +507,7 @@
           <Property Name="ProductDescription" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="FoodOptionCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ProductContent" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ProductImage" Type="Binary" MaxLength="1" FixedLength="false" Nullable="true" />
+          <Property Name="ProductImage" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="true" />
           <NavigationProperty Name="FoodOption" Relationship="Self.FK__Product__FoodOpt__4D94879B" FromRole="Product" ToRole="FoodOption" />
           <NavigationProperty Name="Payments" Relationship="Self.FK__Payment__Product__5BE2A6F2" FromRole="Product" ToRole="Payment" />
           <NavigationProperty Name="PriceTypeToProducts" Relationship="Self.FK__PriceType__Produ__5165187F" FromRole="Product" ToRole="PriceTypeToProduct" />

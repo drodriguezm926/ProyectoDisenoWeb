@@ -38,18 +38,22 @@
                     <div class="modal-body">
                         @using (Html.BeginForm("ProductoAdd", "Administracion"))
                         {
-                        <div class="input-group">
-                            <label>Descripción del producto&nbsp;&nbsp;</label><br />
-                            @Html.EditorFor(Model => Model.ProductDescription, new { htmlAttributes = new { @class = "form-control", @type = "text" } })
-                        </div>
-                        <div>
-                            <label>Codigo de opción de comida (Sin completar)&nbsp;&nbsp;</label>
-                            @Html.EditorFor(Model => Model.FoodOptionCode, new { htmlAttributes = new { @class = "form-control", @type = "text" } })
-                        </div>
-                        <div>
-                            <label>Contenido&nbsp;&nbsp;</label>
-                            @Html.EditorFor(Model => Model.ProductContent, new { htmlAttributes = new { @class = "form-control", @type = "text" } })
-                        </div>
+                            <div class="input-group">
+                                <label>Descripción del producto&nbsp;&nbsp;</label><br />
+                                @Html.EditorFor(Model => Model.ProductDescription, new { htmlAttributes = new { @class = "form-control", @type = "text" } })
+                            </div>
+                            <div>
+                                <label>Codigo de opción de comida (Sin completar)&nbsp;&nbsp;</label>
+                                @Html.EditorFor(Model => Model.FoodOptionCode, new { htmlAttributes = new { @class = "form-control", @type = "text" } })
+                            </div>
+                            <div>
+                                <label>Contenido&nbsp;&nbsp;</label>
+                                @Html.EditorFor(Model => Model.ProductContent, new { htmlAttributes = new { @class = "form-control", @type = "text" } })
+                            </div>
+                            <div>
+                                <label>Imagen&nbsp;&nbsp;</label>
+                                @Html.TextBoxFor(Model => Model.ruta, new { @type = "file" })
+                            </div>
                             <br />
                             <div class="row justify-content-center">
                                 <input class="btn btn-sm btn-secondary" type="submit" value="Guardar" />
