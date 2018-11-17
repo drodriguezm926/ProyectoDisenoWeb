@@ -21,9 +21,10 @@ namespace EFOOD.Models
                     newCard.CardCode = ConsecutivoModel.getConsecutivo("Tarjetas");
                     newCard.CardDescription = modelo.CardDescription;
                     db.Cards.Add(newCard);
+                    BitacoraModel.addLogBook("a", "Anadir", Admin.obtenerIdUsuario());
                     db.SaveChanges();
                 }
-                catch (Exception e) { ErrorLogModel.addError(e); }
+                catch (Exception e) { ErrorLogModel.addError(e);  }
             }
         }
 
@@ -38,6 +39,7 @@ namespace EFOOD.Models
                                  select valor).SingleOrDefault();
 
                     datos.CardDescription = modelo.CardDescription;
+                    BitacoraModel.addLogBook("e", "Edicion", Admin.obtenerIdUsuario());
                     db.SaveChanges();
                 }
 
@@ -78,7 +80,7 @@ namespace EFOOD.Models
                 }
 
             }
-            catch (Exception x) { ErrorLogModel.addError(x); }
+            catch (Exception x) { ErrorLogModel.addError(x); BitacoraModel.addLogBook("n", "Borrar", Admin.obtenerIdUsuario()); }
         }
     }
 }

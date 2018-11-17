@@ -31,9 +31,10 @@ namespace EFOOD.Models
                     newProcessor.PaymentProcessorStatus = false;
                     newProcessor.PaymentProcessorVerify = false;
                     db.PaymentProcessors.Add(newProcessor);
+                    BitacoraModel.addLogBook("a", "Anadir", Admin.obtenerIdUsuario());
                     db.SaveChanges();
                 }
-                catch (Exception e) { ErrorLogModel.addError(e); }
+                catch (Exception e) { ErrorLogModel.addError(e);  }
             }
         }
 
@@ -52,7 +53,7 @@ namespace EFOOD.Models
                  }
 
              }
-             catch (Exception x) { ErrorLogModel.addError(x); }
+             catch (Exception x) { ErrorLogModel.addError(x); BitacoraModel.addLogBook("e", "Edicion", Admin.obtenerIdUsuario());}
          }*/
 
         public static List<MediosPagoModel> ObtenerMediosDePago()
@@ -93,7 +94,7 @@ namespace EFOOD.Models
                 }
 
             }
-            catch (Exception x) { ErrorLogModel.addError(x); }
+            catch (Exception x) { ErrorLogModel.addError(x); BitacoraModel.addLogBook("n", "Borrar", Admin.obtenerIdUsuario());}
         }*/
     }
 }

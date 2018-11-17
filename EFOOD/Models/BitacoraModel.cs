@@ -47,7 +47,7 @@ namespace EFOOD.Models
                     log.UserID = userID;
                     log.LogDate = DateTime.Now;
                     log.RegCode = ConsecutivoModel.getConsecutivo("Bitacoras");
-                    log.LogType = "n";
+                    log.LogType = tipo;
                     log.Description = description;
                     log.RegDetails = "N/A";
                     log.User = Admin.obtenerUsuarioUnico(userID);
