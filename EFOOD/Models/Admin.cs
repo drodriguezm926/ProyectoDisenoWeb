@@ -38,6 +38,26 @@ namespace EFOOD.Models
             }
         }
 
+        public static User obtenerUsuarioUnico(int modelo)
+        {
+            try
+            {
+                using (DB_EfoodEntitie db = new DB_EfoodEntitie())
+                {
+                    var datos = (from valor in db.Users
+                                 where valor.UserID == modelo
+                                 select valor).SingleOrDefault();
+
+                    return datos;
+                }
+
+            }
+            catch (Exception x)
+            {
+                return null;
+            }
+        }
+
         public static List<Admin> LoginUsuario(string usuario, string password)
         {
             using (DB_EfoodEntitie db = new DB_EfoodEntitie())

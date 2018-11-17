@@ -1,8 +1,129 @@
-﻿
+﻿@model EFOOD.Models.BitacoraModel
+
 @{
     ViewBag.Title = "Bitacora";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Bitacora</h2>
 
+@using (Html.BeginForm("Bitacora", "Consultas"))
+{
+    List<SelectListItem> listItems = new List<SelectListItem>();
+    listItems.Add(new SelectListItem
+    {
+        Text = "Agregar",
+        Value = "a"
+    });
+
+    listItems.Add(new SelectListItem
+    {
+        Text = "Modificar",
+        Value = "m"
+    });
+
+
+    listItems.Add(new SelectListItem
+    {
+        Text = "Eliminar",
+        Value = "n"
+    });
+
+
+    List<SelectListItem> listUsuario = new List<SelectListItem>();
+
+    foreach (var item in ViewBag.listaUsers)
+    {
+
+        listUsuario.Add(new SelectListItem
+        {
+            Text = item.Username,
+            Value = item.UserID.ToString()
+        });
+    }
+
+<div class="row justify-content-lg-around pt-lg-4">
+
+    <div class="input-group">
+        @Html.DropDownListFor(model => model.LogType, listItems, "-- Seleciona Estado --", new { htmlAttributes = new { @class = "form-control", @type = "text" } })
+
+    </div>
+
+    <div class="input-group">
+
+        @Html.DropDownListFor(model => model.UserID, listUsuario, "-- Seleciona usuario --", new { htmlAttributes = new { @class = "form-control", @type = "text" } })
+
+    </div>
+
+
+    <div class="input-group">
+        @Html.LabelFor(model => model.StartDate)
+        @Html.TextBoxFor(model => model.StartDate, new { type = "date" })
+    </div>
+
+    <div class="input-group ">
+        @Html.LabelFor(model => model.EndDate)
+        @Html.TextBoxFor(model => model.EndDate, new { type = "date" })
+    </div>
+
+    <div>
+        <input type="submit" value="Filtrar" />
+    </div>
+
+</div>
+}
+<div class="row pt-1">
+    <div class="col">
+        <table class="table table-sm table-hover table-bordered table-responsive-lg">
+            <thead>
+                <tr>
+                    <th>Log</th>
+                    <th>User</th>
+                    <th>Fecha</th>
+                    <th>Codigo</th>
+                    <th>Tipo</th>
+                    <th>Codigo</th>
+                    <th>Descripcion</th>
+                </tr>
+            </thead>
+            @*            Inicia la carga de datos en la tabla             *@
+            <tbody>
+                @{
+                    foreach (var item in ViewBag.Bitacora)
+                    {
+                <tr>
+                    <td>
+                        @item.LogID
+                    </td>
+                    <td>
+                        @item.UserID
+                    </td>
+                    <td>
+                        @item.LogDate
+                    </td>
+                    <td>
+                        @item.RegCode
+                    </td>
+
+                    <td>
+                        @item.LogType
+                    </td>
+
+                    <td>
+                        @item.RegCode
+                    </td>
+
+                    <td>
+                        @item.Description
+                    </td>
+                    <td>
+                        @item.RegDetails
+                    </td>
+                </tr>
+                    }
+
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
