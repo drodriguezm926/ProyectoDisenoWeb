@@ -131,6 +131,14 @@ namespace EFOOD.Models
             }
         }
 
+        public static int obtenerIdUsuario() {
+            EFOOD.Models.Admin usuarios =
+                    (EFOOD.Models.Admin)System.Web.HttpContext.Current.Session["Usuario"];
+
+            int ff = usuarios.UserID;
+            return ff;
+        }
+
         public static void InsertarUsuario(Admin admin)
         {
             try
@@ -146,7 +154,7 @@ namespace EFOOD.Models
                     user.Email = admin.Email;
                     user.SecurityQuestion = admin.SecurityQuestion;
                     user.SecurityAnswerHash = admin.SecurityAnswerHash;
-                    user.RoleID = admin.RoleID;
+                    user.RoleID = 1;
 
                     db.Users.Add(user);
                     db.SaveChanges();

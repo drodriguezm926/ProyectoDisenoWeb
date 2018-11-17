@@ -23,7 +23,7 @@ namespace EFOOD.Models
                     db.PriceTypes.Add(priceType);
                     db.SaveChanges(); 
                 }
-                catch (Exception e) { ErrorLogModel.addError(e); }
+                catch (Exception e) { ErrorLogModel.addError(e); BitacoraModel.addLogBook("a", "Anadir", Admin.obtenerIdUsuario()); }
             }
         }
 
@@ -42,7 +42,7 @@ namespace EFOOD.Models
                 }
 
             }
-            catch (Exception x) { ErrorLogModel.addError(x); }
+            catch (Exception x) { ErrorLogModel.addError(x); BitacoraModel.addLogBook("e", "Edicion", Admin.obtenerIdUsuario()); }
         }
 
         public static List<TipoPrecioModelo> ObtenerTerritorio()
@@ -74,11 +74,12 @@ namespace EFOOD.Models
                                  select valor).SingleOrDefault();
 
                     vuelosDB.PriceTypes.Remove(datos);
+                    BitacoraModel.addLogBook("n", "Borrar", Admin.obtenerIdUsuario());
                     vuelosDB.SaveChanges();
                 }
 
             }
-            catch (Exception x) { ErrorLogModel.addError(x); }
+            catch (Exception x) { ErrorLogModel.addError(x);  }
         }
 
     }

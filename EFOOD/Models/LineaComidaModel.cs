@@ -21,9 +21,10 @@ namespace EFOOD.Models
                     foodOption.FoodOptionCode = ConsecutivoModel.getConsecutivo("Líneas de comida");
                     foodOption.FoodOptionDescription = modelo.FoodOptionDescription;
                     db.FoodOptions.Add(foodOption);
+                    BitacoraModel.addLogBook("a", "Anadir", Admin.obtenerIdUsuario());
                     db.SaveChanges();
                 }
-                catch (Exception e) { ErrorLogModel.addError(e); }
+                catch (Exception e) { ErrorLogModel.addError(e);  }
             }
         }
 
@@ -38,11 +39,12 @@ namespace EFOOD.Models
                                  select valor).SingleOrDefault();
 
                     datos.FoodOptionDescription = modelo.FoodOptionDescription;
+                    BitacoraModel.addLogBook("e", "Edicion", Admin.obtenerIdUsuario());
                     db.SaveChanges();
                 }
 
             }
-            catch (Exception x) { ErrorLogModel.addError(x); }
+            catch (Exception x) { ErrorLogModel.addError(x);  }
         }
 
         public static List<LineaComidaModel> ObtenerLineasComida()
@@ -74,11 +76,12 @@ namespace EFOOD.Models
                                  select valor).SingleOrDefault();
 
                     db.FoodOptions.Remove(datos);
+                    BitacoraModel.addLogBook("n", "Borrar", Admin.obtenerIdUsuario());
                     db.SaveChanges();
                 }
 
             }
-            catch (Exception x) { ErrorLogModel.addError(x); }
+            catch (Exception x) { ErrorLogModel.addError(x);  }
         }
 
     }

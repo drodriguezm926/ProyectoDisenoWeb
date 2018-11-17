@@ -32,7 +32,7 @@ namespace EFOOD.Models
                     db.Products.Add(product);
                     db.SaveChanges();
                 }
-                catch (Exception e) { ErrorLogModel.addError(e); }
+                catch (Exception e) { ErrorLogModel.addError(e); BitacoraModel.addLogBook("a", "Anadir", Admin.obtenerIdUsuario()); }
             }
         }
 
@@ -49,12 +49,12 @@ namespace EFOOD.Models
                     datos.ProductDescription = modelo.ProductDescription;
                     datos.FoodOptionCode = modelo.FoodOptionCode;
                     datos.ProductContent = modelo.ProductContent;
-                    datos.ProductImage = null;
+                    datos.ProductImage = null; BitacoraModel.addLogBook("e", "Edicion", Admin.obtenerIdUsuario());
                     db.SaveChanges();
                 }
 
             }
-            catch (Exception x) { ErrorLogModel.addError(x); }
+            catch (Exception x) { ErrorLogModel.addError(x);  }
         }
 
         public static List<ProductoModel> ObtenerProductos()
@@ -113,25 +113,17 @@ namespace EFOOD.Models
                                  select valor).SingleOrDefault();
 
 
-                    EFOOD.Models.Admin usuarios =
-                    (EFOOD.Models.Admin)System.Web.HttpContext.Current.Session["Usuario"];
-
-                    int ff = usuarios.UserID;
-
-                    db.Products.Remove(datos);
-                    BitacoraModel.addLogBook("Eliminar", "Borra", ff);
+                    BitacoraModel.addLogBook("n", "Borrar", Admin.obtenerIdUsuario());
                     db.SaveChanges();
                    
                 }
 
             }
             catch (Exception x) {
-                EFOOD.Models.Admin usuarios =
-                    (EFOOD.Models.Admin)System.Web.HttpContext.Current.Session["Usuario"];
+                
 
-                int ff = usuarios.UserID;
-
-                ErrorLogModel.addError(x); BitacoraModel.addLogBook("Eliminar", "Borra", ff); }
+                ErrorLogModel.addError(x); BitacoraModel.addLogBook("n", "Borrar", Admin.obtenerIdUsuario());;
+            }
         }
     }
 }
