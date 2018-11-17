@@ -14,6 +14,7 @@ namespace EFOOD.Controllers
         [HttpGet]
         public ActionResult Consecutivo()
         {
+            ViewBag.lista = ConsecutivoModel.ObtenerConsecutivos();
             return View();
         }
 
@@ -21,7 +22,7 @@ namespace EFOOD.Controllers
         public ActionResult ConsecutivoAdd(ConsecutivoModel model)
         {
             ConsecutivoModel.addDB(model);
-            var data = ViewBag.lala;
+            ViewBag.lista = ConsecutivoModel.ObtenerConsecutivos();
 
             return View("Consecutivo");
         }

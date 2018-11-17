@@ -67,27 +67,28 @@ namespace EFOOD.Models
             }
             catch (Exception e) { ErrorLogModel.addError(e); return null; }
         } 
-
-        /*
-        public static List<Territorio> ObtenerLineasComida()
+        
+        public static List<ConsecutivoModel> ObtenerConsecutivos()
         {
             try
             {
-                using (vuelosEntities vuelosDB = new vuelosEntities())
+                using (DB_EfoodEntitie db = new DB_EfoodEntitie())
                 {
-                    return (from territorio in vuelosDB.Pais
-                            select new Territorio
+                    return (from consecutivo in db.Consecutives
+                            select new ConsecutivoModel
                             {
-                                codPais = territorio.codPais,
-                                nombre_pais = territorio.nombre_pais,
-                                rutaImagen = territorio.rutaImagen
+                                ConsecutiveCode = consecutivo.ConsecutiveCode,
+                                Description = consecutivo.Description,
+                                CurrentConsecutive = consecutivo.CurrentConsecutive,
+                                HasPrefix = consecutivo.HasPrefix,
+                                Prefix = consecutivo.Prefix,
 
                             }).ToList();
                 }
 
             }
             catch (Exception x) { return null; }
-        }*/
+        }
     }
 
 }
