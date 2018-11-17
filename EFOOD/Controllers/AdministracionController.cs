@@ -93,11 +93,22 @@ namespace EFOOD.Controllers
         }
         // Termina controladores de TarjetaCreditoDebito
 
+        // Inicia controladores de tarjetaCreditoDebito
         [HttpGet]
         public ActionResult MediosPago()
         {
+            ViewBag.lista = MediosPagoModel.ObtenerMediosDePago();
             return View();
         }
+
+        [HttpPost]
+        public ActionResult MediosPagoAdd(MediosPagoModel model)
+        {
+            MediosPagoModel.addDB(model);
+            ViewBag.lista = MediosPagoModel.ObtenerMediosDePago();
+            return View("MediosPago");
+        }
+        // Termina controladores de tipo de precio.
 
         // Inicia controladores de tiquetes de descuento
         [HttpGet]
