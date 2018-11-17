@@ -13,10 +13,10 @@ namespace EFOOD.App_Data
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DB_EfoodEntities : DbContext
+    public partial class DB_EfoodEntitie : DbContext
     {
-        public DB_EfoodEntities()
-            : base("name=DB_EfoodEntities")
+        public DB_EfoodEntitie()
+            : base("name=DB_EfoodEntitie")
         {
         }
     

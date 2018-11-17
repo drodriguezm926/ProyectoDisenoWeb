@@ -25,7 +25,7 @@ namespace EFOOD.App_Data
         public string ProductDescription { get; set; }
         public string FoodOptionCode { get; set; }
         public string ProductContent { get; set; }
-        public byte[] ProductImage { get; set; }
+        public string ProductImage { get; set; }
     
         public virtual FoodOption FoodOption { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

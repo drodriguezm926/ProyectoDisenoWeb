@@ -16,7 +16,7 @@ namespace EFOOD.Models
 
         public static void addDB(ConsecutivoModel consecutivoM)
         {
-            using (DB_EfoodEntities db = new DB_EfoodEntities())
+            using (DB_EfoodEntitie db = new DB_EfoodEntitie())
             {
                 try
                 {
@@ -42,26 +42,30 @@ namespace EFOOD.Models
                     //Commit a la base de datos
                     db.SaveChanges();
                 }
-                catch (Exception e) { }
+                catch (Exception e) { ErrorLogModel.addError(e); }
             }
         }
 
         public static string getConsecutivo(string descripcionConsecutivo) {
-                    //Instancia base datos
-                    DB_EfoodEntities db = new DB_EfoodEntities();
-                    //Se consulta el currentConsecutive
-                    var data = (from valor in db.Consecutives
-                                 where valor.Description == descripcionConsecutivo
-                                select valor).SingleOrDefault();
-                    //Se cambia de formato
-                    int n = int.Parse(data.CurrentConsecutive);
-                    //Consecutivo
-                    string resultado = data.Prefix + n;
-                    //--Aumenta consecutivo en la base de datos--//
-                    data.CurrentConsecutive = "" + (n+1);
-                    //Actualiza
-                    db.SaveChanges();
-            return resultado;
+            try
+            {
+                //Instancia base datos
+                DB_EfoodEntitie db = new DB_EfoodEntitie();
+                //Se consulta el currentConsecutive
+                var data = (from valor in db.Consecutives
+                            where valor.Description == descripcionConsecutivo
+                            select valor).SingleOrDefault();
+                //Se cambia de formato
+                int n = int.Parse(data.CurrentConsecutive);
+                //Consecutivo
+                string resultado = data.Prefix + n;
+                //--Aumenta consecutivo en la base de datos--//
+                data.CurrentConsecutive = "" + (n + 1);
+                //Actualiza
+                db.SaveChanges();
+                return resultado;
+            }
+            catch (Exception e) { ErrorLogModel.addError(e); return null; }
         } 
 
         /*

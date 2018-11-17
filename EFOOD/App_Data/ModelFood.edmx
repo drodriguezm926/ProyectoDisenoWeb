@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="efooddatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="efooddatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Card">
           <Key>
             <PropertyRef Name="CardCode" />
@@ -377,7 +377,8 @@
             <End Role="UserToRole" EntitySet="UserToRole" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="efooddatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -507,7 +508,7 @@
           <Property Name="ProductDescription" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="FoodOptionCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ProductContent" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ProductImage" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="true" />
+          <Property Name="ProductImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="FoodOption" Relationship="Self.FK__Product__FoodOpt__4D94879B" FromRole="Product" ToRole="FoodOption" />
           <NavigationProperty Name="Payments" Relationship="Self.FK__Payment__Product__5BE2A6F2" FromRole="Product" ToRole="Payment" />
           <NavigationProperty Name="PriceTypeToProducts" Relationship="Self.FK__PriceType__Produ__5165187F" FromRole="Product" ToRole="PriceTypeToProduct" />
@@ -650,7 +651,7 @@
           <End Role="Role" Type="Self.Role" Multiplicity="*" />
           <End Role="User" Type="Self.User" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="DB_EfoodEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="DB_EfoodEntitie" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Cards" EntityType="Self.Card" />
           <EntitySet Name="Consecutives" EntityType="Self.Consecutive" />
           <EntitySet Name="Customers" EntityType="Self.Customer" />
@@ -712,7 +713,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="efooddatabaseModelStoreContainer" CdmEntityContainer="DB_EfoodEntities">
+        <EntityContainerMapping StorageEntityContainer="efooddatabaseModelStoreContainer" CdmEntityContainer="DB_EfoodEntitie">
           <EntitySetMapping Name="Cards">
             <EntityTypeMapping TypeName="efooddatabaseModel.Card">
               <MappingFragment StoreEntitySet="Card">

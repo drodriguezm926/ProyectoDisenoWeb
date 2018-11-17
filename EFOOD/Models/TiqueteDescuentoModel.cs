@@ -15,7 +15,7 @@ namespace EFOOD.Models
 
         public static void addDB(TiqueteDescuentoModel modelo)
         {
-            using (DB_EfoodEntities db = new DB_EfoodEntities())
+            using (DB_EfoodEntitie db = new DB_EfoodEntitie())
             {
                 try
                 {   //Entidades de la base de datos
@@ -27,7 +27,7 @@ namespace EFOOD.Models
                     db.TicketDiscounts.Add(newTicketDiscount);
                     db.SaveChanges();
                 }
-                catch (Exception e) { }
+                catch (Exception e) { ErrorLogModel.addError(e); }
             }
         }
 
@@ -35,7 +35,7 @@ namespace EFOOD.Models
         {
             try
             {
-                using (DB_EfoodEntities db = new DB_EfoodEntities())
+                using (DB_EfoodEntitie db = new DB_EfoodEntitie())
                 {
                     var datos = (from valor in db.TicketDiscounts
                                  where valor.TicketCode == modelo.TicketCode
@@ -48,14 +48,14 @@ namespace EFOOD.Models
                 }
 
             }
-            catch (Exception x) { }
+            catch (Exception x) { ErrorLogModel.addError(x); }
         }
 
         public static List<TiqueteDescuentoModel> ObtenerTiquetesDescuento()
         {
             try
             {
-                using (DB_EfoodEntities db = new DB_EfoodEntities())
+                using (DB_EfoodEntitie db = new DB_EfoodEntitie())
                 {
                     return (from tiquetes in db.TicketDiscounts
                             select new TiqueteDescuentoModel
@@ -68,14 +68,14 @@ namespace EFOOD.Models
                 }
 
             }
-            catch (Exception x) { return null; }
+            catch (Exception x) { ErrorLogModel.addError(x);  return null; }
         }
 
         public static void deletetDB(TiqueteDescuentoModel modelo)
         {
             try
             {
-                using (DB_EfoodEntities db = new DB_EfoodEntities())
+                using (DB_EfoodEntitie db = new DB_EfoodEntitie())
                 {
                     var datos = (from valor in db.TicketDiscounts
                                  where valor.TicketCode == modelo.TicketCode
@@ -86,7 +86,7 @@ namespace EFOOD.Models
                 }
 
             }
-            catch (Exception x) { }
+            catch (Exception x) { ErrorLogModel.addError(x); }
         }
     }
 }

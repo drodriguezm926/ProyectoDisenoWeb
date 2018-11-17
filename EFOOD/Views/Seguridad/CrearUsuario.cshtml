@@ -1,79 +1,92 @@
-﻿
+﻿@model EFOOD.Models.Admin
+
 @{
     ViewBag.Title = "CrearUsuario";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!--=======================================
-=            Inicio del cuerpo            =
-========================================-->
-<main role="main" class="container pt-5">
-    <div class="row pt-3 justify-content-center bg-secondary mt-5" style="border-radius: 20px">
-        <div class="col-5">
-            <h1 class="lead text text-white text-center">Asignar Rol</h1>
-        </div>
-    </div>
-    <div class="row pt-5 justify-content-center">
-        <div class="col-5">
-            <div class="row form-group">
-                <label for="SelectorUsuario" class="text-info">Lista de usuarios</label>
-                <select multiple class="form-control" id="SelectorUsuario">
-                    <option>UsuarioTest1</option>
-                    <option>UsuarioTest2</option>
-                    <option>UsuarioTest3</option>
-                    <option>UsuarioTest4</option>
-                    <option>UsuarioTest5</option>
-                </select>
-            </div>
-            <div class="row">
-                <fieldset class="form-group">
-                    <label class="text-info">Activo</label>
-                    <div class="form-check">
-                        <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input" name="OptionHabo" id="optionscheckactive" value="optionActive">
-                            Habilitado
-                        </label>
-                    </div>
-                </fieldset>
-            </div>
-        </div>
-        <div class="col-3 col-sm-4">
-            <!-- Usuario -->
-            <fieldset class="form-group">
-                <!--<label for="optionscheckbox1" class="text-info">Lista de roles</label>-->
-                <label class="text-info">Lista de roles</label>
-                <div class="form-check">
-                    <label class="form-check-label">
-                        <input type="checkbox" class="form-check-input" name="optionsRadios" id="optionscheckbox1" value="option1">
-                        Administrador
-                    </label>
-                </div>
-                <div class="form-check">
-                    <label class="form-check-label">
-                        <input type="checkbox" class="form-check-input" name="optionsRadios" id="optionscheckbox2" value="option2">
-                        Seguridad
-                    </label>
-                </div>
-                <div class="form-check">
-                    <label class="form-check-label">
-                        <input type="checkbox" class="form-check-input" name="optionsRadios" id="optionscheckbox3" value="option3">
-                        Mantenimiento
-                    </label>
-                </div>
-                <div class="form-check">
-                    <label class="form-check-label">
-                        <input type="checkbox" class="form-check-input" name="optionsRadios" id="optionscheckbox3" value="option3">
-                        Consulta
-                    </label>
-                </div>
-            </fieldset>
-        </div>
-        <!-- Guardar boton -->
-        <div class="input-group input-group-sm mb-3 justify-content-center pt-5">
-            <button type="button" class="btn btn-outline-info rounded-bottom" style="border-radius: 12px">Actualizar rol</button>
-        </div>
-        <!--====  End of inputs  ====-->
 
+<main role="main" class="container pt-5">
+
+    <div class="row pt-5 justify-content-center "></div>
+    <div class="row pt-3 justify-content-center bg-info" style="border-radius: 20px">
+        <div class="col-5">
+            <h1 class="lead text text-white text-center">Crear cuenta nueva</h1>
+        </div>
     </div>
+
+
+    <div class="row pt-5 justify-content-center">
+        <div class="col-4">
+
+
+            <!--=====================================
+            =            Inicio inputs              =
+            ======================================-->
+            @using (Html.BeginForm("CrearUsuario", "Seguridad", new { id = @ViewBag.ContrasenaConfirma }, FormMethod.Post, null))
+            {
+                <!-- Usuario -->
+                <div class="input-group input-group-sm mb-3 pt-4">
+
+                    <input type="text" name="Username" id="Nombre" class="form-control">
+                    <div class="input-group-append">
+                        <span class="input-group-text text-info">Usuario</span>
+                    </div>
+                </div>
+
+                <!-- Contraseña -->
+                <div class="input-group input-group-sm mb-3">
+                    <input type="password" name="PasswordHash" id="Contrasena" class="form-control">
+                    <div class="input-group-append">
+                        <span class="input-group-text text-info">Contraseña</span>
+                    </div>
+                </div>
+
+                <!-- Confirma -->
+                <div class="input-group input-group-sm mb-3">
+
+                    <input type="password" name="ContrasenaConfirma" id="ContrasenaConfirma" class="form-control">
+                    <div class="input-group-append">
+                        <span class="input-group-text text-info">Confirma contraseña</span>
+                    </div>
+                </div>
+
+                <!-- Correo -->
+                   <div class="input-group input-group-sm mb-3">
+                        <input type="email" name="Email" id="Email" class="form-control">
+                        <div class="input-group-append">
+                            <span class="input-group-text text-info">Correo</span>
+                        </div>
+                    </div>
+
+                <!-- Pregunta -->
+                <div class="input-group input-group-sm mb-3">
+                    <input type="text" name="SecurityQuestion" id="PreguntaSeguridad" class="form-control">
+                    <div class="input-group-append">
+                        <span class="input-group-text text-info">Pregunta seguridad</span>
+                    </div>
+                </div>
+
+                <!-- Respuesta -->
+                <div class="input-group input-group-sm mb-3">
+                    <input type="password" name="SecurityAnswerHash" id="RespuestaSeguridad" class="form-control">
+                    <div class="input-group-append">
+                        <span class="input-group-text text-info">Respuesta de seguridad</span>
+                    </div>
+                </div>
+
+                <!-- Guardar boton -->
+                <div class="input-group input-group-sm mb-3 justify-content-center pt-5">
+                    <button type="submit" id="crearusuario" name="crearusuario" value="crearusuario" class="btn btn-outline-info rounded-bottom" style="border-radius: 12px">Crear usuario</button>
+                </div>
+
+                <!--====  End of inputs  ====-->
+
+            }
+
+        </div>
+    </div>
+
+    @Html.Raw(TempData["msg"])
 </main>
 <!--====  End of Inicio del cuerpo  ====-->

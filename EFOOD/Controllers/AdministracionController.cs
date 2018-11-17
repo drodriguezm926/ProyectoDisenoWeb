@@ -1,6 +1,7 @@
 ﻿using EFOOD.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -145,14 +146,30 @@ namespace EFOOD.Controllers
         public ActionResult Producto()
         {
             ViewBag.lista = ProductoModel.ObtenerProductos();
+            ViewBag.ListaFoodOption = LineaComidaModel.ObtenerLineasComida();
             return View();
         }
 
         [HttpPost]
         public ActionResult ProductoAdd(ProductoModel model)
         {
+
+            string cadenaRuta = string.Empty;
+
+
+            if (model.Archivo != null && model.Archivo.ContentLength > 0)
+            {
+                var fileName = Path.GetFileName(model.Archivo.FileName);
+
+                var rutaImagen = Path.Combine(Server.MapPath("~/Asset/Images/Producto"), fileName);
+                cadenaRuta = "~/Asset/Images/Producto/" + fileName;
+                model.Archivo.SaveAs(rutaImagen);
+                model.ProductImage = cadenaRuta;
+            }
+
             ProductoModel.addDB(model);
             ViewBag.lista = ProductoModel.ObtenerProductos();
+            ViewBag.ListaFoodOption = LineaComidaModel.ObtenerLineasComida();
             return View("Producto");
         }
 
@@ -161,6 +178,7 @@ namespace EFOOD.Controllers
         {
             ProductoModel.editDB(model);
             ViewBag.lista = ProductoModel.ObtenerProductos();
+            ViewBag.ListaFoodOption = LineaComidaModel.ObtenerLineasComida();
             return View("Producto");
         }
 
@@ -169,6 +187,7 @@ namespace EFOOD.Controllers
         {
             ProductoModel.deletetDB(model);
             ViewBag.lista = ProductoModel.ObtenerProductos();
+            ViewBag.ListaFoodOption = LineaComidaModel.ObtenerLineasComida();
             return View("Producto");
         }
         // Termina controladores de producto

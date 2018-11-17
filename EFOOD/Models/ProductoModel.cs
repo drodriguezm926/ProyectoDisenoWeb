@@ -13,11 +13,13 @@ namespace EFOOD.Models
         public string ProductDescription { get; set; }
         public string FoodOptionCode { get; set; }
         public string ProductContent { get; set; }
-        public byte[] ProductImage { get; set; }
-        public string ruta { get; set; }
+        public string ProductImage { get; set; }
+        public HttpPostedFileBase Archivo { get; set; }
+
+
         public static void addDB(ProductoModel modelo)
         {
-            using (DB_EfoodEntities db = new DB_EfoodEntities())
+            using (DB_EfoodEntitie db = new DB_EfoodEntitie())
             {
                 try
                 {   //Entidades de la base de datos
@@ -26,12 +28,11 @@ namespace EFOOD.Models
                     product.ProductDescription = modelo.ProductDescription;
                     product.FoodOptionCode = modelo.FoodOptionCode;
                     product.ProductContent = modelo.ProductContent;
-                    byte[] imagen = File.ReadAllBytes(modelo.ruta);
-                    product.ProductImage = imagen;
+                    product.ProductImage = modelo.ProductImage;
                     db.Products.Add(product);
                     db.SaveChanges();
                 }
-                catch (Exception e) { }
+                catch (Exception e) { ErrorLogModel.addError(e); }
             }
         }
 
@@ -39,7 +40,7 @@ namespace EFOOD.Models
         {
             try
             {
-                using (DB_EfoodEntities db = new DB_EfoodEntities())
+                using (DB_EfoodEntitie db = new DB_EfoodEntitie())
                 {
                     var datos = (from valor in db.Products
                                  where valor.ProductCode == modelo.ProductCode
@@ -53,14 +54,14 @@ namespace EFOOD.Models
                 }
 
             }
-            catch (Exception x) { }
+            catch (Exception x) { ErrorLogModel.addError(x); }
         }
 
         public static List<ProductoModel> ObtenerProductos()
         {
             try
             {
-                using (DB_EfoodEntities db = new DB_EfoodEntities())
+                using (DB_EfoodEntitie db = new DB_EfoodEntitie())
                 {
                     return (from productos in db.Products
                             select new ProductoModel
@@ -74,14 +75,37 @@ namespace EFOOD.Models
                 }
 
             }
-            catch (Exception x) { return null; }
+            catch (Exception x) { ErrorLogModel.addError(x); return null; }
+        }
+
+
+        public static List<ProductoModel> ObtenerProductosFiltrados(ProductoModel modelo)
+        {
+            try
+            {
+                using (DB_EfoodEntitie db = new DB_EfoodEntitie())
+                {
+                    return (from productos in db.Products
+                            where productos.FoodOptionCode == modelo.FoodOptionCode
+                            select new ProductoModel
+                            {
+                                ProductCode = productos.ProductCode,
+                                ProductDescription = productos.ProductDescription,
+                                FoodOptionCode = productos.FoodOptionCode,
+                                ProductContent = productos.ProductContent,
+                                ProductImage = productos.ProductImage
+                            }).ToList();
+                }
+
+            }
+            catch (Exception x) { ErrorLogModel.addError(x); return null; }
         }
 
         public static void deletetDB(ProductoModel modelo)
         {
             try
             {
-                using (DB_EfoodEntities db = new DB_EfoodEntities())
+                using (DB_EfoodEntitie db = new DB_EfoodEntitie())
                 {
                     var datos = (from valor in db.Products
                                  where valor.ProductCode == modelo.ProductCode
@@ -92,7 +116,7 @@ namespace EFOOD.Models
                 }
 
             }
-            catch (Exception x) { }
+            catch (Exception x) { ErrorLogModel.addError(x); }
         }
     }
 }

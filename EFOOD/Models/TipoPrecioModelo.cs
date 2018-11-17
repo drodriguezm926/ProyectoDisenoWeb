@@ -13,7 +13,7 @@ namespace EFOOD.Models
 
         public static void addDB(TipoPrecioModelo modelo)
         {
-            using (DB_EfoodEntities db = new DB_EfoodEntities())
+            using (DB_EfoodEntitie db = new DB_EfoodEntitie())
             {
                 try
                 {   //Entidades de la base de datos
@@ -23,7 +23,7 @@ namespace EFOOD.Models
                     db.PriceTypes.Add(priceType);
                     db.SaveChanges(); 
                 }
-                catch (Exception e) { }
+                catch (Exception e) { ErrorLogModel.addError(e); }
             }
         }
 
@@ -31,7 +31,7 @@ namespace EFOOD.Models
         {
             try
             {
-                using (DB_EfoodEntities vuelosDB = new DB_EfoodEntities())
+                using (DB_EfoodEntitie vuelosDB = new DB_EfoodEntitie())
                 {
                     var datos = (from valor in vuelosDB.PriceTypes
                                  where valor.PriceTypeCode == modelo.PriceTypeCode
@@ -42,14 +42,14 @@ namespace EFOOD.Models
                 }
 
             }
-            catch (Exception x) { }
+            catch (Exception x) { ErrorLogModel.addError(x); }
         }
 
         public static List<TipoPrecioModelo> ObtenerTerritorio()
         {
             try
             {
-                using (DB_EfoodEntities vuelosDB = new DB_EfoodEntities())
+                using (DB_EfoodEntitie vuelosDB = new DB_EfoodEntitie())
                 {
                     return (from territorio in vuelosDB.PriceTypes
                             select new TipoPrecioModelo
@@ -60,14 +60,14 @@ namespace EFOOD.Models
                 }
 
             }
-            catch (Exception x) { return null; }
+            catch (Exception x) { ErrorLogModel.addError(x);  return null; }
         }
 
         public static void deletetDB(TipoPrecioModelo modelo)
         {
             try
             {
-                using (DB_EfoodEntities vuelosDB = new DB_EfoodEntities())
+                using (DB_EfoodEntitie vuelosDB = new DB_EfoodEntitie())
                 {
                     var datos = (from valor in vuelosDB.PriceTypes
                                  where valor.PriceTypeCode == modelo.PriceTypeCode
@@ -78,7 +78,7 @@ namespace EFOOD.Models
                 }
 
             }
-            catch (Exception x) { }
+            catch (Exception x) { ErrorLogModel.addError(x); }
         }
 
     }

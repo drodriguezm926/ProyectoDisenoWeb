@@ -1,76 +1,89 @@
-﻿
+﻿model EFOOD.Models.Admin
 @{
     ViewBag.Title = "AisgnarRol";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <main role="main" class="container pt-5">
-    <div class="row pt-3 justify-content-center bg-secondary mt-5" style="border-radius: 20px">
+
+    <div class="row pt-5 justify-content-center "></div>
+    <div class="row pt-3 justify-content-center bg-info" style="border-radius: 20px">
         <div class="col-5">
-            <h1 class="lead text text-white text-center">Asignar Rol</h1>
+            <h1 class="lead text text-white text-center">Asignar role</h1>
         </div>
     </div>
+
     <div class="row pt-5 justify-content-center">
-        <div class="col-5">
-            <div class="row form-group">
-                <label for="SelectorUsuario" class="text-info">Lista de usuarios</label>
-                <select multiple class="form-control" id="SelectorUsuario">
-                    <option>UsuarioTest1</option>
-                    <option>UsuarioTest2</option>
-                    <option>UsuarioTest3</option>
-                    <option>UsuarioTest4</option>
-                    <option>UsuarioTest5</option>
-                </select>
-            </div>
-            <div class="row">
-                <fieldset class="form-group">
-                    <label class="text-info">Activo</label>
-                    <div class="form-check">
-                        <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input" name="OptionHabo" id="optionscheckactive" value="optionActive">
-                            Habilitado
-                        </label>
+
+        @using (Html.BeginForm("AsignarRol", "Usuario", new { id = @ViewBag.ContrasenaConfirma }, FormMethod.Post, null))
+        {
+            List<AdministracionVuelos.Models.Administrador> listaUsuarios =
+               AdministracionVuelos.Models.Administrador.ObtenerConsumidores();
+            if (listaUsuarios != null)
+            {
+                if (listaUsuarios.Count > 0)
+                {
+                    <div class="form-group">
+                        <label for="SelectorUsuario" class="text-info">Lista de usuarios</label>
+                        <select multiple class="form-control" id="SelectorUsuario" name="SelectorUsuario">
+                            @foreach (AdministracionVuelos.Models.Administrador item in listaUsuarios)
+                            {
+                                <option name="CodUsuario"
+                                        id="CodUsuario-@item.CodUsuario"
+                                        value="@item.CodUsuario"
+                                        onclick="selectedUser(@item.codRol)">
+                                    @item.Nombre
+                                </option>
+                            }
+                        </select>
                     </div>
-                </fieldset>
+                }
+            }
+
+            List<AdministracionVuelos.Models.TipoConsumidor> listaRoles =
+                AdministracionVuelos.Models.TipoConsumidor.ObtenerTipoDeConsumidores();
+
+            if (listaRoles != null)
+            {
+                if (listaRoles.Count > 0)
+                {
+                    <fieldset class="form-group">
+                        <label for="optionscheckbox1" class="text-info">Lista de roles</label>
+                        <div>
+                            @foreach (AdministracionVuelos.Models.TipoConsumidor item in listaRoles)
+                            {
+                                <input type="radio"
+                                       class="form-check-input"
+                                       name="CodRole"
+                                       id="CodRole-@item.CodRol"
+                                       value="@item.CodRol">
+
+                                <label for="CodRole-@item.CodRol">@item.DescriptionRol</label>
+                                <br />
+                            }
+                        </div>
+                    </fieldset>
+                }
+            }
+
+            <!-- Guardar boton -->
+            <div class="input-group input-group-sm mb-3 justify-content-center pt-5">
+                <button type="submit" id="asignarRol" name="asignarRol" value="asignarRol" class="btn btn-outline-info rounded-bottom" style="border-radius: 12px">Asignar Rol</button>
             </div>
-        </div>
-        <div class="col-3 col-sm-4">
-            <!-- Usuario -->
-            <fieldset class="form-group">
-                <!--<label for="optionscheckbox1" class="text-info">Lista de roles</label>-->
-                <label class="text-info">Lista de roles</label>
-                <div class="form-check">
-                    <label class="form-check-label">
-                        <input type="checkbox" class="form-check-input" name="optionsRadios" id="optionscheckbox1" value="option1">
-                        Administrador
-                    </label>
-                </div>
-                <div class="form-check">
-                    <label class="form-check-label">
-                        <input type="checkbox" class="form-check-input" name="optionsRadios" id="optionscheckbox2" value="option2">
-                        Seguridad
-                    </label>
-                </div>
-                <div class="form-check">
-                    <label class="form-check-label">
-                        <input type="checkbox" class="form-check-input" name="optionsRadios" id="optionscheckbox3" value="option3">
-                        Mantenimiento
-                    </label>
-                </div>
-                <div class="form-check">
-                    <label class="form-check-label">
-                        <input type="checkbox" class="form-check-input" name="optionsRadios" id="optionscheckbox3" value="option3">
-                        Consulta
-                    </label>
-                </div>
-            </fieldset>
-        </div>
-        <!-- Guardar boton -->
-        <div class="input-group input-group-sm mb-3 justify-content-center pt-5">
-            <button type="button" class="btn btn-outline-info rounded-bottom" style="border-radius: 12px">Actualizar rol</button>
-        </div>
-        <!--====  End of inputs  ====-->
+
+            <!--====  End of inputs  ====-->
+        }
 
     </div>
+    @Html.Raw(TempData["msg"])
 </main>
+<script>
+    function selectedUser(codRol) {
+
+        if (codRol != null) {
+            document.getElementById("CodRole-" + codRol).checked = true;
+            document.getElementById("RolSeleccionado").value = codRol;
+        }
+    }
+</script>
 

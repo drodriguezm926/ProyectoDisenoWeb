@@ -13,7 +13,7 @@ namespace EFOOD.Models
 
         public static void addDB(LineaComidaModel modelo)
         {
-            using (DB_EfoodEntities db = new DB_EfoodEntities())
+            using (DB_EfoodEntitie db = new DB_EfoodEntitie())
             {
                 try
                 {   //Entidades de la base de datos
@@ -23,7 +23,7 @@ namespace EFOOD.Models
                     db.FoodOptions.Add(foodOption);
                     db.SaveChanges();
                 }
-                catch (Exception e) { }
+                catch (Exception e) { ErrorLogModel.addError(e); }
             }
         }
 
@@ -31,7 +31,7 @@ namespace EFOOD.Models
         {
             try
             {
-                using (DB_EfoodEntities db = new DB_EfoodEntities())
+                using (DB_EfoodEntitie db = new DB_EfoodEntitie())
                 {
                     var datos = (from valor in db.FoodOptions
                                  where valor.FoodOptionCode == modelo.FoodOptionCode
@@ -42,14 +42,14 @@ namespace EFOOD.Models
                 }
 
             }
-            catch (Exception x) { }
+            catch (Exception x) { ErrorLogModel.addError(x); }
         }
 
         public static List<LineaComidaModel> ObtenerLineasComida()
         {
             try
             {
-                using (DB_EfoodEntities db = new DB_EfoodEntities())
+                using (DB_EfoodEntitie db = new DB_EfoodEntitie())
                 {
                     return (from valor in db.FoodOptions
                             select new LineaComidaModel
@@ -60,14 +60,14 @@ namespace EFOOD.Models
                 }
 
             }
-            catch (Exception x) { return null; }
+            catch (Exception x) { ErrorLogModel.addError(x); return null; }
         }
 
         public static void deletetDB(LineaComidaModel modelo)
         {
             try
             {
-                using (DB_EfoodEntities db = new DB_EfoodEntities())
+                using (DB_EfoodEntitie db = new DB_EfoodEntitie())
                 {
                     var datos = (from valor in db.FoodOptions
                                  where valor.FoodOptionCode == modelo.FoodOptionCode
@@ -78,7 +78,7 @@ namespace EFOOD.Models
                 }
 
             }
-            catch (Exception x) { }
+            catch (Exception x) { ErrorLogModel.addError(x); }
         }
 
     }

@@ -1,8 +1,101 @@
-﻿
+﻿@model EFOOD.Models.ProductoModel
+
 @{
     ViewBag.Title = "Productos";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+
 }
 
-<h2>Productos</h2>
 
+<div class="row pt-lg-4">
+
+    @using (Html.BeginForm("ProductosFiltrar", "Consultas"))
+    {
+        try {
+            List<SelectListItem>
+                                     listItems = new List<SelectListItem>();
+
+            foreach (var item in ViewBag.ListaFoodOption)
+            {
+
+                listItems.Add(new SelectListItem
+                {
+                    Text = item.FoodOptionDescription,
+                    Value = item.FoodOptionCode
+                });
+            }
+        <!-- Descripcion -->
+        <div class="input-group input-group-sm mb-3 pt-4">
+            <label>Linea de comida&nbsp;&nbsp;</label>
+            @Html.DropDownListFor(model => model.FoodOptionCode, listItems, "-- Seleciona descripcion --", new { htmlAttributes = new { @class = "form-control", @type = "text" } })
+
+        </div>
+
+        <div>
+            <input type="submit" value="Filtrar errores" />
+        </div>
+        }
+        catch (Exception e) { EFOOD.Models.ErrorLogModel.addError(e); }
+    }
+    
+</div>
+
+<div class="row pt-1">
+    <div class="col">
+        <table class="table table-sm table-hover table-bordered table-responsive-lg">
+            <thead>
+                <tr>
+                    <th>Codigo</th>
+                    <th>Descripción</th>
+                    <th>Opción de comida</th>
+                    <th>Contenido</th>
+                    <th>Imagen</th>
+                </tr>
+            </thead>
+            @*            Inicia la carga de datos en la tabla             *@
+            <tbody>
+                @{
+                    try { 
+                    foreach (var item in @ViewBag.listaProducto)
+                    {
+
+                        <tr>
+                            <td>
+                                @item.ProductCode
+                            </td>
+                            <td>
+                                @item.ProductDescription
+                            </td>
+                            <td>
+                                @item.FoodOptionCode
+                            </td>
+                            <td>
+                                @item.ProductContent
+                            </td>
+
+                            @if (!string.IsNullOrEmpty(item.ProductImage))
+                            {
+
+
+                                <td>
+                                    <img class="rounded-circle" src="@Url.Content(item.ProductImage)" style="width: 40px; height: 40px;" />
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    <p>Imagen no disponible</p>
+                                </td>
+                            }
+
+                       
+                        </tr>
+                            }
+                        }catch (Exception e) { EFOOD.Models.ErrorLogModel.addError(e); }
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
