@@ -64,16 +64,51 @@ namespace EFOOD.Controllers
         [HttpGet]
         public ActionResult TarjetaCreditoDebito()
         {
-            
+            ViewBag.lista = TarjetaCreditoDebitoModel.obtenerTarjetas();
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult TarjetaCreditoDebitoAdd(TarjetaCreditoDebitoModel model)
+        {
+            TarjetaCreditoDebitoModel.addDB(model);
+            ViewBag.lista = TarjetaCreditoDebitoModel.obtenerTarjetas();
+            return View("TarjetaCreditoDebito");
+        }
+
+        [HttpPost]
+        public ActionResult TarjetaCreditoDebitoEdit(TarjetaCreditoDebitoModel model)
+        {
+            TarjetaCreditoDebitoModel.editDB(model);
+            ViewBag.lista = TarjetaCreditoDebitoModel.obtenerTarjetas();
+            return View("TarjetaCreditoDebito");
+        }
+
+        [HttpPost]
+        public ActionResult TarjetaCreditoDebitoDelete(TarjetaCreditoDebitoModel model)
+        {
+            TarjetaCreditoDebitoModel.deletetDB(model);
+            ViewBag.lista = TarjetaCreditoDebitoModel.obtenerTarjetas();
+            return View("TarjetaCreditoDebito");
         }
         // Termina controladores de TarjetaCreditoDebito
 
+        // Inicia controladores de tarjetaCreditoDebito
         [HttpGet]
         public ActionResult MediosPago()
         {
+            ViewBag.lista = MediosPagoModel.ObtenerMediosDePago();
             return View();
         }
+
+        [HttpPost]
+        public ActionResult MediosPagoAdd(MediosPagoModel model)
+        {
+            MediosPagoModel.addDB(model);
+            ViewBag.lista = MediosPagoModel.ObtenerMediosDePago();
+            return View("MediosPago");
+        }
+        // Termina controladores de tipo de precio.
 
         // Inicia controladores de tiquetes de descuento
         [HttpGet]
