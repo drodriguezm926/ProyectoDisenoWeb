@@ -22,10 +22,56 @@ namespace EFOOD.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult AsignarRol(RolModel model)
+        {
+
+            if (Admin.AsignarRol(model.userID, model.RoleID))
+            {
+                addAlertMessage("Rol cambiado correctamente");
+            }
+            else
+            {
+                addAlertMessage("Error al cambiar rol");
+            }
+            return View();
+        }
+
+
         [HttpGet] 
         public ActionResult CambiarContrasena()
         {
 
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CambiarContrasena(string ContrasenaAnterior, string Contrasena, string ContrasenaConfirma)
+        {
+            Admin usuario = (Admin)Session["Usuario"];
+            if (usuario.PasswordHash.Equals(ContrasenaAnterior))
+            {
+                if (Contrasena.Equals(ContrasenaConfirma))
+                {
+
+                    if (Admin.CambiarContrasena(ContrasenaAnterior, Contrasena))
+                    {
+                        addAlertMessage("Contraseña cambiada correctamente");
+                    }
+                    else
+                    {
+                        addAlertMessage("Error al cambiar contraseña");
+                    }
+                }
+                else
+                {
+                    addAlertMessage("Verifique la confirmación de su nueva contraseña");
+                }
+            }
+            else
+            {
+                addAlertMessage("Verifique su contraseña actual");
+            }
             return View();
         }
 

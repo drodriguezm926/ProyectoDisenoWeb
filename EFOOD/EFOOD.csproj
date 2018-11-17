@@ -193,11 +193,13 @@
       <DependentUpon>ModelFood.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Admin.cs" />
+    <Compile Include="Models\BitacoraModel.cs" />
     <Compile Include="Models\ConsecutivoModel.cs" />
     <Compile Include="Models\ErrorLogModel.cs" />
     <Compile Include="Models\LineaComidaModel.cs" />
     <Compile Include="Models\MediosPagoModel.cs" />
     <Compile Include="Models\ProductoModel.cs" />
+    <Compile Include="Models\RolModel.cs" />
     <Compile Include="Models\TarjetaCreditoDebitoModel.cs" />
     <Compile Include="Models\TipoPrecioModelo.cs" />
     <Compile Include="Models\TiqueteDescuentoModel.cs" />

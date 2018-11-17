@@ -56,7 +56,9 @@ namespace EFOOD.Controllers
                 return Redirect("~/Login/index");
             }
         }
-        
+
+
+
         private void addAlertMessage(string message)
         {
             TempData["msg"] = "<script>alert('" + message + "');</script>";

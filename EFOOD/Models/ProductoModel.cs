@@ -101,6 +101,7 @@ namespace EFOOD.Models
             catch (Exception x) { ErrorLogModel.addError(x); return null; }
         }
 
+
         public static void deletetDB(ProductoModel modelo)
         {
             try
@@ -111,12 +112,26 @@ namespace EFOOD.Models
                                  where valor.ProductCode == modelo.ProductCode
                                  select valor).SingleOrDefault();
 
+
+                    EFOOD.Models.Admin usuarios =
+                    (EFOOD.Models.Admin)System.Web.HttpContext.Current.Session["Usuario"];
+
+                    int ff = usuarios.UserID;
+
                     db.Products.Remove(datos);
+                    BitacoraModel.addLogBook("Eliminar", "Borra", ff);
                     db.SaveChanges();
+                   
                 }
 
             }
-            catch (Exception x) { ErrorLogModel.addError(x); }
+            catch (Exception x) {
+                EFOOD.Models.Admin usuarios =
+                    (EFOOD.Models.Admin)System.Web.HttpContext.Current.Session["Usuario"];
+
+                int ff = usuarios.UserID;
+
+                ErrorLogModel.addError(x); BitacoraModel.addLogBook("Eliminar", "Borra", ff); }
         }
     }
 }

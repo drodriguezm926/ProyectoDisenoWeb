@@ -34,10 +34,19 @@ namespace EFOOD.Controllers
         [HttpGet]
         public ActionResult Bitacora()
         {
-            
+            ViewBag.Bitacora = BitacoraModel.cargarErrores();
+            ViewBag.listaUsers = Admin.ObtenerAdmin();
             return View();
         }
-        
+
+        [HttpPost]
+        public ActionResult Bitacora(BitacoraModel model)
+        {
+            ViewBag.Bitacora = BitacoraModel.FiltrarBitacora(model);
+            ViewBag.listaUsers = Admin.ObtenerAdmin();
+            return View("Bitacora");
+        }
+
         [HttpGet]
         public ActionResult Errores()
         {
