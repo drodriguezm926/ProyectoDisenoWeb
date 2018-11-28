@@ -34,7 +34,7 @@ namespace EFOOD.Controllers
         [HttpGet]
         public ActionResult Bitacora()
         {
-            ViewBag.Bitacora = BitacoraModel.cargarErrores();
+            ViewBag.Bitacora = BitacoraModel.CargarErrores();
             ViewBag.listaUsers = Admin.ObtenerAdmin();
             return View();
         }
@@ -51,7 +51,7 @@ namespace EFOOD.Controllers
         public ActionResult Errores()
         {
             ErrorLogModel model = new ErrorLogModel();
-            ViewBag.Errores = ErrorLogModel.cargarErrores(); 
+            ViewBag.Errores = ErrorLogModel.CargarErrores(); 
             return View();
         }
 

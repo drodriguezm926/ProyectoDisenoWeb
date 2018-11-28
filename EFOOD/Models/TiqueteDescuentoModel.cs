@@ -13,26 +13,28 @@ namespace EFOOD.Models
         public double TicketDiscountPercentage { get; set; }
         public int RemainingTickets { get; set; }
 
-        public static void addDB(TiqueteDescuentoModel modelo)
+        public static void AddDB(TiqueteDescuentoModel modelo)
         {
             using (DB_EfoodEntitie db = new DB_EfoodEntitie())
             {
                 try
                 {   //Entidades de la base de datos
-                    TicketDiscount newTicketDiscount = new TicketDiscount();
-                    newTicketDiscount.TicketCode = ConsecutivoModel.getConsecutivo("Tiquetes de descuento");
-                    newTicketDiscount.TicketDescription = modelo.TicketDescription;
-                    newTicketDiscount.TicketDiscountPercentage = modelo.TicketDiscountPercentage;
-                    newTicketDiscount.RemainingTickets = modelo.RemainingTickets;
+                    TicketDiscount newTicketDiscount = new TicketDiscount
+                    {
+                        TicketCode = ConsecutivoModel.GetConsecutivo("Tiquetes de descuento"),
+                        TicketDescription = modelo.TicketDescription,
+                        TicketDiscountPercentage = modelo.TicketDiscountPercentage,
+                        RemainingTickets = modelo.RemainingTickets
+                    };
                     db.TicketDiscounts.Add(newTicketDiscount);
-                    BitacoraModel.addLogBook("a", "Anadir", Admin.obtenerIdUsuario());
+                    BitacoraModel.AddLogBook("a", "Anadir", Admin.ObtenerIdUsuario());
                     db.SaveChanges();
                 }
-                catch (Exception e) { ErrorLogModel.addError(e);  }
+                catch (Exception e) { ErrorLogModel.AddError(e);  }
             }
         }
 
-        public static void editDB(TiqueteDescuentoModel modelo)
+        public static void EditDB(TiqueteDescuentoModel modelo)
         {
             try
             {
@@ -45,12 +47,12 @@ namespace EFOOD.Models
                     datos.TicketDescription = modelo.TicketDescription;
                     datos.TicketDiscountPercentage = modelo.TicketDiscountPercentage;
                     datos.RemainingTickets = modelo.RemainingTickets;
-                    BitacoraModel.addLogBook("e", "Edicion", Admin.obtenerIdUsuario());
+                    BitacoraModel.AddLogBook("e", "Edicion", Admin.ObtenerIdUsuario());
                     db.SaveChanges();
                 }
 
             }
-            catch (Exception x) { ErrorLogModel.addError(x);  }
+            catch (Exception x) { ErrorLogModel.AddError(x);  }
         }
 
         public static List<TiqueteDescuentoModel> ObtenerTiquetesDescuento()
@@ -70,10 +72,10 @@ namespace EFOOD.Models
                 }
 
             }
-            catch (Exception x) { ErrorLogModel.addError(x);  return null; }
+            catch (Exception x) { ErrorLogModel.AddError(x);  return null; }
         }
 
-        public static void deletetDB(TiqueteDescuentoModel modelo)
+        public static void DeletetDB(TiqueteDescuentoModel modelo)
         {
             try
             {
@@ -84,12 +86,12 @@ namespace EFOOD.Models
                                  select valor).SingleOrDefault();
 
                     db.TicketDiscounts.Remove(datos);
-                    BitacoraModel.addLogBook("n", "Borrar", Admin.obtenerIdUsuario());
+                    BitacoraModel.AddLogBook("n", "Borrar", Admin.ObtenerIdUsuario());
                     db.SaveChanges();
                 }
 
             }
-            catch (Exception x) { ErrorLogModel.addError(x);  }
+            catch (Exception x) { ErrorLogModel.AddError(x);  }
         }
     }
 }

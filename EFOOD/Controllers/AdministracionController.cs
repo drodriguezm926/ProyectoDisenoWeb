@@ -21,7 +21,7 @@ namespace EFOOD.Controllers
         [HttpPost]
         public ActionResult ConsecutivoAdd(ConsecutivoModel model)
         {
-            ConsecutivoModel.addDB(model);
+            ConsecutivoModel.AddDB(model);
             ViewBag.lista = ConsecutivoModel.ObtenerConsecutivos();
 
             return View("Consecutivo");
@@ -39,7 +39,7 @@ namespace EFOOD.Controllers
         [HttpPost]
         public ActionResult TipoPrecioAdd(TipoPrecioModelo model)
         {
-            TipoPrecioModelo.addDB(model);
+            TipoPrecioModelo.AddDB(model);
             ViewBag.lista = TipoPrecioModelo.ObtenerTerritorio();
             return View("TipoPrecio");
         }
@@ -47,7 +47,7 @@ namespace EFOOD.Controllers
         [HttpPost]
         public ActionResult TipoPrecioEdit(TipoPrecioModelo model)
         {
-            TipoPrecioModelo.editDB(model);
+            TipoPrecioModelo.EditDB(model);
             ViewBag.lista = TipoPrecioModelo.ObtenerTerritorio();
             return View("TipoPrecio");
         }
@@ -55,7 +55,7 @@ namespace EFOOD.Controllers
         [HttpPost]
         public ActionResult TipoPrecioDelete(TipoPrecioModelo model)
         {
-            TipoPrecioModelo.deletetDB(model);
+            TipoPrecioModelo.DeletetDB(model);
             ViewBag.lista = TipoPrecioModelo.ObtenerTerritorio();
             return View("TipoPrecio");
         }
@@ -65,31 +65,31 @@ namespace EFOOD.Controllers
         [HttpGet]
         public ActionResult TarjetaCreditoDebito()
         {
-            ViewBag.lista = TarjetaCreditoDebitoModel.obtenerTarjetas();
+            ViewBag.lista = TarjetaCreditoDebitoModel.ObtenerTarjetas();
             return View();
         }
 
         [HttpPost]
         public ActionResult TarjetaCreditoDebitoAdd(TarjetaCreditoDebitoModel model)
         {
-            TarjetaCreditoDebitoModel.addDB(model);
-            ViewBag.lista = TarjetaCreditoDebitoModel.obtenerTarjetas();
+            TarjetaCreditoDebitoModel.AddDB(model);
+            ViewBag.lista = TarjetaCreditoDebitoModel.ObtenerTarjetas();
             return View("TarjetaCreditoDebito");
         }
 
         [HttpPost]
         public ActionResult TarjetaCreditoDebitoEdit(TarjetaCreditoDebitoModel model)
         {
-            TarjetaCreditoDebitoModel.editDB(model);
-            ViewBag.lista = TarjetaCreditoDebitoModel.obtenerTarjetas();
+            TarjetaCreditoDebitoModel.EditDB(model);
+            ViewBag.lista = TarjetaCreditoDebitoModel.ObtenerTarjetas();
             return View("TarjetaCreditoDebito");
         }
 
         [HttpPost]
         public ActionResult TarjetaCreditoDebitoDelete(TarjetaCreditoDebitoModel model)
         {
-            TarjetaCreditoDebitoModel.deletetDB(model);
-            ViewBag.lista = TarjetaCreditoDebitoModel.obtenerTarjetas();
+            TarjetaCreditoDebitoModel.DeletetDB(model);
+            ViewBag.lista = TarjetaCreditoDebitoModel.ObtenerTarjetas();
             return View("TarjetaCreditoDebito");
         }
         // Termina controladores de TarjetaCreditoDebito
@@ -105,7 +105,7 @@ namespace EFOOD.Controllers
         [HttpPost]
         public ActionResult MediosPagoAdd(MediosPagoModel model)
         {
-            MediosPagoModel.addDB(model);
+            MediosPagoModel.AddDB(model);
             ViewBag.lista = MediosPagoModel.ObtenerMediosDePago();
             return View("MediosPago");
         }
@@ -113,7 +113,7 @@ namespace EFOOD.Controllers
         [HttpPost]
         public ActionResult MediosPagoEdit(MediosPagoModel model)
         {
-            MediosPagoModel.editDB(model);
+            MediosPagoModel.EditDB(model);
             ViewBag.lista = MediosPagoModel.ObtenerMediosDePago();
             return View("MediosPago");
         }
@@ -121,7 +121,7 @@ namespace EFOOD.Controllers
         [HttpPost]
         public ActionResult MediosPagoDelete(MediosPagoModel model)
         {
-            MediosPagoModel.deletetDB(model);
+            MediosPagoModel.DeletetDB(model);
             ViewBag.lista = MediosPagoModel.ObtenerMediosDePago();
             return View("MediosPago");
         }
@@ -138,7 +138,7 @@ namespace EFOOD.Controllers
         [HttpPost]
         public ActionResult TiqueteDescuentoAdd(TiqueteDescuentoModel model)
         {
-            TiqueteDescuentoModel.addDB(model);
+            TiqueteDescuentoModel.AddDB(model);
             ViewBag.lista = TiqueteDescuentoModel.ObtenerTiquetesDescuento();
             return View("TiqueteDescuento");
         }
@@ -146,7 +146,7 @@ namespace EFOOD.Controllers
         [HttpPost]
         public ActionResult TiqueteDescuentoEdit(TiqueteDescuentoModel model)
         {
-            TiqueteDescuentoModel.editDB(model);
+            TiqueteDescuentoModel.EditDB(model);
             ViewBag.lista = TiqueteDescuentoModel.ObtenerTiquetesDescuento();
             return View("TiqueteDescuento");
         }
@@ -154,7 +154,7 @@ namespace EFOOD.Controllers
         [HttpPost]
         public ActionResult TiqueteDescuentoDelete(TiqueteDescuentoModel model)
         {
-            TiqueteDescuentoModel.deletetDB(model);
+            TiqueteDescuentoModel.DeletetDB(model);
             ViewBag.lista = TiqueteDescuentoModel.ObtenerTiquetesDescuento();
             return View("TiqueteDescuento");
         }
@@ -171,7 +171,7 @@ namespace EFOOD.Controllers
         [HttpPost]
         public ActionResult LineaComidaAdd(LineaComidaModel model)
         {
-            LineaComidaModel.addDB(model);
+            LineaComidaModel.AddDB(model);
             ViewBag.listaLineaComida = LineaComidaModel.ObtenerLineasComida();
             return View("LineaComida");
         }
@@ -179,7 +179,7 @@ namespace EFOOD.Controllers
         [HttpPost]
         public ActionResult LineaComidaEdit(LineaComidaModel model)
         {
-            LineaComidaModel.editDB(model);
+            LineaComidaModel.EditDB(model);
             ViewBag.listaLineaComida = LineaComidaModel.ObtenerLineasComida();
             return View("LineaComida");
         }
@@ -187,7 +187,7 @@ namespace EFOOD.Controllers
         [HttpPost]
         public ActionResult LineaComidaDelete(LineaComidaModel model)
         {
-            LineaComidaModel.deletetDB(model);
+            LineaComidaModel.DeletetDB(model);
             ViewBag.listaLineaComida = LineaComidaModel.ObtenerLineasComida();
             return View("LineaComida");
         }
@@ -219,7 +219,7 @@ namespace EFOOD.Controllers
                 model.ProductImage = cadenaRuta;
             }
 
-            ProductoModel.addDB(model);
+            ProductoModel.AddDB(model);
             ViewBag.lista = ProductoModel.ObtenerProductos();
             ViewBag.ListaFoodOption = LineaComidaModel.ObtenerLineasComida();
             return View("Producto");
@@ -228,7 +228,7 @@ namespace EFOOD.Controllers
         [HttpPost]
         public ActionResult ProductoEdit(ProductoModel model)
         {
-            ProductoModel.editDB(model);
+            ProductoModel.EditDB(model);
             ViewBag.lista = ProductoModel.ObtenerProductos();
             ViewBag.ListaFoodOption = LineaComidaModel.ObtenerLineasComida();
             return View("Producto");
@@ -237,7 +237,7 @@ namespace EFOOD.Controllers
         [HttpPost]
         public ActionResult ProductoDelete(ProductoModel model)
         {
-            ProductoModel.deletetDB(model);
+            ProductoModel.DeletetDB(model);
             ViewBag.lista = ProductoModel.ObtenerProductos();
             ViewBag.ListaFoodOption = LineaComidaModel.ObtenerLineasComida();
             return View("Producto");

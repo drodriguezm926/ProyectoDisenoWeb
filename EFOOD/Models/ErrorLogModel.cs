@@ -26,29 +26,34 @@ namespace EFOOD.Models
 
         #endregion
 
-        public static void addError(Exception x) {
-
+        public static void AddError(Exception x)
+        {
             using (DB_EfoodEntitie db = new DB_EfoodEntitie())
             {
                 try
                 {   //Entidades de la base de datos
                     ErrorLog error = new ErrorLog();
 
-                    //Toda la data de la base de datos, se almacena en la lista numeroConsecutivo
-                    var numeroConsecutivo = (from valor in db.ErrorLogs
+                    //Toda la data de la base de datos, se almacena en la lista de errores
+                    var errores = (from valor in db.ErrorLogs
                                              select valor);
 
                     //Primary key
-                    int code = numeroConsecutivo.Count() + 1;
+                    int code = errores.Count() + 1;
 
                     error.LogID = code;
                     error.LogDate = DateTime.Now;
                     error.ErrCode = x.HResult.ToString();
-                    error.Description = x.Message;
+                    error.Description = "Ha ocurrido un error. Mensaje: "+x.Message + ". StackTrace: " + x.StackTrace + 
+                        ". InnerException: "+ (x.InnerException != null ? x.InnerException.Message : "");
                     db.ErrorLogs.Add(error);
                     db.SaveChanges(); 
                 }
-                catch (Exception e) { }
+                catch (Exception ex)
+                {
+                    string error = "Ha ocurrido un error. Detalles: " + ex.Message;
+                    AddError(ex);
+                }
             }
         }
 
@@ -72,10 +77,10 @@ namespace EFOOD.Models
                 }
 
             }
-            catch (Exception x) { ErrorLogModel.addError(x); return null; }
+            catch (Exception x) { ErrorLogModel.AddError(x); return null; }
         }
 
-        public static List<ErrorLogModel> cargarErrores()
+        public static List<ErrorLogModel> CargarErrores()
         {
             try
             {
@@ -94,7 +99,7 @@ namespace EFOOD.Models
                 }
 
             }
-            catch (Exception x) { ErrorLogModel.addError(x); return null; }
+            catch (Exception x) { ErrorLogModel.AddError(x); return null; }
         }
     }
 }

@@ -27,7 +27,7 @@ namespace EFOOD.Models
 
         public virtual User User { get; set; }
 
-        public static void addLogBook(string tipo, string description, int userID)
+        public static void AddLogBook(string tipo, string description, int userID)
         {
 
             using (DB_EfoodEntitie db = new DB_EfoodEntitie())
@@ -46,11 +46,11 @@ namespace EFOOD.Models
                     log.LogID = code;
                     log.UserID = userID;
                     log.LogDate = DateTime.Now;
-                    log.RegCode = ConsecutivoModel.getConsecutivo("Bitacoras");
+                    log.RegCode = ConsecutivoModel.GetConsecutivo("Bitacoras");
                     log.LogType = tipo;
                     log.Description = description;
                     log.RegDetails = "N/A";
-                    log.User = Admin.obtenerUsuarioUnico(userID);
+                    log.User = Admin.ObtenerUsuarioUnico(userID);
                     db.LogBooks.Add(log);
                     db.SaveChanges();
                 //}
@@ -85,10 +85,11 @@ namespace EFOOD.Models
                 }
 
             }
-            catch (Exception x) { ErrorLogModel.addError(x); return null; }
+            catch (Exception x) {
+                ErrorLogModel.AddError(x); return null; }
         }
 
-        public static List<BitacoraModel> cargarErrores()
+        public static List<BitacoraModel> CargarErrores()
         {
             try
             {
@@ -110,7 +111,7 @@ namespace EFOOD.Models
                 }
                 
             }
-            catch (Exception x) { ErrorLogModel.addError(x); return null; }
+            catch (Exception x) { ErrorLogModel.AddError(x); return null; }
         }
 
 

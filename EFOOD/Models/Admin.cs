@@ -38,7 +38,7 @@ namespace EFOOD.Models
             }
         }
 
-        public static User obtenerUsuarioUnico(int modelo)
+        public static User ObtenerUsuarioUnico(int modelo)
         {
             try
             {
@@ -52,8 +52,9 @@ namespace EFOOD.Models
                 }
 
             }
-            catch (Exception x)
+            catch (Exception ex)
             {
+                string error = "Ha ocurrido un error. Detalles: " + ex.Message;
                 return null;
             }
         }
@@ -101,6 +102,7 @@ namespace EFOOD.Models
             }
             catch (Exception ex)
             {
+                string error = "Ha ocurrido un error. Detalles: " + ex.Message;
                 return false;
             }
         }
@@ -126,12 +128,12 @@ namespace EFOOD.Models
             }
             catch (Exception ex)
             {
-                
+                string error = "Ha ocurrido un error. Detalles: " + ex.Message;
                 return false;
             }
         }
 
-        public static int obtenerIdUsuario() {
+        public static int ObtenerIdUsuario() {
             EFOOD.Models.Admin usuarios =
                     (EFOOD.Models.Admin)System.Web.HttpContext.Current.Session["Usuario"];
 
@@ -145,16 +147,17 @@ namespace EFOOD.Models
             {
                 using (DB_EfoodEntitie db = new DB_EfoodEntitie())
                 {
-                    User user = new User();
-
-                    user.UserID = admin.UserID;
-                    user.Username = admin.Username;
-                    user.Status = true;
-                    user.PasswordHash = admin.PasswordHash;
-                    user.Email = admin.Email;
-                    user.SecurityQuestion = admin.SecurityQuestion;
-                    user.SecurityAnswerHash = admin.SecurityAnswerHash;
-                    user.RoleID = 1;
+                    User user = new User
+                    {
+                        UserID = admin.UserID,
+                        Username = admin.Username,
+                        Status = true,
+                        PasswordHash = admin.PasswordHash,
+                        Email = admin.Email,
+                        SecurityQuestion = admin.SecurityQuestion,
+                        SecurityAnswerHash = admin.SecurityAnswerHash,
+                        RoleID = 1
+                    };
 
                     db.Users.Add(user);
                     db.SaveChanges();
@@ -163,6 +166,7 @@ namespace EFOOD.Models
             }
             catch (Exception ex)
             {
+                string error = "Ha ocurrido un error. Detalles: " + ex.Message;
             }
         }
     }

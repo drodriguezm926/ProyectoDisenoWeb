@@ -11,23 +11,25 @@ namespace EFOOD.Models
         public string PriceTypeCode { get; set; }
         public string PriceTypeDescription { get; set; }
 
-        public static void addDB(TipoPrecioModelo modelo)
+        public static void AddDB(TipoPrecioModelo modelo)
         {
             using (DB_EfoodEntitie db = new DB_EfoodEntitie())
             {
                 try
                 {   //Entidades de la base de datos
-                    PriceType priceType = new PriceType();
-                    priceType.PriceTypeCode = ConsecutivoModel.getConsecutivo("Precios");
-                    priceType.PriceTypeDescription = modelo.PriceTypeDescription;
+                    PriceType priceType = new PriceType
+                    {
+                        PriceTypeCode = ConsecutivoModel.GetConsecutivo("Precios"),
+                        PriceTypeDescription = modelo.PriceTypeDescription
+                    };
                     db.PriceTypes.Add(priceType);
                     db.SaveChanges(); 
                 }
-                catch (Exception e) { ErrorLogModel.addError(e); BitacoraModel.addLogBook("a", "Anadir", Admin.obtenerIdUsuario()); }
+                catch (Exception e) { ErrorLogModel.AddError(e); BitacoraModel.AddLogBook("a", "Anadir", Admin.ObtenerIdUsuario()); }
             }
         }
 
-        public static void editDB(TipoPrecioModelo modelo)
+        public static void EditDB(TipoPrecioModelo modelo)
         {
             try
             {
@@ -42,7 +44,7 @@ namespace EFOOD.Models
                 }
 
             }
-            catch (Exception x) { ErrorLogModel.addError(x); BitacoraModel.addLogBook("e", "Edicion", Admin.obtenerIdUsuario()); }
+            catch (Exception x) { ErrorLogModel.AddError(x); BitacoraModel.AddLogBook("e", "Edicion", Admin.ObtenerIdUsuario()); }
         }
 
         public static List<TipoPrecioModelo> ObtenerTerritorio()
@@ -60,10 +62,10 @@ namespace EFOOD.Models
                 }
 
             }
-            catch (Exception x) { ErrorLogModel.addError(x);  return null; }
+            catch (Exception x) { ErrorLogModel.AddError(x);  return null; }
         }
 
-        public static void deletetDB(TipoPrecioModelo modelo)
+        public static void DeletetDB(TipoPrecioModelo modelo)
         {
             try
             {
@@ -74,12 +76,12 @@ namespace EFOOD.Models
                                  select valor).SingleOrDefault();
 
                     vuelosDB.PriceTypes.Remove(datos);
-                    BitacoraModel.addLogBook("n", "Borrar", Admin.obtenerIdUsuario());
+                    BitacoraModel.AddLogBook("n", "Borrar", Admin.ObtenerIdUsuario());
                     vuelosDB.SaveChanges();
                 }
 
             }
-            catch (Exception x) { ErrorLogModel.addError(x);  }
+            catch (Exception x) { ErrorLogModel.AddError(x);  }
         }
 
     }

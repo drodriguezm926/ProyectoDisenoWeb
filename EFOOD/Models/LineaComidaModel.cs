@@ -11,24 +11,26 @@ namespace EFOOD.Models
         public string FoodOptionCode { get; set; }
         public string FoodOptionDescription { get; set; }
 
-        public static void addDB(LineaComidaModel modelo)
+        public static void AddDB(LineaComidaModel modelo)
         {
             using (DB_EfoodEntitie db = new DB_EfoodEntitie())
             {
                 try
                 {   //Entidades de la base de datos
-                    FoodOption foodOption = new FoodOption();
-                    foodOption.FoodOptionCode = ConsecutivoModel.getConsecutivo("Líneas de comida");
-                    foodOption.FoodOptionDescription = modelo.FoodOptionDescription;
+                    FoodOption foodOption = new FoodOption
+                    {
+                        FoodOptionCode = ConsecutivoModel.GetConsecutivo("Líneas de comida"),
+                        FoodOptionDescription = modelo.FoodOptionDescription
+                    };
                     db.FoodOptions.Add(foodOption);
-                    BitacoraModel.addLogBook("a", "Anadir", Admin.obtenerIdUsuario());
+                    BitacoraModel.AddLogBook("a", "Anadir", Admin.ObtenerIdUsuario());
                     db.SaveChanges();
                 }
-                catch (Exception e) { ErrorLogModel.addError(e);  }
+                catch (Exception e) { ErrorLogModel.AddError(e);  }
             }
         }
 
-        public static void editDB(LineaComidaModel modelo)
+        public static void EditDB(LineaComidaModel modelo)
         {
             try
             {
@@ -39,12 +41,12 @@ namespace EFOOD.Models
                                  select valor).SingleOrDefault();
 
                     datos.FoodOptionDescription = modelo.FoodOptionDescription;
-                    BitacoraModel.addLogBook("e", "Edicion", Admin.obtenerIdUsuario());
+                    BitacoraModel.AddLogBook("e", "Edicion", Admin.ObtenerIdUsuario());
                     db.SaveChanges();
                 }
 
             }
-            catch (Exception x) { ErrorLogModel.addError(x);  }
+            catch (Exception x) { ErrorLogModel.AddError(x);  }
         }
 
         public static List<LineaComidaModel> ObtenerLineasComida()
@@ -62,10 +64,10 @@ namespace EFOOD.Models
                 }
 
             }
-            catch (Exception x) { ErrorLogModel.addError(x); return null; }
+            catch (Exception x) { ErrorLogModel.AddError(x); return null; }
         }
 
-        public static void deletetDB(LineaComidaModel modelo)
+        public static void DeletetDB(LineaComidaModel modelo)
         {
             try
             {
@@ -76,12 +78,12 @@ namespace EFOOD.Models
                                  select valor).SingleOrDefault();
 
                     db.FoodOptions.Remove(datos);
-                    BitacoraModel.addLogBook("n", "Borrar", Admin.obtenerIdUsuario());
+                    BitacoraModel.AddLogBook("n", "Borrar", Admin.ObtenerIdUsuario());
                     db.SaveChanges();
                 }
 
             }
-            catch (Exception x) { ErrorLogModel.addError(x);  }
+            catch (Exception x) { ErrorLogModel.AddError(x);  }
         }
 
     }

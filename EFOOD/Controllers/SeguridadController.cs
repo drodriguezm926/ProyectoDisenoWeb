@@ -28,11 +28,11 @@ namespace EFOOD.Controllers
 
             if (Admin.AsignarRol(model.userID, model.RoleID))
             {
-                addAlertMessage("Rol cambiado correctamente");
+                AddAlertMessage("Rol cambiado correctamente");
             }
             else
             {
-                addAlertMessage("Error al cambiar rol");
+                AddAlertMessage("Error al cambiar rol");
             }
             return View();
         }
@@ -56,21 +56,21 @@ namespace EFOOD.Controllers
 
                     if (Admin.CambiarContrasena(ContrasenaAnterior, Contrasena))
                     {
-                        addAlertMessage("Contraseña cambiada correctamente");
+                        AddAlertMessage("Contraseña cambiada correctamente");
                     }
                     else
                     {
-                        addAlertMessage("Error al cambiar contraseña");
+                        AddAlertMessage("Error al cambiar contraseña");
                     }
                 }
                 else
                 {
-                    addAlertMessage("Verifique la confirmación de su nueva contraseña");
+                    AddAlertMessage("Verifique la confirmación de su nueva contraseña");
                 }
             }
             else
             {
-                addAlertMessage("Verifique su contraseña actual");
+                AddAlertMessage("Verifique su contraseña actual");
             }
             return View();
         }
@@ -97,18 +97,18 @@ namespace EFOOD.Controllers
             {
                 if (consumidor.PasswordHash.Equals(ContrasenaConfirma))
                 {
-                    addAlertMessage("Usuario ingresado correctamente");
+                    AddAlertMessage("Usuario ingresado correctamente");
                     Admin.InsertarUsuario(consumidor);
                 }
                 else
                 {
-                    addAlertMessage("Verifique contraseña");
+                    AddAlertMessage("Verifique contraseña");
                 }
             }
             catch (Exception ex)
             {
                 
-                addAlertMessage("Ocurrio un error intente mas tarde");
+                AddAlertMessage("Ocurrio un error intente mas tarde. Detalles: " + ex.Message);
             }
 
             return View();
@@ -121,7 +121,7 @@ namespace EFOOD.Controllers
             return View();
         }
 
-        private void addAlertMessage(string message)
+        private void AddAlertMessage(string message)
         {
             TempData["msg"] = "<script>alert('" + message + "');</script>";
         }

@@ -17,26 +17,28 @@ namespace EFOOD.Models
         public HttpPostedFileBase Archivo { get; set; }
 
 
-        public static void addDB(ProductoModel modelo)
+        public static void AddDB(ProductoModel modelo)
         {
             using (DB_EfoodEntitie db = new DB_EfoodEntitie())
             {
                 try
                 {   //Entidades de la base de datos
-                    Product product = new Product();
-                    product.ProductCode = ConsecutivoModel.getConsecutivo("Productos");
-                    product.ProductDescription = modelo.ProductDescription;
-                    product.FoodOptionCode = modelo.FoodOptionCode;
-                    product.ProductContent = modelo.ProductContent;
-                    product.ProductImage = modelo.ProductImage;
+                    Product product = new Product
+                    {
+                        ProductCode = ConsecutivoModel.GetConsecutivo("Productos"),
+                        ProductDescription = modelo.ProductDescription,
+                        FoodOptionCode = modelo.FoodOptionCode,
+                        ProductContent = modelo.ProductContent,
+                        ProductImage = modelo.ProductImage
+                    };
                     db.Products.Add(product);
                     db.SaveChanges();
                 }
-                catch (Exception e) { ErrorLogModel.addError(e); BitacoraModel.addLogBook("a", "Anadir", Admin.obtenerIdUsuario()); }
+                catch (Exception e) { ErrorLogModel.AddError(e); BitacoraModel.AddLogBook("a", "Anadir", Admin.ObtenerIdUsuario()); }
             }
         }
 
-        public static void editDB(ProductoModel modelo)
+        public static void EditDB(ProductoModel modelo)
         {
             try
             {
@@ -49,12 +51,12 @@ namespace EFOOD.Models
                     datos.ProductDescription = modelo.ProductDescription;
                     datos.FoodOptionCode = modelo.FoodOptionCode;
                     datos.ProductContent = modelo.ProductContent;
-                    datos.ProductImage = null; BitacoraModel.addLogBook("e", "Edicion", Admin.obtenerIdUsuario());
+                    datos.ProductImage = null; BitacoraModel.AddLogBook("e", "Edicion", Admin.ObtenerIdUsuario());
                     db.SaveChanges();
                 }
 
             }
-            catch (Exception x) { ErrorLogModel.addError(x);  }
+            catch (Exception x) { ErrorLogModel.AddError(x);  }
         }
 
         public static List<ProductoModel> ObtenerProductos()
@@ -75,7 +77,7 @@ namespace EFOOD.Models
                 }
 
             }
-            catch (Exception x) { ErrorLogModel.addError(x); return null; }
+            catch (Exception x) { ErrorLogModel.AddError(x); return null; }
         }
 
 
@@ -98,11 +100,11 @@ namespace EFOOD.Models
                 }
 
             }
-            catch (Exception x) { ErrorLogModel.addError(x); return null; }
+            catch (Exception x) { ErrorLogModel.AddError(x); return null; }
         }
 
 
-        public static void deletetDB(ProductoModel modelo)
+        public static void DeletetDB(ProductoModel modelo)
         {
             try
             {
@@ -113,7 +115,7 @@ namespace EFOOD.Models
                                  select valor).SingleOrDefault();
 
 
-                    BitacoraModel.addLogBook("n", "Borrar", Admin.obtenerIdUsuario());
+                    BitacoraModel.AddLogBook("n", "Borrar", Admin.ObtenerIdUsuario());
                     db.SaveChanges();
                    
                 }
@@ -122,7 +124,7 @@ namespace EFOOD.Models
             catch (Exception x) {
                 
 
-                ErrorLogModel.addError(x); BitacoraModel.addLogBook("n", "Borrar", Admin.obtenerIdUsuario());;
+                ErrorLogModel.AddError(x); BitacoraModel.AddLogBook("n", "Borrar", Admin.ObtenerIdUsuario());;
             }
         }
     }

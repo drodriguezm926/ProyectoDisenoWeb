@@ -14,7 +14,7 @@ namespace EFOOD.Models
         public bool HasPrefix { get; set; }
         public string Prefix { get; set; }
 
-        public static void addDB(ConsecutivoModel consecutivoM)
+        public static void AddDB(ConsecutivoModel consecutivoM)
         {
             using (DB_EfoodEntitie db = new DB_EfoodEntitie())
             {
@@ -28,25 +28,27 @@ namespace EFOOD.Models
                     int code = numeroConsecutivo.Count() + 1;
 
                     //Tabla base de datos
-                    Consecutive consecutive = new Consecutive();
+                    Consecutive consecutive = new Consecutive
+                    {
 
-                    //Dando valor al objeto
-                    consecutive.ConsecutiveCode = code;
-                    consecutive.Description = consecutivoM.Description;
-                    consecutive.CurrentConsecutive = consecutivoM.CurrentConsecutive;
-                    consecutive.HasPrefix = consecutivoM.HasPrefix;
-                    consecutive.Prefix = consecutivoM.Prefix;
+                        //Dando valor al objeto
+                        ConsecutiveCode = code,
+                        Description = consecutivoM.Description,
+                        CurrentConsecutive = consecutivoM.CurrentConsecutive,
+                        HasPrefix = consecutivoM.HasPrefix,
+                        Prefix = consecutivoM.Prefix
+                    };
 
                     //Se agrega el objeto a la base de datos
                     db.Consecutives.Add(consecutive);
                     //Commit a la base de datos
                     db.SaveChanges();
                 }
-                catch (Exception e) { ErrorLogModel.addError(e); }
+                catch (Exception e) { ErrorLogModel.AddError(e); }
             }
         }
 
-        public static string getConsecutivo(string descripcionConsecutivo) {
+        public static string GetConsecutivo(string descripcionConsecutivo) {
             try
             {
                 //Instancia base datos
@@ -65,7 +67,10 @@ namespace EFOOD.Models
                 db.SaveChanges();
                 return resultado;
             }
-            catch (Exception e) { ErrorLogModel.addError(e); return null; }
+            catch (Exception e) {
+                ErrorLogModel.AddError(e);
+                return null;
+            }
         } 
         
         public static List<ConsecutivoModel> ObtenerConsecutivos()
@@ -87,7 +92,11 @@ namespace EFOOD.Models
                 }
 
             }
-            catch (Exception x) { return null; }
+            catch (Exception ex)
+            {
+                string error = "Ha ocurrido un error. Detalles: " + ex.Message;
+                return null;
+            }
         }
     }
 

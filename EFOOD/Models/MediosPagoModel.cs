@@ -16,28 +16,30 @@ namespace EFOOD.Models
         public bool PaymentProcessorVerify { get; set; }
         public string PaymentProcessorMethod { get; set; }
 
-        public static void addDB(MediosPagoModel modelo)
+        public static void AddDB(MediosPagoModel modelo)
         {
             using (DB_EfoodEntitie db = new DB_EfoodEntitie())
             {
                 try
                 {   //Entidades de la base de datos
-                    PaymentProcessor newProcessor = new PaymentProcessor();
-                    newProcessor.PaymentProcessorCode = ConsecutivoModel.getConsecutivo("Medios de pago");
-                    newProcessor.PaymentProcessorName = modelo.PaymentProcessorName;
-                    newProcessor.PaymentProcessorDescription = modelo.PaymentProcessorDescription;
-                    newProcessor.PaymentProcessorType = modelo.PaymentProcessorType;
-                    newProcessor.PaymentProcessorMethod = modelo.PaymentProcessorMethod;
-                    newProcessor.PaymentProcessorStatus = false;
-                    newProcessor.PaymentProcessorVerify = false;
+                    PaymentProcessor newProcessor = new PaymentProcessor
+                    {
+                        PaymentProcessorCode = ConsecutivoModel.GetConsecutivo("Medios de pago"),
+                        PaymentProcessorName = modelo.PaymentProcessorName,
+                        PaymentProcessorDescription = modelo.PaymentProcessorDescription,
+                        PaymentProcessorType = modelo.PaymentProcessorType,
+                        PaymentProcessorMethod = modelo.PaymentProcessorMethod,
+                        PaymentProcessorStatus = false,
+                        PaymentProcessorVerify = false
+                    };
                     db.PaymentProcessors.Add(newProcessor);
                     db.SaveChanges();
                 }
-                catch (Exception e) { ErrorLogModel.addError(e); }
+                catch (Exception e) { ErrorLogModel.AddError(e); }
             }
         }
 
-        public static void editDB(MediosPagoModel modelo)
+        public static void EditDB(MediosPagoModel modelo)
          {
              try
              {
@@ -57,7 +59,7 @@ namespace EFOOD.Models
                  }
 
              }
-             catch (Exception x) { ErrorLogModel.addError(x); }
+             catch (Exception x) { ErrorLogModel.AddError(x); }
          }
 
         public static List<MediosPagoModel> ObtenerMediosDePago()
@@ -80,10 +82,10 @@ namespace EFOOD.Models
                 }
 
             }
-            catch (Exception x) { ErrorLogModel.addError(x); return null; }
+            catch (Exception x) { ErrorLogModel.AddError(x); return null; }
         }
 
-        public static void deletetDB(MediosPagoModel modelo)
+        public static void DeletetDB(MediosPagoModel modelo)
         {
             try
             {
@@ -98,7 +100,7 @@ namespace EFOOD.Models
                 }
 
             }
-            catch (Exception x) { ErrorLogModel.addError(x); }
+            catch (Exception x) { ErrorLogModel.AddError(x); }
         }
     }
 }
