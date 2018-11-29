@@ -40,26 +40,26 @@ namespace EFOOD.Controllers
                     }
                     else
                     {
-                        addAlertMessage("Usuario o contraseña incorrectos");
+                        AddAlertMessage("Usuario o contraseña incorrectos");
                         return Redirect("~/Login/index");
                     }
                 }
                 else
                 {
-                    addAlertMessage("Usuario o contraseña incorrectos");
+                    AddAlertMessage("Usuario o contraseña incorrectos");
                     return Redirect("~/Login/index");
                 }
             }
             catch (Exception ex)
             {
-                addAlertMessage("Error, intente mas tarde");
+                AddAlertMessage("Error, intente mas tarde. Detalles: " + ex.Message);
                 return Redirect("~/Login/index");
             }
         }
 
 
 
-        private void addAlertMessage(string message)
+        private void AddAlertMessage(string message)
         {
             TempData["msg"] = "<script>alert('" + message + "');</script>";
         }

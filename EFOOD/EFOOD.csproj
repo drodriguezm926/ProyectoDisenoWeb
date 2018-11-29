@@ -158,9 +158,15 @@
       <DependentUpon>ModelFood.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AdministracionController.cs" />
+    <Compile Include="Controllers\ConsecutivoController.cs" />
     <Compile Include="Controllers\ConsultasController.cs" />
+    <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LineasComidaController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\MediosPagoController.cs" />
+    <Compile Include="Controllers\PrecioController.cs" />
+    <Compile Include="Controllers\ProductoController.cs" />
     <Compile Include="Controllers\SeguridadController.cs" />
     <Compile Include="App_Data\Customer.cs">
       <DependentUpon>ModelFood.tt</DependentUpon>
@@ -171,6 +177,7 @@
     <Compile Include="App_Data\FoodOption.cs">
       <DependentUpon>ModelFood.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\TipoPrecioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -235,6 +242,38 @@
   <ItemGroup>
     <Content Include="Asset\AddUser.png" />
     <Content Include="Asset\Comidas.jpg" />
+    <Content Include="Asset\Images\about.jpg" />
+    <Content Include="Asset\Images\gallery-bg.jpg" />
+    <Content Include="Asset\Images\intro-bg.jpg" />
+    <Content Include="Asset\Images\menu-bg.jpg" />
+    <Content Include="Asset\Images\portfolio\01-large.jpg" />
+    <Content Include="Asset\Images\portfolio\01-small.jpg" />
+    <Content Include="Asset\Images\portfolio\02-large.jpg" />
+    <Content Include="Asset\Images\portfolio\02-small.jpg" />
+    <Content Include="Asset\Images\portfolio\03-large.jpg" />
+    <Content Include="Asset\Images\portfolio\03-small.jpg" />
+    <Content Include="Asset\Images\portfolio\04-large.jpg" />
+    <Content Include="Asset\Images\portfolio\04-small.jpg" />
+    <Content Include="Asset\Images\portfolio\05-large.jpg" />
+    <Content Include="Asset\Images\portfolio\05-small.jpg" />
+    <Content Include="Asset\Images\portfolio\06-large.jpg" />
+    <Content Include="Asset\Images\portfolio\06-small.jpg" />
+    <Content Include="Asset\Images\portfolio\07-large.jpg" />
+    <Content Include="Asset\Images\portfolio\07-small.jpg" />
+    <Content Include="Asset\Images\portfolio\08-large.jpg" />
+    <Content Include="Asset\Images\portfolio\08-small.jpg" />
+    <Content Include="Asset\Images\portfolio\09-large.jpg" />
+    <Content Include="Asset\Images\portfolio\09-small.jpg" />
+    <Content Include="Asset\Images\portfolio\10-large.jpg" />
+    <Content Include="Asset\Images\portfolio\10-small.jpg" />
+    <Content Include="Asset\Images\portfolio\11-large.jpg" />
+    <Content Include="Asset\Images\portfolio\11-small.jpg" />
+    <Content Include="Asset\Images\portfolio\12-large.jpg" />
+    <Content Include="Asset\Images\portfolio\12-small.jpg" />
+    <Content Include="Asset\Images\team-bg.jpg" />
+    <Content Include="Asset\Images\team\01.jpg" />
+    <Content Include="Asset\Images\team\02.jpg" />
+    <Content Include="Asset\Images\team\03.jpg" />
     <Content Include="Asset\ListUser.png" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -242,6 +281,21 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\fonts\font-awesome\css\font-awesome.css" />
+    <Content Include="Content\fonts\font-awesome\css\font-awesome.min.css" />
+    <Content Include="Content\fonts\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\fonts\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\nivo-lightbox\close%402x.png" />
+    <Content Include="Content\nivo-lightbox\close.png" />
+    <Content Include="Content\nivo-lightbox\default.css" />
+    <Content Include="Content\nivo-lightbox\loading%402x.gif" />
+    <Content Include="Content\nivo-lightbox\loading.gif" />
+    <Content Include="Content\nivo-lightbox\next%402x.png" />
+    <Content Include="Content\nivo-lightbox\next.png" />
+    <Content Include="Content\nivo-lightbox\nivo-lightbox.css" />
+    <Content Include="Content\nivo-lightbox\prev%402x.png" />
+    <Content Include="Content\nivo-lightbox\prev.png" />
+    <Content Include="Content\style.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -272,6 +326,7 @@
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="Scripts\contact_me.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper.js" />
@@ -287,21 +342,62 @@
     <Content Include="App_Data\ModelFood.edmx.diagram">
       <DependentUpon>ModelFood.edmx</DependentUpon>
     </Content>
+    <Content Include="Content\fonts\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\fonts\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\fonts\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\fonts\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\fonts\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="Content\fonts\font-awesome\less\animated.less" />
+    <Content Include="Content\fonts\font-awesome\less\bordered-pulled.less" />
+    <Content Include="Content\fonts\font-awesome\less\core.less" />
+    <Content Include="Content\fonts\font-awesome\less\fixed-width.less" />
+    <Content Include="Content\fonts\font-awesome\less\font-awesome.less" />
+    <Content Include="Content\fonts\font-awesome\less\icons.less" />
+    <Content Include="Content\fonts\font-awesome\less\larger.less" />
+    <Content Include="Content\fonts\font-awesome\less\list.less" />
+    <Content Include="Content\fonts\font-awesome\less\mixins.less" />
+    <Content Include="Content\fonts\font-awesome\less\path.less" />
+    <Content Include="Content\fonts\font-awesome\less\rotated-flipped.less" />
+    <Content Include="Content\fonts\font-awesome\less\stacked.less" />
+    <Content Include="Content\fonts\font-awesome\less\variables.less" />
+    <Content Include="Content\fonts\font-awesome\scss\font-awesome.scss" />
+    <Content Include="Content\fonts\font-awesome\scss\_animated.scss" />
+    <Content Include="Content\fonts\font-awesome\scss\_bordered-pulled.scss" />
+    <Content Include="Content\fonts\font-awesome\scss\_core.scss" />
+    <Content Include="Content\fonts\font-awesome\scss\_fixed-width.scss" />
+    <Content Include="Content\fonts\font-awesome\scss\_icons.scss" />
+    <Content Include="Content\fonts\font-awesome\scss\_larger.scss" />
+    <Content Include="Content\fonts\font-awesome\scss\_list.scss" />
+    <Content Include="Content\fonts\font-awesome\scss\_mixins.scss" />
+    <Content Include="Content\fonts\font-awesome\scss\_path.scss" />
+    <Content Include="Content\fonts\font-awesome\scss\_rotated-flipped.scss" />
+    <Content Include="Content\fonts\font-awesome\scss\_stacked.scss" />
+    <Content Include="Content\fonts\font-awesome\scss\_variables.scss" />
+    <Content Include="Content\fonts\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\fonts\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\jqBootstrapValidation.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.1.11.1.js" />
+    <Content Include="Scripts\jquery.isotope.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\main.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\nivo-lightbox.js" />
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />
     <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\SmoothScroll.js" />
     <Content Include="Scripts\umd\popper-utils.js" />
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
@@ -344,9 +440,16 @@
     <Content Include="Views\Consultas\Bitacora.cshtml" />
     <Content Include="Views\Consultas\Errores.cshtml" />
     <Content Include="Views\Login\index.cshtml" />
+    <Content Include="Views\Default\Default.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Asset\Images\Producto\" />
+    <Folder Include="Views\Consecutivos\" />
+    <Folder Include="Views\LineasComida\" />
+    <Folder Include="Views\MediosPago\" />
+    <Folder Include="Views\Precio\" />
+    <Folder Include="Views\Producto\" />
+    <Folder Include="Views\TipoPrecio\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

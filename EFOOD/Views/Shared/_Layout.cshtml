@@ -4,10 +4,23 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="~/Content/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/fonts/font-awesome/css/font-awesome.css">
+
+    <!-- Stylesheet
+        ================================================== -->
+    <link rel="stylesheet" type="text/css" href="~/Content/style.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/nivo-lightbox/nivo-lightbox.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/nivo-lightbox/default.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script:400,700" rel="stylesheet">
+
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
-    @{ 
+    @{
 
         EFOOD.Models.Admin usuario =
         (EFOOD.Models.Admin)System.Web.HttpContext.Current.Session["Usuario"];
@@ -19,7 +32,7 @@
     =            NAV opciones Menu            =
     ========================================-->
 
-    <header>
+    <header id="header">
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
             <a class="navbar-brand" href="Inicio.html">Sistema de comidas</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
@@ -125,20 +138,23 @@
             </div>
 
             <a href="@Url.Action("LogOut", "Login")">
-                <input type="button" height="30px" width="30px">
+                <input type="button" height="30px" width="30px" value="Log Out">
             </a>
 
         </nav>
     </header>
-
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
+    <div class="intro">
+        <div class="overlay">
+            <div class="container">
+                <div class="row">
+                    <div class="container body-content" style="background-color: white;">
+                        @RenderBody()
+                        <hr />
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

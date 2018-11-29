@@ -11,24 +11,26 @@ namespace EFOOD.Models
         public string CardCode { get; set; }
         public string CardDescription { get; set; }
 
-        public static void addDB(TarjetaCreditoDebitoModel modelo)
+        public static void AddDB(TarjetaCreditoDebitoModel modelo)
         {
             using (DB_EfoodEntitie db = new DB_EfoodEntitie())
             {
                 try
                 {   //Entidades de la base de datos
-                    Card newCard = new Card();
-                    newCard.CardCode = ConsecutivoModel.getConsecutivo("Tarjetas");
-                    newCard.CardDescription = modelo.CardDescription;
+                    Card newCard = new Card
+                    {
+                        CardCode = ConsecutivoModel.GetConsecutivo("Tarjetas"),
+                        CardDescription = modelo.CardDescription
+                    };
                     db.Cards.Add(newCard);
-                    BitacoraModel.addLogBook("a", "Anadir", Admin.obtenerIdUsuario());
+                    BitacoraModel.AddLogBook("a", "Anadir", Admin.ObtenerIdUsuario());
                     db.SaveChanges();
                 }
-                catch (Exception e) { ErrorLogModel.addError(e);  }
+                catch (Exception e) { ErrorLogModel.AddError(e);  }
             }
         }
 
-        public static void editDB(TarjetaCreditoDebitoModel modelo)
+        public static void EditDB(TarjetaCreditoDebitoModel modelo)
         {
             try
             {
@@ -39,15 +41,15 @@ namespace EFOOD.Models
                                  select valor).SingleOrDefault();
 
                     datos.CardDescription = modelo.CardDescription;
-                    BitacoraModel.addLogBook("e", "Edicion", Admin.obtenerIdUsuario());
+                    BitacoraModel.AddLogBook("e", "Edicion", Admin.ObtenerIdUsuario());
                     db.SaveChanges();
                 }
 
             }
-            catch (Exception x) { ErrorLogModel.addError(x); }
+            catch (Exception x) { ErrorLogModel.AddError(x); }
         }
 
-        public static List<TarjetaCreditoDebitoModel> obtenerTarjetas()
+        public static List<TarjetaCreditoDebitoModel> ObtenerTarjetas()
         {
             try
             {
@@ -62,10 +64,10 @@ namespace EFOOD.Models
                 }
 
             }
-            catch (Exception x) { ErrorLogModel.addError(x); return null; }
+            catch (Exception x) { ErrorLogModel.AddError(x); return null; }
         }
 
-        public static void deletetDB(TarjetaCreditoDebitoModel modelo)
+        public static void DeletetDB(TarjetaCreditoDebitoModel modelo)
         {
             try
             {
@@ -80,7 +82,7 @@ namespace EFOOD.Models
                 }
 
             }
-            catch (Exception x) { ErrorLogModel.addError(x); BitacoraModel.addLogBook("n", "Borrar", Admin.obtenerIdUsuario()); }
+            catch (Exception x) { ErrorLogModel.AddError(x); BitacoraModel.AddLogBook("n", "Borrar", Admin.ObtenerIdUsuario()); }
         }
     }
 }
