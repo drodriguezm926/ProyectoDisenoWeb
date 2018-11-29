@@ -441,11 +441,11 @@
     <Content Include="Views\Consultas\Errores.cshtml" />
     <Content Include="Views\Login\index.cshtml" />
     <Content Include="Views\Default\Default.cshtml" />
+    <Content Include="Views\LineasComida\LineaComida.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Asset\Images\Producto\" />
     <Folder Include="Views\Consecutivos\" />
-    <Folder Include="Views\LineasComida\" />
     <Folder Include="Views\MediosPago\" />
     <Folder Include="Views\Precio\" />
     <Folder Include="Views\Producto\" />
