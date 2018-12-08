@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -9,12 +9,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{11536CAB-F41B-4BCC-A3C8-317F7CEE7637}</ProjectGuid>
+    <ProjectGuid>{FAA6F90E-2B94-4848-BECD-D61AD058CD93}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EFOOD</RootNamespace>
-    <AssemblyName>EFOOD</AssemblyName>
+    <RootNamespace>EFood_ECommerce</RootNamespace>
+    <AssemblyName>EFood-ECommerce</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
@@ -52,24 +52,6 @@
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.8.1\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.8.1\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.8.1\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AI.Web, Version=2.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.8.1\lib\net45\Microsoft.AI.Web.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AI.WindowsServer, Version=2.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.8.1\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ApplicationInsights, Version=2.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.2.8.1\lib\net46\Microsoft.ApplicationInsights.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNet.TelemetryCorrelation, Version=1.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.TelemetryCorrelation.1.0.5\lib\net45\Microsoft.AspNet.TelemetryCorrelation.dll</HintPath>
@@ -143,11 +125,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.AI.Agent.Intercept">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.4.0\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -157,17 +134,8 @@
     <Compile Include="App_Data\Consecutive.cs">
       <DependentUpon>ModelFood.tt</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\AdministracionController.cs" />
-    <Compile Include="Controllers\ConsecutivoController.cs" />
-    <Compile Include="Controllers\ConsultasController.cs" />
-    <Compile Include="Controllers\DefaultController.cs" />
+    <Compile Include="Controllers\BusquedaProductoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\LineasComidaController.cs" />
-    <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="Controllers\MediosPagoController.cs" />
-    <Compile Include="Controllers\PrecioController.cs" />
-    <Compile Include="Controllers\ProductoController.cs" />
-    <Compile Include="Controllers\SeguridadController.cs" />
     <Compile Include="App_Data\Customer.cs">
       <DependentUpon>ModelFood.tt</DependentUpon>
     </Compile>
@@ -177,7 +145,6 @@
     <Compile Include="App_Data\FoodOption.cs">
       <DependentUpon>ModelFood.tt</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\TipoPrecioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -199,17 +166,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelFood.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\Admin.cs" />
-    <Compile Include="Models\BitacoraModel.cs" />
-    <Compile Include="Models\ConsecutivoModel.cs" />
     <Compile Include="Models\ErrorLogModel.cs" />
     <Compile Include="Models\LineaComidaModel.cs" />
-    <Compile Include="Models\MediosPagoModel.cs" />
     <Compile Include="Models\ProductoModel.cs" />
-    <Compile Include="Models\RolModel.cs" />
-    <Compile Include="Models\TarjetaCreditoDebitoModel.cs" />
-    <Compile Include="Models\TipoPrecioModelo.cs" />
-    <Compile Include="Models\TiqueteDescuentoModel.cs" />
     <Compile Include="App_Data\Payment.cs">
       <DependentUpon>ModelFood.tt</DependentUpon>
     </Compile>
@@ -240,68 +199,17 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Asset\AddUser.png" />
-    <Content Include="Asset\Comidas.jpg" />
-    <Content Include="Asset\Images\about.jpg" />
-    <Content Include="Asset\Images\gallery-bg.jpg" />
-    <Content Include="Asset\Images\intro-bg.jpg" />
-    <Content Include="Asset\Images\menu-bg.jpg" />
-    <Content Include="Asset\Images\portfolio\01-large.jpg" />
-    <Content Include="Asset\Images\portfolio\01-small.jpg" />
-    <Content Include="Asset\Images\portfolio\02-large.jpg" />
-    <Content Include="Asset\Images\portfolio\02-small.jpg" />
-    <Content Include="Asset\Images\portfolio\03-large.jpg" />
-    <Content Include="Asset\Images\portfolio\03-small.jpg" />
-    <Content Include="Asset\Images\portfolio\04-large.jpg" />
-    <Content Include="Asset\Images\portfolio\04-small.jpg" />
-    <Content Include="Asset\Images\portfolio\05-large.jpg" />
-    <Content Include="Asset\Images\portfolio\05-small.jpg" />
-    <Content Include="Asset\Images\portfolio\06-large.jpg" />
-    <Content Include="Asset\Images\portfolio\06-small.jpg" />
-    <Content Include="Asset\Images\portfolio\07-large.jpg" />
-    <Content Include="Asset\Images\portfolio\07-small.jpg" />
-    <Content Include="Asset\Images\portfolio\08-large.jpg" />
-    <Content Include="Asset\Images\portfolio\08-small.jpg" />
-    <Content Include="Asset\Images\portfolio\09-large.jpg" />
-    <Content Include="Asset\Images\portfolio\09-small.jpg" />
-    <Content Include="Asset\Images\portfolio\10-large.jpg" />
-    <Content Include="Asset\Images\portfolio\10-small.jpg" />
-    <Content Include="Asset\Images\portfolio\11-large.jpg" />
-    <Content Include="Asset\Images\portfolio\11-small.jpg" />
-    <Content Include="Asset\Images\portfolio\12-large.jpg" />
-    <Content Include="Asset\Images\portfolio\12-small.jpg" />
-    <Content Include="Asset\Images\team-bg.jpg" />
-    <Content Include="Asset\Images\team\01.jpg" />
-    <Content Include="Asset\Images\team\02.jpg" />
-    <Content Include="Asset\Images\team\03.jpg" />
-    <Content Include="Asset\ListUser.png" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\fonts\font-awesome\css\font-awesome.css" />
-    <Content Include="Content\fonts\font-awesome\css\font-awesome.min.css" />
-    <Content Include="Content\fonts\font-awesome\fonts\fontawesome-webfont.svg" />
-    <Content Include="Content\fonts\fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="Content\nivo-lightbox\close%402x.png" />
-    <Content Include="Content\nivo-lightbox\close.png" />
-    <Content Include="Content\nivo-lightbox\default.css" />
-    <Content Include="Content\nivo-lightbox\loading%402x.gif" />
-    <Content Include="Content\nivo-lightbox\loading.gif" />
-    <Content Include="Content\nivo-lightbox\next%402x.png" />
-    <Content Include="Content\nivo-lightbox\next.png" />
-    <Content Include="Content\nivo-lightbox\nivo-lightbox.css" />
-    <Content Include="Content\nivo-lightbox\prev%402x.png" />
-    <Content Include="Content\nivo-lightbox\prev.png" />
-    <Content Include="Content\style.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="ApplicationInsights.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="App_Data\ModelFood.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModelFood.edmx</DependentUpon>
@@ -312,10 +220,23 @@
       <DependentUpon>ModelFood.edmx</DependentUpon>
       <LastGenOutput>ModelFood.cs</LastGenOutput>
     </Content>
-    <Content Include="Scripts\bootstrap.bundle.js" />
-    <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="App_Data\ModelFood.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelFood.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="App_Data\ModelFood.edmx.diagram">
+      <DependentUpon>ModelFood.edmx</DependentUpon>
+    </Content>
+    <Content Include="Scripts\esm\popper-utils.js" />
+    <Content Include="Scripts\esm\popper-utils.min.js" />
+    <Content Include="Scripts\esm\popper.js" />
+    <Content Include="Scripts\esm\popper.min.js" />
+    <Content Include="Scripts\esm\popper.min.js.map" />
+    <Content Include="Scripts\esm\popper.js.map" />
+    <Content Include="Scripts\esm\popper-utils.min.js.map" />
+    <Content Include="Scripts\esm\popper-utils.js.map" />
     <Content Include="Scripts\bootstrap.min.js.map" />
     <Content Include="Scripts\bootstrap.js.map" />
     <Content Include="Scripts\bootstrap.bundle.min.js.map" />
@@ -326,78 +247,21 @@
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
-    <Content Include="Scripts\contact_me.js" />
-    <Content Include="Scripts\esm\popper-utils.js" />
-    <Content Include="Scripts\esm\popper-utils.min.js" />
-    <Content Include="Scripts\esm\popper.js" />
-    <Content Include="Scripts\esm\popper.min.js" />
-    <Content Include="Scripts\esm\popper.min.js.map" />
-    <Content Include="Scripts\esm\popper.js.map" />
-    <Content Include="Scripts\esm\popper-utils.min.js.map" />
-    <Content Include="Scripts\esm\popper-utils.js.map" />
-    <EntityDeploy Include="App_Data\ModelFood.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ModelFood.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="App_Data\ModelFood.edmx.diagram">
-      <DependentUpon>ModelFood.edmx</DependentUpon>
-    </Content>
-    <Content Include="Content\fonts\font-awesome\fonts\fontawesome-webfont.eot" />
-    <Content Include="Content\fonts\font-awesome\fonts\fontawesome-webfont.ttf" />
-    <Content Include="Content\fonts\font-awesome\fonts\fontawesome-webfont.woff" />
-    <Content Include="Content\fonts\font-awesome\fonts\fontawesome-webfont.woff2" />
-    <Content Include="Content\fonts\font-awesome\fonts\FontAwesome.otf" />
-    <Content Include="Content\fonts\font-awesome\less\animated.less" />
-    <Content Include="Content\fonts\font-awesome\less\bordered-pulled.less" />
-    <Content Include="Content\fonts\font-awesome\less\core.less" />
-    <Content Include="Content\fonts\font-awesome\less\fixed-width.less" />
-    <Content Include="Content\fonts\font-awesome\less\font-awesome.less" />
-    <Content Include="Content\fonts\font-awesome\less\icons.less" />
-    <Content Include="Content\fonts\font-awesome\less\larger.less" />
-    <Content Include="Content\fonts\font-awesome\less\list.less" />
-    <Content Include="Content\fonts\font-awesome\less\mixins.less" />
-    <Content Include="Content\fonts\font-awesome\less\path.less" />
-    <Content Include="Content\fonts\font-awesome\less\rotated-flipped.less" />
-    <Content Include="Content\fonts\font-awesome\less\stacked.less" />
-    <Content Include="Content\fonts\font-awesome\less\variables.less" />
-    <Content Include="Content\fonts\font-awesome\scss\font-awesome.scss" />
-    <Content Include="Content\fonts\font-awesome\scss\_animated.scss" />
-    <Content Include="Content\fonts\font-awesome\scss\_bordered-pulled.scss" />
-    <Content Include="Content\fonts\font-awesome\scss\_core.scss" />
-    <Content Include="Content\fonts\font-awesome\scss\_fixed-width.scss" />
-    <Content Include="Content\fonts\font-awesome\scss\_icons.scss" />
-    <Content Include="Content\fonts\font-awesome\scss\_larger.scss" />
-    <Content Include="Content\fonts\font-awesome\scss\_list.scss" />
-    <Content Include="Content\fonts\font-awesome\scss\_mixins.scss" />
-    <Content Include="Content\fonts\font-awesome\scss\_path.scss" />
-    <Content Include="Content\fonts\font-awesome\scss\_rotated-flipped.scss" />
-    <Content Include="Content\fonts\font-awesome\scss\_stacked.scss" />
-    <Content Include="Content\fonts\font-awesome\scss\_variables.scss" />
-    <Content Include="Content\fonts\fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\fonts\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="Content\fonts\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="Content\fonts\fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
-    <Content Include="Scripts\jqBootstrapValidation.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.1.11.1.js" />
-    <Content Include="Scripts\jquery.isotope.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\main.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Scripts\nivo-lightbox.js" />
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />
     <Content Include="Scripts\popper.min.js" />
-    <Content Include="Scripts\SmoothScroll.js" />
     <Content Include="Scripts\umd\popper-utils.js" />
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
@@ -413,6 +277,8 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
@@ -423,33 +289,9 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\Seguridad\Usuario.cshtml" />
-    <Content Include="Views\Seguridad\AsignarRol.cshtml" />
-    <Content Include="Views\Seguridad\CambiarContrasena.cshtml" />
-    <Content Include="Views\Seguridad\CrearUsuario.cshtml" />
-    <Content Include="Views\Seguridad\VerUsuario.cshtml" />
-    <Content Include="Views\Administracion\Consecutivo.cshtml" />
-    <Content Include="Views\Administracion\TipoPrecio.cshtml" />
-    <Content Include="Views\Administracion\TarjetaCreditoDebito.cshtml" />
-    <Content Include="Views\Administracion\MediosPago.cshtml" />
-    <Content Include="Views\Administracion\TiqueteDescuento.cshtml" />
-    <Content Include="Views\Administracion\LineaComida.cshtml" />
-    <Content Include="Views\Administracion\Producto.cshtml" />
-    <Content Include="Views\Consultas\Pedidos.cshtml" />
-    <Content Include="Views\Consultas\Productos.cshtml" />
-    <Content Include="Views\Consultas\Bitacora.cshtml" />
-    <Content Include="Views\Consultas\Errores.cshtml" />
-    <Content Include="Views\Login\index.cshtml" />
-    <Content Include="Views\Default\Default.cshtml" />
-    <Content Include="Views\LineasComida\LineaComida.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Asset\Images\Producto\" />
-    <Folder Include="Views\Consecutivos\" />
-    <Folder Include="Views\MediosPago\" />
-    <Folder Include="Views\Precio\" />
-    <Folder Include="Views\Producto\" />
-    <Folder Include="Views\TipoPrecio\" />
+    <Folder Include="Views\BusquedaProducto\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -457,11 +299,13 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -480,9 +324,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>51201</DevelopmentServerPort>
+          <DevelopmentServerPort>51768</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:51201/</IISUrl>
+          <IISUrl>http://localhost:51768/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
