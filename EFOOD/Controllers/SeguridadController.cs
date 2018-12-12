@@ -1,4 +1,4 @@
-﻿using EFOOD.Models;
+﻿using Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,7 +26,7 @@ namespace EFOOD.Controllers
         public ActionResult AsignarRol(RolModel model)
         {
 
-            if (Admin.AsignarRol(model.userID, model.RoleID))
+            if (Admin.AsignarRol(model.UserID, model.RoleID))
             {
                 AddAlertMessage("Rol cambiado correctamente");
             }

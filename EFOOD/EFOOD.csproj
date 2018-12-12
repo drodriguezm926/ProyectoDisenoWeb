@@ -151,12 +151,6 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="App_Data\Card.cs">
-      <DependentUpon>ModelFood.tt</DependentUpon>
-    </Compile>
-    <Compile Include="App_Data\Consecutive.cs">
-      <DependentUpon>ModelFood.tt</DependentUpon>
-    </Compile>
     <Compile Include="Controllers\AdministracionController.cs" />
     <Compile Include="Controllers\ConsecutivoController.cs" />
     <Compile Include="Controllers\ConsultasController.cs" />
@@ -168,76 +162,11 @@
     <Compile Include="Controllers\PrecioController.cs" />
     <Compile Include="Controllers\ProductoController.cs" />
     <Compile Include="Controllers\SeguridadController.cs" />
-    <Compile Include="App_Data\Customer.cs">
-      <DependentUpon>ModelFood.tt</DependentUpon>
-    </Compile>
-    <Compile Include="App_Data\ErrorLog.cs">
-      <DependentUpon>ModelFood.tt</DependentUpon>
-    </Compile>
-    <Compile Include="App_Data\FoodOption.cs">
-      <DependentUpon>ModelFood.tt</DependentUpon>
-    </Compile>
     <Compile Include="Controllers\TipoPrecioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="App_Data\LogBook.cs">
-      <DependentUpon>ModelFood.tt</DependentUpon>
-    </Compile>
-    <Compile Include="App_Data\ModelFood.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModelFood.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="App_Data\ModelFood.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModelFood.tt</DependentUpon>
-    </Compile>
-    <Compile Include="App_Data\ModelFood.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModelFood.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Admin.cs" />
-    <Compile Include="Models\BitacoraModel.cs" />
-    <Compile Include="Models\ConsecutivoModel.cs" />
-    <Compile Include="Models\ErrorLogModel.cs" />
-    <Compile Include="Models\LineaComidaModel.cs" />
-    <Compile Include="Models\MediosPagoModel.cs" />
-    <Compile Include="Models\ProductoModel.cs" />
-    <Compile Include="Models\RolModel.cs" />
-    <Compile Include="Models\TarjetaCreditoDebitoModel.cs" />
-    <Compile Include="Models\TipoPrecioModelo.cs" />
-    <Compile Include="Models\TiqueteDescuentoModel.cs" />
-    <Compile Include="App_Data\Payment.cs">
-      <DependentUpon>ModelFood.tt</DependentUpon>
-    </Compile>
-    <Compile Include="App_Data\PaymentProcessor.cs">
-      <DependentUpon>ModelFood.tt</DependentUpon>
-    </Compile>
-    <Compile Include="App_Data\PaymentToCustomer.cs">
-      <DependentUpon>ModelFood.tt</DependentUpon>
-    </Compile>
-    <Compile Include="App_Data\PriceType.cs">
-      <DependentUpon>ModelFood.tt</DependentUpon>
-    </Compile>
-    <Compile Include="App_Data\PriceTypeToProduct.cs">
-      <DependentUpon>ModelFood.tt</DependentUpon>
-    </Compile>
-    <Compile Include="App_Data\Product.cs">
-      <DependentUpon>ModelFood.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="App_Data\Role.cs">
-      <DependentUpon>ModelFood.tt</DependentUpon>
-    </Compile>
-    <Compile Include="App_Data\TicketDiscount.cs">
-      <DependentUpon>ModelFood.tt</DependentUpon>
-    </Compile>
-    <Compile Include="App_Data\User.cs">
-      <DependentUpon>ModelFood.tt</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Asset\AddUser.png" />
@@ -302,16 +231,6 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="App_Data\ModelFood.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelFood.edmx</DependentUpon>
-      <LastGenOutput>ModelFood.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="App_Data\ModelFood.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelFood.edmx</DependentUpon>
-      <LastGenOutput>ModelFood.cs</LastGenOutput>
-    </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -335,13 +254,6 @@
     <Content Include="Scripts\esm\popper.js.map" />
     <Content Include="Scripts\esm\popper-utils.min.js.map" />
     <Content Include="Scripts\esm\popper-utils.js.map" />
-    <EntityDeploy Include="App_Data\ModelFood.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ModelFood.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="App_Data\ModelFood.edmx.diagram">
-      <DependentUpon>ModelFood.edmx</DependentUpon>
-    </Content>
     <Content Include="Content\fonts\font-awesome\fonts\fontawesome-webfont.eot" />
     <Content Include="Content\fonts\font-awesome\fonts\fontawesome-webfont.ttf" />
     <Content Include="Content\fonts\font-awesome\fonts\fontawesome-webfont.woff" />
@@ -444,7 +356,9 @@
     <Content Include="Views\LineasComida\LineaComida.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\" />
     <Folder Include="Asset\Images\Producto\" />
+    <Folder Include="Models\" />
     <Folder Include="Views\Consecutivos\" />
     <Folder Include="Views\MediosPago\" />
     <Folder Include="Views\Precio\" />
@@ -462,6 +376,12 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ProjectHelpers\ProjectHelpers.csproj">
+      <Project>{ae56b819-ccc5-4f6c-bc62-2f10fbd7c628}</Project>
+      <Name>ProjectHelpers</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -14,13 +15,22 @@ namespace EFood_ECommerce.Controllers
             return View();
         }
 
+        [HttpGet]
+        public ActionResult BusquedaProducto()
+        {
+            ViewBag.lista = LineaComidaModel.ObtenerLineasComida();
+            ViewBag.listaProd = ProductoModel.ObtenerProductos();
+            return View();
+        }
+
         public ActionResult BusquedaProductos()
         {
 
             return View();
         }
 
-        public ActionResult MostrarProductos()
+
+        public ActionResult AgregarCarrito(string id)
         {
 
             return View();

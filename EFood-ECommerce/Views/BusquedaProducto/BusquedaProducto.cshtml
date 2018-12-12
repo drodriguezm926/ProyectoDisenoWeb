@@ -1,0 +1,65 @@
+﻿@model Models.LineaComidaModel
+
+@{
+    ViewBag.Title = "BusquedaProducto";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+    <!-- Portfolio Section -->
+    <div id="portfolio">
+        <div class="section-title text-center center">
+            <div class="overlay">
+                <h2>Gallery</h2>
+                <hr>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit duis sed.</p>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="categories">
+                    <ul class="cat">
+                        <li>
+                            <ol class="type">
+                                <li>@Html.ActionLink("All", "BusquedaProducto", "BusquedaProducto", new { @class = "active" })</li>
+                                @{ foreach (var item in ViewBag.lista)
+                                    {
+                                        string text = item.FoodOptionDescription;
+                                        <li>
+                                            @Html.ActionLink(text, "BusquedaProducto", "BusquedaProducto")
+                                        </li>
+                                    }
+                                }
+                            </ol>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="">
+                    @{ foreach (var item in ViewBag.listaProd)
+                        {
+                            <div class="col-sm-6 col-md-4 col-lg-4 breakfast">
+                                <div class="portfolio-item">
+                                    <div class="hover-bg">
+                                        <a id="@(item.ProductCode)" href="@(item.ProductImage)" title="@(item.ProductDescription)" data-lightbox-gallery="gallery1">
+                                            <div class="hover-text">
+                                                <h4>@(item.ProductDescription)</h4>
+                                            </div>
+                                            <img src="@(item.ProductImage)" class="img-responsive" alt="Project Title">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            @Html.ActionLink("Agregar al Carrito", "AgregarCarrito", "BusquedaProducto", new { id=item.ProductCode}, new { @class = "btn btn-info"})
+                        }
+                    }
+                </div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+
+
