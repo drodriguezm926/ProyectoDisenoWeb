@@ -36,39 +36,53 @@
 
         listUsuario.Add(new SelectListItem
         {
-            Text = item.Username,
+            Text = item.UserID.ToString(),
             Value = item.UserID.ToString()
         });
     }
 
 <div class="row justify-content-lg-around pt-lg-4">
+    <div class="row">
+        <input type="button" id="b_aceptar" value="Limpiar filtros" onclick="limpiarCampos()" />
+    </div>
+    <div class="row">
+        <div class="col-3">
+            <div class="input-group">
+                <label for="LogType">Estado:</label>
+                @Html.DropDownListFor(model => model.LogType, listItems, "--Seleciona Estado--", new { htmlAttributes = new { @class = "form-control", @type = "text"} })
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="input-group">
+                <label>Usuario:</label>
+                @Html.DropDownListFor(model => model.UserID, listUsuario, "--Seleciona usuario--", new { htmlAttributes = new { @class = "form-control", @type = "text" } })
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="input-group">
+                @Html.LabelFor(model => model.StartDate)
+                @Html.TextBoxFor(model => model.StartDate, new { type = "date" })
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="input-group ">
+                @Html.LabelFor(model => model.EndDate)
+                @Html.TextBoxFor(model => model.EndDate, new { type = "date" })
+            </div>
+        </div>
 
-    <div class="input-group">
-        @Html.DropDownListFor(model => model.LogType, listItems, "-- Seleciona Estado --", new { htmlAttributes = new { @class = "form-control", @type = "text" } })
+
+        
+
+        
+
+        <div>
+            <input type="submit" value="Filtrar" />
+        </div>
+    </div>
+    <div class="row">
 
     </div>
-
-    <div class="input-group">
-
-        @Html.DropDownListFor(model => model.UserID, listUsuario, "-- Seleciona usuario --", new { htmlAttributes = new { @class = "form-control", @type = "text" } })
-
-    </div>
-
-
-    <div class="input-group">
-        @Html.LabelFor(model => model.StartDate)
-        @Html.TextBoxFor(model => model.StartDate, new { type = "date" })
-    </div>
-
-    <div class="input-group ">
-        @Html.LabelFor(model => model.EndDate)
-        @Html.TextBoxFor(model => model.EndDate, new { type = "date" })
-    </div>
-
-    <div>
-        <input type="submit" value="Filtrar" />
-    </div>
-
 </div>
 }
 <div class="row pt-1">
@@ -115,9 +129,6 @@
                     <td>
                         @item.Description
                     </td>
-                    <td>
-                        @item.RegDetails
-                    </td>
                 </tr>
                     }
 
@@ -127,3 +138,11 @@
         </table>
     </div>
 </div>
+<script type="text/javascript">
+    function limpiarCampos() {
+        document.getElementById("StartDate").value = "";
+        document.getElementById("EndDate").value = "";
+        document.getElementById("LogType").selectedIndex = 0;
+        document.getElementById("UserID").selectedIndex  = 0;
+    }
+</script>
