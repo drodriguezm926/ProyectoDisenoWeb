@@ -64,8 +64,42 @@ namespace Models
             {
                 using (efooddatabaseEntities db = new efooddatabaseEntities())
                 {
+                    var logs = from valor in db.LogBooks
 
-                    return (from valor in db.LogBooks
+                               select new BitacoraModel
+                               {
+                                   LogID = valor.LogID,
+                                   UserID = valor.UserID,
+                                   LogDate = valor.LogDate,
+                                   RegCode = valor.RegCode,
+                                   LogType = valor.LogType,
+                                   Description = valor.Description,
+                                   RegDetails = valor.RegDetails
+                               };
+
+                    if (modelo.EndDate != DateTime.Parse("01/01/0001 12:00:00 a. m."))
+                    {
+                        logs = logs.Where(valor => valor.LogDate <= modelo.EndDate);
+                    }
+
+                    if (modelo.StartDate != DateTime.Parse("01/01/0001 12:00:00 a. m."))
+                    {
+                        logs = logs.Where(valor => valor.LogDate >= modelo.StartDate);
+                    }
+
+                    if (modelo.UserID != 0)
+                    {
+                        logs = logs.Where(valor => valor.UserID == modelo.UserID);
+                    }
+
+                    if (modelo.LogType != null)
+                    {
+                        logs = logs.Where(valor => valor.LogType == modelo.LogType);
+                    }
+
+                    return logs.ToList();
+
+                    /*return (from valor in db.LogBooks
                             where valor.LogDate >= modelo.StartDate &&
                             valor.LogDate <= modelo.EndDate &&
                             valor.LogType == modelo.LogType &&
@@ -81,7 +115,7 @@ namespace Models
                                 Description = valor.Description,
                                 RegDetails = valor.RegDetails
 
-                            }).ToList();
+                            }).ToList();*/
                 }
 
             }
