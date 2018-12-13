@@ -7,59 +7,74 @@
 
 @using (Html.BeginForm("ErroresFiltro", "Consultas"))
 {
+    <h2>Errores</h2>
     <div class="row justify-content-lg-around pt-lg-4">
-        <div class="input-group">
-            @Html.LabelFor(model => model.StartDate)
-            @Html.TextBoxFor(model => model.StartDate, new { type = "date" })
+        <div class="row justify-content-lg-around pt-lg-4">
+            <div class="col-5 col-md-5 col-sm-5">
+                <div class="input-group">
+                    @Html.LabelFor(model => model.StartDate)
+                    @Html.TextBoxFor(model => model.StartDate, new { type = "date" })
+                </div>
+            </div>
+            <div class="col-5 col-md-5 col-sm-5">
+                <div class="input-group ">
+                    @Html.LabelFor(model => model.EndDate)
+                    @Html.TextBoxFor(model => model.EndDate, new { type = "date" })
+                </div>
+            </div>
         </div>
-
-        <div class="input-group ">
-            @Html.LabelFor(model => model.EndDate)
-            @Html.TextBoxFor(model => model.EndDate, new { type = "date" })
+        <div class="row justify-content-lg-around pt-lg-4">
+            <div>
+                <input type="submit" value="Filtrar errores" />
+            </div>
         </div>
-
-        <div>
-            <input type="submit" value="Filtrar errores" />
-        </div>
-
     </div>
 }
-    <div class="row pt-1">
-        <div class="col">
-            <table class="table table-sm table-hover table-bordered table-responsive-lg">
-                <thead>
-                    <tr>
-                        <th>Log</th>
-                        <th>Fecha</th>
-                        <th>Codigo</th>
-                        <th>Descripcion</th>
-                    </tr>
-                </thead>
-                @*            Inicia la carga de datos en la tabla             *@
-                <tbody>
-                    @{
-                        foreach (var item in ViewBag.Errores)
-                        {
-                    <tr>
-                        <td>
-                            @item.LogID
-                        </td>
-                        <td>
-                            @item.LogDate
-                        </td>
-                        <td>
-                            @item.ErrCode
-                        </td>
-                        <td>
-                            @item.Description
-                        </td>
-                    </tr>
+<div class="row pt-1">
+    <div class="col">
+        @{
+            if (@ViewBag.Errores.Count == 0)
+            {
+                <h2> No hay datos para mostrar</h2>
+            }
+            else
+            {
+                <table class="table table-sm table-hover table-bordered table-responsive-lg">
+                    <thead>
+                        <tr>
+                            <th>Log</th>
+                            <th>Fecha</th>
+                            <th>Codigo</th>
+                            <th>Descripcion</th>
+                        </tr>
+                    </thead>
+                    @*            Inicia la carga de datos en la tabla             *@
+                    <tbody>
+                        @{
+                            foreach (var item in ViewBag.Errores)
+                            {
+                                <tr>
+                                    <td>
+                                        @item.LogID
+                                    </td>
+                                    <td>
+                                        @item.LogDate
+                                    </td>
+                                    <td>
+                                        @item.ErrCode
+                                    </td>
+                                    <td>
+                                        @item.Description
+                                    </td>
+                                </tr>
+                            }
+
                         }
 
-                    }
-
-                </tbody>
-            </table>
-        </div>
+                    </tbody>
+                </table>
+            }
+        }
     </div>
+</div>
 

@@ -62,16 +62,26 @@ namespace Models
             {
                 using (efooddatabaseEntities db = new efooddatabaseEntities())
                 {
-                        return (from valor in db.ErrorLogs
-                                where valor.LogDate >= modelo.StartDate &&
-                                valor.LogDate <= modelo.EndDate
-                                select new ErrorLogModel
-                                {
-                                    LogID = valor.LogID,
-                                    LogDate = valor.LogDate,
-                                    ErrCode = valor.ErrCode,
-                                    Description = valor.Description
-                                }).ToList();
+                    var logs = from valor in db.ErrorLogs
+                               select new ErrorLogModel
+                               {
+                                   LogID = valor.LogID,
+                                   LogDate = valor.LogDate,
+                                   ErrCode = valor.ErrCode,
+                                   Description = valor.Description
+                               };
+
+                    if (modelo.EndDate != DateTime.Parse("01/01/0001 12:00:00 a. m."))
+                    {
+                        logs = logs.Where(valor => valor.LogDate <= modelo.EndDate);
+                    }
+
+                    if (modelo.StartDate != DateTime.Parse("01/01/0001 12:00:00 a. m."))
+                    {
+                        logs = logs.Where(valor => valor.LogDate >= modelo.StartDate);
+                    }
+
+                    return logs.ToList();
            
                 }
 

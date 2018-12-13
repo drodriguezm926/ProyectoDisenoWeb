@@ -7,7 +7,9 @@
 
 }
 
-
+<div class="row">
+    <h2>Productos</h2>
+</div>
 <div class="row pt-lg-4">
 
     @using (Html.BeginForm("ProductosFiltrar", "Consultas"))
@@ -36,66 +38,78 @@
             <input type="submit" value="Filtrar errores" />
         </div>
         }
-        catch (Exception e) { EFOOD.Models.ErrorLogModel.AddError(e); }
+        catch (Exception e) {Models.ErrorLogModel.AddError(e); }
     }
     
 </div>
 
 <div class="row pt-1">
     <div class="col">
-        <table class="table table-sm table-hover table-bordered table-responsive-lg">
-            <thead>
-                <tr>
-                    <th>Codigo</th>
-                    <th>Descripción</th>
-                    <th>Opción de comida</th>
-                    <th>Contenido</th>
-                    <th>Imagen</th>
-                </tr>
-            </thead>
-            @*            Inicia la carga de datos en la tabla             *@
-            <tbody>
-                @{
-                    try { 
-                    foreach (var item in @ViewBag.listaProducto)
-                    {
-
+        @{
+            if (@ViewBag.listaProducto.Count == 0)
+            {
+                <h2> No hay datos para mostrar</h2>
+            }
+            else
+            {
+                <table class="table table-sm table-hover table-bordered table-responsive-lg">
+                    <thead>
                         <tr>
-                            <td>
-                                @item.ProductCode
-                            </td>
-                            <td>
-                                @item.ProductDescription
-                            </td>
-                            <td>
-                                @item.FoodOptionCode
-                            </td>
-                            <td>
-                                @item.ProductContent
-                            </td>
-
-                            @if (!string.IsNullOrEmpty(item.ProductImage))
-                            {
-
-
-                                <td>
-                                    <img class="rounded-circle" src="@Url.Content(item.ProductImage)" style="width: 40px; height: 40px;" />
-                                </td>
-                            }
-                            else
-                            {
-                                <td>
-                                    <p>Imagen no disponible</p>
-                                </td>
-                            }
-
-                       
+                            <th>Codigo</th>
+                            <th>Descripción</th>
+                            <th>Opción de comida</th>
+                            <th>Contenido</th>
+                            <th>Imagen</th>
                         </tr>
-                            }
-                        }catch (Exception e) { EFOOD.Models.ErrorLogModel.AddError(e); }
-                }
+                    </thead>
+                    @*            Inicia la carga de datos en la tabla             *@
+                    <tbody>
+                        @{
+                            try
+                            {
+                                foreach (var item in @ViewBag.listaProducto)
+                                {
 
-            </tbody>
-        </table>
+                                    <tr>
+                                        <td>
+                                            @item.ProductCode
+                                        </td>
+                                        <td>
+                                            @item.ProductDescription
+                                        </td>
+                                        <td>
+                                            @item.FoodOptionCode
+                                        </td>
+                                        <td>
+                                            @item.ProductContent
+                                        </td>
+
+                                        @if (!string.IsNullOrEmpty(item.ProductImage))
+                                        {
+
+
+                                            <td>
+                                                <img class="rounded-circle" src="@Url.Content(item.ProductImage)" style="width: 40px; height: 40px;" />
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            <td>
+                                                <p>Imagen no disponible</p>
+                                            </td>
+                                        }
+
+
+                                    </tr>
+                                }
+                            }
+                            catch (Exception e) { Models.ErrorLogModel.AddError(e); }
+                        }
+
+                    </tbody>
+                </table>
+            }
+        }
+
     </div>
 </div>

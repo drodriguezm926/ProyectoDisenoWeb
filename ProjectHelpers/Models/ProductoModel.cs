@@ -89,16 +89,22 @@ namespace Models
             {
                 using (efooddatabaseEntities db = new efooddatabaseEntities())
                 {
-                    return (from productos in db.Products
-                            where productos.FoodOptionCode == modelo.FoodOptionCode
-                            select new ProductoModel
-                            {
-                                ProductCode = productos.ProductCode,
-                                ProductDescription = productos.ProductDescription,
-                                FoodOptionCode = productos.FoodOptionCode,
-                                ProductContent = productos.ProductContent,
-                                ProductImage = productos.ProductImage
-                            }).ToList();
+                    var logs = from productos in db.Products
+                              select new ProductoModel
+                              {
+                                  ProductCode = productos.ProductCode,
+                                  ProductDescription = productos.ProductDescription,
+                                  FoodOptionCode = productos.FoodOptionCode,
+                                  ProductContent = productos.ProductContent,
+                                  ProductImage = productos.ProductImage
+                              };
+
+                    if (modelo.FoodOptionCode != null)
+                    {
+                        logs = logs.Where(producto => producto.FoodOptionCode == modelo.FoodOptionCode);
+                    }
+
+                    return logs.ToList();
                 }
 
             }
