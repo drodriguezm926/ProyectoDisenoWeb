@@ -32,8 +32,8 @@ namespace Models
 
             using (efooddatabaseEntities db = new efooddatabaseEntities())
             {
-                //try
-                //{   //Entidades de la base de datos
+                try
+                {   //Entidades de la base de datos
                     LogBook log = new LogBook();
 
                     //Toda la data de la base de datos, se almacena en la lista numeroConsecutivo
@@ -50,11 +50,11 @@ namespace Models
                     log.LogType = tipo;
                     log.Description = description;
                     log.RegDetails = "N/A";
-                    log.User = Admin.ObtenerUsuarioUnico(userID);
+                    //log.User = Admin.ObtenerUsuarioUnico(userID);
                     db.LogBooks.Add(log);
                     db.SaveChanges();
-                //}
-                //catch (Exception e) { ErrorLogModel.addError(e); }
+                }
+                catch (Exception e) { ErrorLogModel.AddError(e); }
             }
         }
 

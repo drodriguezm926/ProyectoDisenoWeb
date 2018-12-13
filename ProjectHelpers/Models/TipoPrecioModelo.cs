@@ -76,8 +76,8 @@ namespace Models
                                  select valor).SingleOrDefault();
 
                     vuelosDB.PriceTypes.Remove(datos);
-                    BitacoraModel.AddLogBook("n", "Borrar", Admin.ObtenerIdUsuario());
                     vuelosDB.SaveChanges();
+                    BitacoraModel.AddLogBook("n", "Borrar", Admin.ObtenerIdUsuario());
                 }
 
             }
