@@ -33,6 +33,7 @@ namespace Models
                     };
                     db.PaymentProcessors.Add(newProcessor);
                     db.SaveChanges();
+                    BitacoraModel.AddLogBook("a", "Anadir", Admin.ObtenerIdUsuario());
                 }
                 catch (Exception e) { ErrorLogModel.AddError(e); }
             }
@@ -55,7 +56,8 @@ namespace Models
                     datos.PaymentProcessorStatus = false;
                     datos.PaymentProcessorVerify = false;
                     db.SaveChanges();
-                 }
+                    BitacoraModel.AddLogBook("e", "Edicion", Admin.ObtenerIdUsuario());
+                }
 
              }
              catch (Exception x) { ErrorLogModel.AddError(x); }
@@ -96,6 +98,7 @@ namespace Models
 
                     db.PaymentProcessors.Remove(datos);
                     db.SaveChanges();
+                    BitacoraModel.AddLogBook("n", "Borrar", Admin.ObtenerIdUsuario());
                 }
 
             }

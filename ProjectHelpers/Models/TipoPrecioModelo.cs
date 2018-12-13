@@ -34,14 +34,14 @@ namespace Models
         {
             try
             {
-                using (efooddatabaseEntities vuelosDB = new efooddatabaseEntities())
+                using (efooddatabaseEntities db = new efooddatabaseEntities())
                 {
-                    var datos = (from valor in vuelosDB.PriceTypes
+                    var datos = (from valor in db.PriceTypes
                                  where valor.PriceTypeCode == modelo.PriceTypeCode
                                  select valor).SingleOrDefault();
 
                     datos.PriceTypeDescription = modelo.PriceTypeDescription;
-                    vuelosDB.SaveChanges();
+                    db.SaveChanges();
                     BitacoraModel.AddLogBook("e", "Edicion", Admin.ObtenerIdUsuario());
                 }
 
@@ -53,9 +53,9 @@ namespace Models
         {
             try
             {
-                using (efooddatabaseEntities vuelosDB = new efooddatabaseEntities())
+                using (efooddatabaseEntities db = new efooddatabaseEntities())
                 {
-                    return (from territorio in vuelosDB.PriceTypes
+                    return (from territorio in db.PriceTypes
                             select new TipoPrecioModelo
                             {
                                 PriceTypeCode = territorio.PriceTypeCode,
@@ -71,14 +71,14 @@ namespace Models
         {
             try
             {
-                using (efooddatabaseEntities vuelosDB = new efooddatabaseEntities())
+                using (efooddatabaseEntities db = new efooddatabaseEntities())
                 {
-                    var datos = (from valor in vuelosDB.PriceTypes
+                    var datos = (from valor in db.PriceTypes
                                  where valor.PriceTypeCode == modelo.PriceTypeCode
                                  select valor).SingleOrDefault();
 
-                    vuelosDB.PriceTypes.Remove(datos);
-                    vuelosDB.SaveChanges();
+                    db.PriceTypes.Remove(datos);
+                    db.SaveChanges();
                     BitacoraModel.AddLogBook("n", "Borrar", Admin.ObtenerIdUsuario());
                 }
 

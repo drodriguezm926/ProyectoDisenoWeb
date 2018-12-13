@@ -27,8 +27,8 @@ namespace Models
                         RemainingTickets = modelo.RemainingTickets
                     };
                     db.TicketDiscounts.Add(newTicketDiscount);
-                    BitacoraModel.AddLogBook("a", "Anadir", Admin.ObtenerIdUsuario());
                     db.SaveChanges();
+                    BitacoraModel.AddLogBook("a", "Anadir", Admin.ObtenerIdUsuario());
                 }
                 catch (Exception e) { ErrorLogModel.AddError(e);  }
             }
@@ -47,8 +47,8 @@ namespace Models
                     datos.TicketDescription = modelo.TicketDescription;
                     datos.TicketDiscountPercentage = modelo.TicketDiscountPercentage;
                     datos.RemainingTickets = modelo.RemainingTickets;
-                    BitacoraModel.AddLogBook("e", "Edicion", Admin.ObtenerIdUsuario());
                     db.SaveChanges();
+                    BitacoraModel.AddLogBook("e", "Edicion", Admin.ObtenerIdUsuario());
                 }
 
             }
@@ -86,8 +86,8 @@ namespace Models
                                  select valor).SingleOrDefault();
 
                     db.TicketDiscounts.Remove(datos);
-                    BitacoraModel.AddLogBook("n", "Borrar", Admin.ObtenerIdUsuario());
                     db.SaveChanges();
+                    BitacoraModel.AddLogBook("n", "Borrar", Admin.ObtenerIdUsuario());
                 }
 
             }

@@ -68,7 +68,7 @@
                         foreach (var item in @ViewBag.lista)
                         {
                             btnEditar = "btnEditar_" + item.PriceTypeCode;
-                            nombreModal = "fm-btn-modal_" + item.PriceTypeDescription;
+                            nombreModal = "fm-btn-modal_" + item.PriceTypeCode;
                             <tr>
                                 <td>
                                     @item.PriceTypeCode
@@ -97,7 +97,7 @@
 
                                                                 <label>Nuevo tipo de precio </label>
                                                                 @Html.HiddenFor(Model => Model.PriceTypeCode, new { Value = btnEditar.Split('_')[1] })
-                                                                @Html.EditorFor(Model => Model.PriceTypeDescription, new { htmlAttributes = new { @class = "form-control", @type = "text" } })
+                                                                @Html.EditorFor(Model => Model.PriceTypeDescription, new { htmlAttributes = new { @class = "form-control", @type = "text"} })
 
                                                                 <br />
 

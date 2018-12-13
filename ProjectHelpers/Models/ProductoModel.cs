@@ -33,8 +33,9 @@ namespace Models
                     };
                     db.Products.Add(product);
                     db.SaveChanges();
+                    BitacoraModel.AddLogBook("a", "Anadir", Admin.ObtenerIdUsuario());
                 }
-                catch (Exception e) { ErrorLogModel.AddError(e); BitacoraModel.AddLogBook("a", "Anadir", Admin.ObtenerIdUsuario()); }
+                catch (Exception e) { ErrorLogModel.AddError(e);  }
             }
         }
 
@@ -51,8 +52,9 @@ namespace Models
                     datos.ProductDescription = modelo.ProductDescription;
                     datos.FoodOptionCode = modelo.FoodOptionCode;
                     datos.ProductContent = modelo.ProductContent;
-                    datos.ProductImage = null; BitacoraModel.AddLogBook("e", "Edicion", Admin.ObtenerIdUsuario());
+                    datos.ProductImage = null; 
                     db.SaveChanges();
+                    BitacoraModel.AddLogBook("e", "Edicion", Admin.ObtenerIdUsuario());
                 }
 
             }
@@ -113,18 +115,16 @@ namespace Models
                     var datos = (from valor in db.Products
                                  where valor.ProductCode == modelo.ProductCode
                                  select valor).SingleOrDefault();
-
-
-                    BitacoraModel.AddLogBook("n", "Borrar", Admin.ObtenerIdUsuario());
+                    db.Products.Remove(datos);
                     db.SaveChanges();
-                   
+                    BitacoraModel.AddLogBook("n", "Borrar", Admin.ObtenerIdUsuario());
                 }
 
             }
             catch (Exception x) {
                 
 
-                ErrorLogModel.AddError(x); BitacoraModel.AddLogBook("n", "Borrar", Admin.ObtenerIdUsuario());;
+                ErrorLogModel.AddError(x); ;
             }
         }
     }

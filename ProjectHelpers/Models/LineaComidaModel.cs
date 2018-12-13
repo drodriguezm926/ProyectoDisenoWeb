@@ -22,8 +22,8 @@ namespace Models
                         FoodOptionDescription = modelo.FoodOptionDescription
                     };
                     db.FoodOptions.Add(foodOption);
-                    BitacoraModel.AddLogBook("a", "Anadir", Admin.ObtenerIdUsuario());
                     db.SaveChanges();
+                    BitacoraModel.AddLogBook("a", "Anadir", Admin.ObtenerIdUsuario());
                 }
                 catch (Exception e) { ErrorLogModel.AddError(e);  }
             }
@@ -40,8 +40,8 @@ namespace Models
                                  select valor).SingleOrDefault();
 
                     datos.FoodOptionDescription = modelo.FoodOptionDescription;
-                    BitacoraModel.AddLogBook("e", "Edicion", Admin.ObtenerIdUsuario());
                     db.SaveChanges();
+                    BitacoraModel.AddLogBook("e", "Edicion", Admin.ObtenerIdUsuario());
                 }
 
             }
@@ -77,8 +77,8 @@ namespace Models
                                  select valor).SingleOrDefault();
 
                     db.FoodOptions.Remove(datos);
-                    BitacoraModel.AddLogBook("n", "Borrar", Admin.ObtenerIdUsuario());
                     db.SaveChanges();
+                    BitacoraModel.AddLogBook("n", "Borrar", Admin.ObtenerIdUsuario());
                 }
 
             }
