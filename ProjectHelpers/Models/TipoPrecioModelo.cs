@@ -23,9 +23,10 @@ namespace Models
                         PriceTypeDescription = modelo.PriceTypeDescription
                     };
                     db.PriceTypes.Add(priceType);
-                    db.SaveChanges(); 
+                    db.SaveChanges();
+                    BitacoraModel.AddLogBook("a", "Anadir", Admin.ObtenerIdUsuario());
                 }
-                catch (Exception e) { ErrorLogModel.AddError(e); BitacoraModel.AddLogBook("a", "Anadir", Admin.ObtenerIdUsuario()); }
+                catch (Exception e) { ErrorLogModel.AddError(e); }
             }
         }
 
@@ -41,10 +42,11 @@ namespace Models
 
                     datos.PriceTypeDescription = modelo.PriceTypeDescription;
                     vuelosDB.SaveChanges();
+                    BitacoraModel.AddLogBook("e", "Edicion", Admin.ObtenerIdUsuario());
                 }
 
             }
-            catch (Exception x) { ErrorLogModel.AddError(x); BitacoraModel.AddLogBook("e", "Edicion", Admin.ObtenerIdUsuario()); }
+            catch (Exception x) { ErrorLogModel.AddError(x); }
         }
 
         public static List<TipoPrecioModelo> ObtenerTerritorio()

@@ -22,8 +22,8 @@ namespace Models
                         CardDescription = modelo.CardDescription
                     };
                     db.Cards.Add(newCard);
-                    BitacoraModel.AddLogBook("a", "Anadir", Admin.ObtenerIdUsuario());
                     db.SaveChanges();
+                    BitacoraModel.AddLogBook("a", "Anadir", Admin.ObtenerIdUsuario());
                 }
                 catch (Exception e) { ErrorLogModel.AddError(e);  }
             }
@@ -40,8 +40,8 @@ namespace Models
                                  select valor).SingleOrDefault();
 
                     datos.CardDescription = modelo.CardDescription;
-                    BitacoraModel.AddLogBook("e", "Edicion", Admin.ObtenerIdUsuario());
                     db.SaveChanges();
+                    BitacoraModel.AddLogBook("e", "Edicion", Admin.ObtenerIdUsuario());
                 }
 
             }
@@ -78,6 +78,7 @@ namespace Models
 
                     db.Cards.Remove(datos);
                     db.SaveChanges();
+                    BitacoraModel.AddLogBook("n", "Borrar", Admin.ObtenerIdUsuario());
                 }
 
             }

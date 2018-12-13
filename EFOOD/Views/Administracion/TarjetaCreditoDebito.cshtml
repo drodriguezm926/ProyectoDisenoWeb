@@ -10,8 +10,8 @@
 
     <div class="row pt-5 justify-content-center "></div>
     <div class="row pt-3 justify-content-center bg-secondary" style="border-radius: 20px">
-        <div class="col-5">
-            <h1 class="lead text text-white text-center">Gestión de tarjetas</h1>
+        <div class="col-8">
+            <h1 class="lead text text-white text-center" style="font-size: 60px">Gestión de tarjetas</h1>
         </div>
     </div>
 
@@ -72,7 +72,7 @@
                         foreach (var item in @ViewBag.lista)
                         {
                             btnEditar = "btnEditar_" + item.CardCode;
-                            nombreModal = "fm-btn-modal_" + item.CardDescription;
+                            nombreModal = "fm-btn-modal_" + item.CardCode;
                             <tr>
                                 <td>
                                     @item.CardCode
