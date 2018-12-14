@@ -39,8 +39,10 @@
                         @using (Html.BeginForm("ProductoAdd", "Administracion", FormMethod.Post, new { enctype = "multipart/form-data" }))
                         {
                             <div class="input-group">
-                                <label>Descripción del producto&nbsp;&nbsp;</label><br />
-                                @Html.EditorFor(Model => Model.ProductDescription, new { htmlAttributes = new { @class = "form-control", @type = "text" } })
+                                <div class="col-8 col-6-xsmall">
+                                    <label>Descripción del producto&nbsp;&nbsp;</label><br />
+                                    @Html.EditorFor(Model => Model.ProductDescription, new { htmlAttributes = new { @class = "form-control", @type = "text" } })
+                                </div>
                             </div>
 
 
@@ -57,20 +59,24 @@
                                 });
                             }
                             <!-- Descripcion -->
-                            <div class="input-group input-group-sm mb-3 pt-4">
-                                <label>Linea de comida&nbsp;&nbsp;</label>
-                                @Html.DropDownListFor(model => model.FoodOptionCode, listItems, "-- Seleciona descripcion --", new { htmlAttributes = new { @class = "form-control", @type = "text" } })
-
+                            <div class="input-group input-group-sm mb-1 pt-4">
+                                <div class="col-8 col-6-xsmall">
+                                    <label>Linea de comida&nbsp;&nbsp;</label>
+                                    @Html.DropDownListFor(model => model.FoodOptionCode, listItems, "-- Seleciona descripcion --", new { htmlAttributes = new { @class = "form-control", @type = "text" } })
+                                </div>
                             </div>
 
-
-                            <div>
-                                <label>Contenido&nbsp;&nbsp;</label>
-                                @Html.EditorFor(Model => Model.ProductContent, new { htmlAttributes = new { @class = "form-control", @type = "text" } })
+                            <div class="input-group input-group-sm mb-1 pt-4">
+                                <div class="col-8 col-6-xsmall">
+                                    <label>Contenido&nbsp;&nbsp;</label>
+                                    @Html.EditorFor(Model => Model.ProductContent, new { htmlAttributes = new { @class = "form-control", @type = "text" } })
+                                </div>
                             </div>
-                            <div>
-                                <label>Imagen&nbsp;&nbsp;</label>
-                                @Html.TextBoxFor(Model => Model.Archivo, new { @type = "file" })
+                            <div class="input-group input-group-sm mb-1 pt-4">
+                                <div class="col-8 col-6-xsmall">
+                                    <label>Imagen&nbsp;&nbsp;</label>
+                                    @Html.TextBoxFor(Model => Model.Archivo, new { @type = "file" })
+                                </div>
                             </div>
                             <br />
                             <div class="row justify-content-center">
@@ -152,23 +158,45 @@
 
                                                 @using (Html.BeginForm("ProductoEdit", "Administracion", new { id = "" }))
                                                 {
-                                                    @Html.HiddenFor(Model => Model.ProductCode, new { Value = btnEditar.Split('_')[1] })
-                                                    <div class="input-group">
-                                                        <label>Descripción del producto&nbsp;&nbsp;</label><br />
-                                                        @Html.EditorFor(Model => Model.ProductDescription, new { htmlAttributes = new { @class = "form-control", @type = "text" } })
-                                                    </div>
-                                                    <div>
-                                                        <label>Codigo de opción de comida (Sin completar)&nbsp;&nbsp;</label>
-                                                        @Html.EditorFor(Model => Model.FoodOptionCode, new { htmlAttributes = new { @class = "form-control", @type = "text" } })
-                                                    </div>
-                                                    <div>
-                                                        <label>Contenido&nbsp;&nbsp;</label>
-                                                        @Html.EditorFor(Model => Model.ProductContent, new { htmlAttributes = new { @class = "form-control", @type = "text" } })
-                                                    </div>
-                                                    <div>
-                                                        <br />
+                                                    List<SelectListItem> tiposDeProducto = new List<SelectListItem>();
 
-                                                        <input class="btn btn-sm btn-secondary" type="submit" value="Guardar" />
+                                                    foreach (var tipoProducto in ViewBag.ListaFoodOption)
+                                                    {
+
+                                                        tiposDeProducto.Add(new SelectListItem
+                                                        {
+                                                            Text = tipoProducto.FoodOptionDescription,
+                                                            Value = tipoProducto.FoodOptionDescription
+                                                        });
+                                                    }
+                                                    @Html.HiddenFor(Model => Model.ProductCode, new { Value = btnEditar.Split('_')[1] })
+
+                                                    <div class="input-group">
+                                                        <div class="col-8 col-6-xsmall">
+                                                            <label>Descripción del producto&nbsp;&nbsp;</label><br />
+                                                            @Html.EditorFor(Model => Model.ProductDescription, new { htmlAttributes = new { @class = "form-control", @type = "text" } })
+                                                        </div>
+                                                    </div>
+                                                    <br />
+                                                    <div class="input-group">
+                                                        <div class="col-8 col-6-xsmall">
+                                                            <label>Opción de comida</label>
+                                                            @Html.DropDownListFor(model => model.FoodOptionCode, tiposDeProducto, "-- Seleciona descripcion --", new { htmlAttributes = new { @class = "form-control", @type = "text" } })
+                                                            @*@Html.EditorFor(Model => Model.FoodOptionCode, new { htmlAttributes = new { @class = "form-control", @type = "text" } })*@
+                                                        </div>
+                                                    </div>
+                                                    <br />
+                                                    <div class="input-group">
+                                                        <div class="col-8 col-6-xsmall">
+                                                            <label>Contenido</label>
+                                                            @Html.EditorFor(Model => Model.ProductContent, new { htmlAttributes = new { @class = "form-control", @type = "text" } })
+                                                        </div>
+                                                    </div>
+                                                    <br />
+                                                    <div class="input-group">
+                                                        <div class="col-8 col-6-xsmall">
+                                                            <input class="btn btn-sm btn-secondary" type="submit" value="Guardar" />
+                                                        </div>
                                                     </div>
 
                                                 }

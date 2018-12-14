@@ -52,7 +52,7 @@ namespace Models
                     datos.ProductDescription = modelo.ProductDescription;
                     datos.FoodOptionCode = modelo.FoodOptionCode;
                     datos.ProductContent = modelo.ProductContent;
-                    datos.ProductImage = null; 
+                    //datos.ProductImage = null; 
                     db.SaveChanges();
                     BitacoraModel.AddLogBook("e", "Edicion", Admin.ObtenerIdUsuario());
                 }
