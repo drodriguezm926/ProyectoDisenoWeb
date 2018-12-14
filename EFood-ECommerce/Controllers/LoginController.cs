@@ -11,14 +11,23 @@ namespace EFood_ECommerce.Controllers
     public class LoginController : Controller
     {
         // GET: Login
+        [HttpGet]
         public ActionResult Login()
         {
             return View();
         }
 
+        [HttpGet]
         public ActionResult Registro()
         {
             return View();
+        }
+
+        public ActionResult LogOut()
+        {
+            FormsAuthentication.SignOut();
+            Session.Abandon(); // Limpia la sesion
+            return RedirectToAction("Index", "Home");
         }
 
         public ActionResult LoginAction(Customer customer)

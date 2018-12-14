@@ -1,0 +1,138 @@
+﻿
+@{
+    ViewBag.Title = "Configuracion";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="perfil-tab" data-toggle="tab" href="#perfil" role="tab" aria-controls="home" aria-selected="true">Perfil</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="contrasena-tab" data-toggle="tab" href="#contrasena" role="tab" aria-controls="contrasena" aria-selected="false">Contraseña</a>
+            </li>
+            <!--<li class="nav-item">
+                <a class="nav-link" id="idioma-tab" data-toggle="tab" href="#idioma" role="tab" aria-controls="idioma" aria-selected="false">Idioma</a>
+            </li>-->
+            <li class="nav-item">
+                <a class="nav-link" id="metodoPago-tab" data-toggle="tab" href="#metodoPago" role="tab" aria-controls="metodoPago" aria-selected="false">Metodos de Pago</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+
+            <!--Form Perfil-->
+            <div class="tab-pane fade show active text-align form-new" id="perfil" role="tabpanel" aria-labelledby="perfil-tab">
+
+                <div class="row register-form">
+                    <div class="col-md-12">
+                        <form class="form-control-label">
+                            <h2>Editar perfil</h2>
+
+                            <div class="form-group">
+                                <label for="textNombre">Nombre</label>
+                                <input type="text" class="form-control" id="textNombre" placeholder="">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="textPrimApellido">Primer apellido</label>
+                                <input type="text" class="form-control" id="textPrimApellido" placeholder="">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="textSegApellido">Segundo apellido</label>
+                                <input type="text" class="form-control" id="textSegApellido" placeholder="">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="textCorreo">Correo electrónico</label>
+                                <input type="email" class="form-control" id="textCorreo" placeholder="name@example.com">
+                            </div>
+
+                            <!--<div class="form-group">
+                                <label for="textActContra">Contraseña actual</label>
+                                <input type="password" class="form-control" id="textActContra" placeholder="Debe tener al menos 8 caracteres">
+                            </div>-->
+
+
+                            <button type="submit" class="btn btn-default">Guardar cambios</button>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!--Form Contraseña-->
+            <div class="tab-pane fade show text-align form-new" id="contrasena" role="tabpanel" aria-labelledby="contrasena-tab">
+
+                <div class="row register-form">
+                    <div class="col-md-12">
+                        <form>
+                            <h2>Cambiar contraseña</h2>
+                            <div class="form-group">
+                                <label for="textActContra">Contraseña actual</label>
+                                <input type="password" class="form-control" id="textActContra" placeholder="Debe tener al menos 8 caracteres">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="textNuevaContra">Contraseña nueva</label>
+                                <input type="password" class="form-control" id="textNuevaContra" placeholder="Debe tener al menos 8 caracteres">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="textConfContra">Confirmación contraseña</label>
+                                <input type="password" class="form-control" id="textConfContra" placeholder="Debe tener al menos 8 caracteres">
+                            </div>
+
+                            <button type="submit" class="btn btn-default">Guardar cambios</button>
+
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--Form Idioma-->
+            <!--<div class="tab-pane fade show text-align form-new" id="idioma" role="tabpanel" aria-labelledby="idioma-tab">
+
+                <div class="row register-form">
+                    <div class="col-md-12">
+                        <form class="form-control-label">
+                            <h2>Idioma</h2>
+                            <label class="my-1 mr-2" for="preferenciaIdioma">Preferencia de idioma</label>
+                            <select class="custom-select my-1 mr-sm-2" id="preferenciaIdioma">
+                                <option selected>Elegir...</option>
+                                <option value="1">Inglés</option>
+                                <option value="2">Español</option>
+                                <option value="3">Alemán</option>
+                                <option value="4">Italiano</option>
+                            </select>
+
+                            <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                                <input type="checkbox" class="custom-control-input" id="checkIdioma">
+                                <label class="custom-control-label" for="checkIdioma">Recordar el idioma</label>
+                            </div>
+                            <button type="submit" class="btn btn-default">Actualizar</button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>-->
+
+            <!--Form Metodos de Pago-->
+            <div class="tab-pane fade show text-align form-new" id="metodoPago" role="tabpanel" aria-labelledby="metodoPago-tab">
+
+                <div class="row register-form">
+                    <div class="col-md-12">
+                        <form></form>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
