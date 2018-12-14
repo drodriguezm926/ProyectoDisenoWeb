@@ -4,5 +4,98 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>VerCarrito</h2>
+<body>
+
+    <div class="modal fade" id="modalRespuesta" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-dark" id="exampleModalLabel">Resultado</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p class="text text-info"> @ViewBag.mensaje </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-12 mr-lg-5">
+            <div class="card">
+                <div class="card card-body bg-dark">
+
+                    <h5 class="card-title text-center text-white">
+                        Carrito de produtos
+                    </h5>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="row" id="cardRegister">
+        <!-- Aca seria el codigo del diseño de tarjeta -->
+        <div class="container">
+            <div class="col1">
+                <div class="card">
+                    <div class="front">
+                        <div class="type">
+                            <img class="bankid" />
+                        </div>
+                        <span class="chip"></span>
+                        <span class="card_number">&#x25CF;&#x25CF;&#x25CF;&#x25CF; &#x25CF;&#x25CF;&#x25CF;&#x25CF; &#x25CF;&#x25CF;&#x25CF;&#x25CF; &#x25CF;&#x25CF;&#x25CF;&#x25CF; </span>
+                        <div class="date"><span class="date_value">MM / YYYY</span></div>
+                        <span class="fullname">FULL NAME</span>
+                    </div>
+                    <div class="back">
+                        <div class="magnetic"></div>
+                        <div class="bar"></div>
+                        <span class="seccode">&#x25CF;&#x25CF;&#x25CF;</span>
+                        <span class="chip"></span><span class="disclaimer">This card is property of Random Bank of Random corporation. <br> If found please return to Random Bank of Random corporation - 21968 Paris, Verdi Street, 34 </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col2">
+                <!-- Finaliza con diseño del codigo de tarjeta -->
+                <!-- Inicio de inputs para la validacion de la tarjetas -->
+                @using (Html.BeginForm("Compra", "Boleto", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <!-- Son inputs para validar  -->
+                    <input class="txtVuelo form-control" type="text" name="vuelo_id" value="" id="txtvueloSelected" style="display:none" />
+                    <input class="txtVuelo form-control" type="text" name="destinoF" value="" id="txtvueloSelected2" style="display:none" />
+                    <input class="txtCantidad form-control" type="text" name="cantidadBoletos" value="" id="txtCantidadDisabled" style="display:none" />
+                    <input class="txtmonto form-control" type="text" name="total" value="" id="txtMonto" style="display:none" />
+
+                    <label>Número de tarjeta</label>
+                    <input class="number text-white" name="numeroTarjeta" type="text" ng-model="ncard" minlength="16" maxlength="19" onkeypress='return event.charCode >= 48 && event.charCode <= 57' required />
+                    <label>Nombre del propietario</label>
+                    <input class="inputname text-white" name="portador" type="text" placeholder="" maxlength="25" required />
+                    <label>Fecha de vencimiento</label>
+                    <input class="expire text-white" name="fecha" type="text" placeholder="MM / YYYY" minlength="9" maxlength="9" required />
+                    <label>Número de seguridad</label>
+                    <input class="ccv text-white" name="cvv" type="text" placeholder="CVC" minlength="3" maxlength="3" onkeypress='return event.charCode >= 48 && event.charCode <= 57' required />
+
+
+
+                    <button type="submit" id="btnTotal" class="buy">Pagar $--.-- </button>
+                }
+
+                <!-- Finaliza inputs de tarjetas -->
+            </div>
+        </div>
+
+    </div>
+
+
+
+</body>
 
