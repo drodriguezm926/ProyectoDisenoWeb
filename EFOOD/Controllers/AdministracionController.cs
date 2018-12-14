@@ -1,4 +1,5 @@
 ﻿using Models;
+using ProjectHelpers.AppData;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -15,7 +16,7 @@ namespace EFOOD.Controllers
         public ActionResult Consecutivo()
         {
             ViewBag.lista = ConsecutivoModel.ObtenerConsecutivos();
-            return View();
+            return View();   
         }
 
         [HttpPost]
