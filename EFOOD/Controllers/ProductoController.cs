@@ -25,7 +25,7 @@ namespace EFOOD.Controllers
         }
 
         [HttpPost]
-        public ActionResult ProductoAdd(ProductoModel model)
+        public ActionResult ProductoAdd(ProductoModel model, string id)
         {
 
             string cadenaRuta = string.Empty;

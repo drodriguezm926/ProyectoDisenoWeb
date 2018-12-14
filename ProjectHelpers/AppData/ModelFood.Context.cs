@@ -37,6 +37,7 @@ namespace ProjectHelpers.AppData
         public virtual DbSet<PriceType> PriceTypes { get; set; }
         public virtual DbSet<PriceTypeToProduct> PriceTypeToProducts { get; set; }
         public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<ProductToCar> ProductToCars { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<TicketDiscount> TicketDiscounts { get; set; }
         public virtual DbSet<User> Users { get; set; }
