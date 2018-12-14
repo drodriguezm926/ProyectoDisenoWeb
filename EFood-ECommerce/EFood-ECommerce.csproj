@@ -130,6 +130,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BusquedaProductoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InicioController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -140,6 +141,7 @@
     <Content Include="Asset\AddUser.png" />
     <Content Include="Asset\Comidas.jpg" />
     <Content Include="Asset\Images\about.jpg" />
+    <Content Include="Asset\Images\avatar.png" />
     <Content Include="Asset\Images\gallery-bg.jpg" />
     <Content Include="Asset\Images\intro-bg.jpg" />
     <Content Include="Asset\Images\menu-bg.jpg" />
@@ -172,6 +174,7 @@
     <Content Include="Asset\Images\team\02.jpg" />
     <Content Include="Asset\Images\team\03.jpg" />
     <Content Include="Asset\ListUser.png" />
+    <Content Include="Asset\style.css" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
@@ -306,6 +309,7 @@
     <Content Include="Views\BusquedaProducto\AgregarCarrito.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Login\Registro.cshtml" />
+    <Content Include="Views\Inicio\Inicio.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

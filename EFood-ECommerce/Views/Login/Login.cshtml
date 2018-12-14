@@ -1,4 +1,4 @@
-﻿
+﻿@model Models.Customer
 @{
     ViewBag.Title = "Login";
     Layout = null;
@@ -45,13 +45,14 @@
                         <h5 class="card-title text-center">
                             Inicio de sesión
                         </h5>
-                        <form class="form-control-label" action="./Inicio.html">
+                        @using (Html.BeginForm("LoginAction", "Login"))
+                        {
                             <div class="form-group">
-                                <input autofocus="" class="form-control" id="txtEmail" placeholder="Correo electrónico"
+                                <input autofocus="" name="Email" class="form-control" id="txtEmail" placeholder="Correo electrónico"
                                        required="" type="email" />
                             </div>
                             <div class="form-group">
-                                <input class="form-control" id="txtPassword" placeholder="Contraseña" required=""
+                                <input class="form-control" name="ContrasenaEmail" id="txtPassword" placeholder="Contraseña" required=""
                                        type="password" />
                             </div>
                             <button class="btn btn-block" type="submit">
@@ -70,12 +71,13 @@
                                     <a href="@Url.Action("Registro", "Login")">Registrate ahora</a>
                                 </p>
                             </div>
-                        </form>
+                        }
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    @Html.Raw(TempData["msg"])
 </body>
 
 </html>

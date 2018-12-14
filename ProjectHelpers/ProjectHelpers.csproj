@@ -132,6 +132,7 @@
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\BitacoraModel.cs" />
     <Compile Include="Models\ConsecutivoModel.cs" />
+    <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\ErrorLogModel.cs" />
     <Compile Include="Models\LineaComidaModel.cs" />
     <Compile Include="Models\MediosPagoModel.cs" />

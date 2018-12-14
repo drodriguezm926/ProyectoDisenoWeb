@@ -17,7 +17,7 @@ namespace Models
         public HttpPostedFileBase Archivo { get; set; }
 
 
-        public static void AddDB(ProductoModel modelo, string idTipoDeProducto,double precio)
+        public static void AddDB(ProductoModel modelo)
         {
             using (efooddatabaseEntities db = new efooddatabaseEntities())
             {
@@ -38,9 +38,9 @@ namespace Models
 
                     PriceTypeToProduct priceToProduct = new PriceTypeToProduct
                     {
-                        PriceTypeCode = idTipoDeProducto,
+                        //PriceTypeCode = idTipoDeProducto,
                         ProductCode = codigoDeProducto,
-                        Price = precio
+                        //Price = precio
                     };
                     db.PriceTypeToProducts.Add(priceToProduct);
                     db.SaveChanges();
