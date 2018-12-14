@@ -17,32 +17,21 @@ namespace Models
         public HttpPostedFileBase Archivo { get; set; }
 
 
-        public static void AddDB(ProductoModel modelo, string idTipoDeProducto,double precio)
+        public static void AddDB(ProductoModel modelo)
         {
             using (efooddatabaseEntities db = new efooddatabaseEntities())
             {
                 try
-                {
-                    string codigoDeProducto = ConsecutivoModel.GetConsecutivo("Productos");
-                    //Entidades de la base de datos
+                {   //Entidades de la base de datos
                     Product product = new Product
                     {
-                        ProductCode = codigoDeProducto,
+                        ProductCode = ConsecutivoModel.GetConsecutivo("Productos"),
                         ProductDescription = modelo.ProductDescription,
                         FoodOptionCode = modelo.FoodOptionCode,
                         ProductContent = modelo.ProductContent,
                         ProductImage = modelo.ProductImage
                     };
                     db.Products.Add(product);
-                    db.SaveChanges();
-
-                    PriceTypeToProduct priceToProduct = new PriceTypeToProduct
-                    {
-                        PriceTypeCode = idTipoDeProducto,
-                        ProductCode = codigoDeProducto,
-                        Price = precio
-                    };
-                    db.PriceTypeToProducts.Add(priceToProduct);
                     db.SaveChanges();
                     BitacoraModel.AddLogBook("a", "Anadir", Admin.ObtenerIdUsuario());
                 }

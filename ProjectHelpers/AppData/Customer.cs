@@ -29,9 +29,6 @@ namespace ProjectHelpers.AppData
         public string Email { get; set; }
         public string TicketCode { get; set; }
         public Nullable<int> RoleID { get; set; }
-        public string ContrasenaEmail { get; set; }
-        public string FacebookID { get; set; }
-        public string TwitterID { get; set; }
     
         public virtual TicketDiscount TicketDiscount { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

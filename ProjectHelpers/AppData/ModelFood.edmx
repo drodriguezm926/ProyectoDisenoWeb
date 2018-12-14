@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="efooddatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="efooddatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Card">
           <Key>
             <PropertyRef Name="CardCode" />
@@ -34,9 +34,6 @@
           <Property Name="Email" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="TicketCode" Type="nvarchar" MaxLength="100" />
           <Property Name="RoleID" Type="int" />
-          <Property Name="ContrasenaEmail" Type="varchar(max)" />
-          <Property Name="FacebookID" Type="varchar(max)" />
-          <Property Name="TwitterID" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="ErrorLog">
           <Key>
@@ -131,15 +128,6 @@
           <Property Name="ProductContent" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="ProductImage" Type="nvarchar(max)" />
         </EntityType>
-        <EntityType Name="ProductToCar">
-          <Key>
-            <PropertyRef Name="ProductCode" />
-            <PropertyRef Name="CartID" />
-          </Key>
-          <Property Name="ProductCode" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="CartID" Type="int" Nullable="false" />
-          <Property Name="Quantity" Type="int" Nullable="false" />
-        </EntityType>
         <EntityType Name="ProductToCustomer">
           <Key>
             <PropertyRef Name="ProductCode" />
@@ -172,7 +160,7 @@
           <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Username" Type="nvarchar" MaxLength="30" Nullable="false" />
           <Property Name="Status" Type="bit" Nullable="false" />
-          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="PasswordHash" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Email" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="SecurityQuestion" Type="nvarchar" MaxLength="500" />
           <Property Name="SecurityAnswerHash" Type="nvarchar" MaxLength="200" />
@@ -368,7 +356,6 @@
           <EntitySet Name="PriceType" EntityType="Self.PriceType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PriceTypeToProduct" EntityType="Self.PriceTypeToProduct" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ProductToCar" EntityType="Self.ProductToCar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductToCustomer" EntityType="Self.ProductToCustomer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TicketDiscount" EntityType="Self.TicketDiscount" Schema="dbo" store:Type="Tables" />
@@ -431,8 +418,7 @@
             <End Role="UserToRole" EntitySet="UserToRole" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="efooddatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -466,12 +452,9 @@
           <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="TicketCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="RoleID" Type="Int32" />
-          <Property Name="ContrasenaEmail" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="FacebookID" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="TwitterID" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="TicketDiscount" Relationship="Self.FK__Customer__Ticket__59063A47" FromRole="Customer" ToRole="TicketDiscount" />
           <NavigationProperty Name="PaymentToCustomers" Relationship="Self.FK__PaymentTo__Custo__5FB337D6" FromRole="Customer" ToRole="PaymentToCustomer" />
-          <NavigationProperty Name="Products" Relationship="Self.ProductToCustomer" FromRole="Customer" ToRole="Product" />
+          <NavigationProperty Name="Products" Relationship="efooddatabaseModel.ProductToCustomer" FromRole="Customer" ToRole="Product" />
         </EntityType>
         <EntityType Name="ErrorLog">
           <Key>
@@ -570,16 +553,7 @@
           <NavigationProperty Name="FoodOption" Relationship="Self.FK__Product__FoodOpt__4D94879B" FromRole="Product" ToRole="FoodOption" />
           <NavigationProperty Name="Payments" Relationship="Self.FK__Payment__Product__5BE2A6F2" FromRole="Product" ToRole="Payment" />
           <NavigationProperty Name="PriceTypeToProducts" Relationship="Self.FK__PriceType__Produ__5165187F" FromRole="Product" ToRole="PriceTypeToProduct" />
-          <NavigationProperty Name="Customers" Relationship="Self.ProductToCustomer" FromRole="Product" ToRole="Customer" />
-        </EntityType>
-        <EntityType Name="ProductToCar">
-          <Key>
-            <PropertyRef Name="ProductCode" />
-            <PropertyRef Name="CartID" />
-          </Key>
-          <Property Name="ProductCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="CartID" Type="Int32" Nullable="false" />
-          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Customers" Relationship="efooddatabaseModel.ProductToCustomer" FromRole="Product" ToRole="Customer" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -607,7 +581,7 @@
           <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Username" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Status" Type="Boolean" Nullable="false" />
-          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PasswordHash" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="SecurityQuestion" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="SecurityAnswerHash" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
@@ -715,10 +689,6 @@
           <End Role="Card" Type="Self.Card" Multiplicity="*" />
           <End Role="PaymentProcessor" Type="Self.PaymentProcessor" Multiplicity="*" />
         </Association>
-        <Association Name="ProductToCustomer">
-          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
-          <End Role="Product" Type="Self.Product" Multiplicity="*" />
-        </Association>
         <Association Name="UserToRole">
           <End Role="Role" Type="Self.Role" Multiplicity="*" />
           <End Role="User" Type="Self.User" Multiplicity="*" />
@@ -736,7 +706,6 @@
           <EntitySet Name="PriceTypes" EntityType="Self.PriceType" />
           <EntitySet Name="PriceTypeToProducts" EntityType="Self.PriceTypeToProduct" />
           <EntitySet Name="Products" EntityType="Self.Product" />
-          <EntitySet Name="ProductToCars" EntityType="Self.ProductToCar" />
           <EntitySet Name="Roles" EntityType="Self.Role" />
           <EntitySet Name="TicketDiscounts" EntityType="Self.TicketDiscount" />
           <EntitySet Name="Users" EntityType="Self.User" />
@@ -776,15 +745,19 @@
             <End Role="Card" EntitySet="Cards" />
             <End Role="PaymentProcessor" EntitySet="PaymentProcessors" />
           </AssociationSet>
-          <AssociationSet Name="ProductToCustomer" Association="Self.ProductToCustomer">
-            <End Role="Customer" EntitySet="Customers" />
-            <End Role="Product" EntitySet="Products" />
-          </AssociationSet>
           <AssociationSet Name="UserToRole" Association="Self.UserToRole">
             <End Role="Role" EntitySet="Roles" />
             <End Role="User" EntitySet="Users" />
           </AssociationSet>
+          <AssociationSet Name="ProductToCustomer" Association="efooddatabaseModel.ProductToCustomer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="ProductToCustomer">
+          <End Type="efooddatabaseModel.Customer" Role="Customer" Multiplicity="*" />
+          <End Type="efooddatabaseModel.Product" Role="Product" Multiplicity="*" />
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -821,9 +794,6 @@
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="TicketCode" ColumnName="TicketCode" />
                 <ScalarProperty Name="RoleID" ColumnName="RoleID" />
-                <ScalarProperty Name="ContrasenaEmail" ColumnName="ContrasenaEmail" />
-                <ScalarProperty Name="FacebookID" ColumnName="FacebookID" />
-                <ScalarProperty Name="TwitterID" ColumnName="TwitterID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -919,15 +889,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ProductToCars">
-            <EntityTypeMapping TypeName="efooddatabaseModel.ProductToCar">
-              <MappingFragment StoreEntitySet="ProductToCar">
-                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
-                <ScalarProperty Name="CartID" ColumnName="CartID" />
-                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Roles">
             <EntityTypeMapping TypeName="efooddatabaseModel.Role">
               <MappingFragment StoreEntitySet="Role">
@@ -969,20 +930,20 @@
               <ScalarProperty Name="PaymentProcessorCode" ColumnName="PaymentProcessorCode" />
             </EndProperty>
           </AssociationSetMapping>
-          <AssociationSetMapping Name="ProductToCustomer" TypeName="efooddatabaseModel.ProductToCustomer" StoreEntitySet="ProductToCustomer">
-            <EndProperty Name="Customer">
-              <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
-            </EndProperty>
-            <EndProperty Name="Product">
-              <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
-            </EndProperty>
-          </AssociationSetMapping>
           <AssociationSetMapping Name="UserToRole" TypeName="efooddatabaseModel.UserToRole" StoreEntitySet="UserToRole">
             <EndProperty Name="Role">
               <ScalarProperty Name="RoleID" ColumnName="RoleID" />
             </EndProperty>
             <EndProperty Name="User">
               <ScalarProperty Name="UserID" ColumnName="UserID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="ProductToCustomer" TypeName="efooddatabaseModel.ProductToCustomer" StoreEntitySet="ProductToCustomer">
+            <EndProperty Name="Product">
+              <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+            </EndProperty>
+            <EndProperty Name="Customer">
+              <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
             </EndProperty>
           </AssociationSetMapping>
         </EntityContainerMapping>

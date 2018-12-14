@@ -4,23 +4,22 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="09de2cb7d7c94a88b97a32811a679c57" Name="Diagram1">
-        <EntityTypeShape EntityType="efooddatabaseModel.Card" Width="1.5" PointX="7.75" PointY="8.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="efooddatabaseModel.Consecutive" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="efooddatabaseModel.Customer" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="efooddatabaseModel.ErrorLog" Width="1.5" PointX="2.75" PointY="11.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="efooddatabaseModel.FoodOption" Width="1.5" PointX="6" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="efooddatabaseModel.LogBook" Width="1.5" PointX="5.25" PointY="8.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="efooddatabaseModel.Payment" Width="1.5" PointX="10.5" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="efooddatabaseModel.PaymentProcessor" Width="1.5" PointX="10" PointY="8" IsExpanded="true" />
-        <EntityTypeShape EntityType="efooddatabaseModel.PaymentToCustomer" Width="1.5" PointX="5.25" PointY="4.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="efooddatabaseModel.PriceType" Width="1.5" PointX="8.25" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="efooddatabaseModel.PriceTypeToProduct" Width="1.5" PointX="10.5" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="efooddatabaseModel.Product" Width="1.5" PointX="8.25" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="efooddatabaseModel.ProductToCar" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="efooddatabaseModel.Role" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="efooddatabaseModel.TicketDiscount" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="efooddatabaseModel.User" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
+      <Diagram DiagramId="c1dfb42eb5b74c8ab7e3993e8735c008" Name="Diagram1">
+        <EntityTypeShape EntityType="efooddatabaseModel.Card" Width="1.5" PointX="9.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="efooddatabaseModel.Consecutive" Width="1.5" PointX="7.75" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="efooddatabaseModel.Customer" Width="1.5" PointX="5.25" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="efooddatabaseModel.ErrorLog" Width="1.5" PointX="9.75" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="efooddatabaseModel.FoodOption" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="efooddatabaseModel.LogBook" Width="1.5" PointX="12.25" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="efooddatabaseModel.Payment" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="efooddatabaseModel.PaymentProcessor" Width="1.5" PointX="12" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="efooddatabaseModel.PaymentToCustomer" Width="1.5" PointX="7.5" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="efooddatabaseModel.PriceType" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="efooddatabaseModel.PriceTypeToProduct" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="efooddatabaseModel.Product" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="efooddatabaseModel.Role" Width="1.5" PointX="7.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="efooddatabaseModel.TicketDiscount" Width="1.5" PointX="3" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="efooddatabaseModel.User" Width="1.5" PointX="10" PointY="7.125" IsExpanded="true" />
         <AssociationConnector Association="efooddatabaseModel.FK__Customer__Ticket__59063A47" ManuallyRouted="false" />
         <AssociationConnector Association="efooddatabaseModel.FK__PaymentTo__Custo__5FB337D6" ManuallyRouted="false" />
         <AssociationConnector Association="efooddatabaseModel.FK__Product__FoodOpt__4D94879B" ManuallyRouted="false" />
@@ -30,8 +29,8 @@
         <AssociationConnector Association="efooddatabaseModel.FK__PriceType__Price__5070F446" ManuallyRouted="false" />
         <AssociationConnector Association="efooddatabaseModel.FK__PriceType__Produ__5165187F" ManuallyRouted="false" />
         <AssociationConnector Association="efooddatabaseModel.PaymentProcessorToCard" ManuallyRouted="false" />
-        <AssociationConnector Association="efooddatabaseModel.ProductToCustomer" ManuallyRouted="false" />
         <AssociationConnector Association="efooddatabaseModel.UserToRole" ManuallyRouted="false" />
+        <AssociationConnector Association="efooddatabaseModel.ProductToCustomer" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
