@@ -129,7 +129,12 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BusquedaProductoController.cs" />
+    <Compile Include="Controllers\BusquedaProductosController.cs" />
+    <Compile Include="Controllers\CarritoController.cs" />
+    <Compile Include="Controllers\ConfiguracionUsuarioController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InicioController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -139,6 +144,7 @@
     <Content Include="Asset\AddUser.png" />
     <Content Include="Asset\Comidas.jpg" />
     <Content Include="Asset\Images\about.jpg" />
+    <Content Include="Asset\Images\avatar.png" />
     <Content Include="Asset\Images\gallery-bg.jpg" />
     <Content Include="Asset\Images\intro-bg.jpg" />
     <Content Include="Asset\Images\menu-bg.jpg" />
@@ -171,6 +177,7 @@
     <Content Include="Asset\Images\team\02.jpg" />
     <Content Include="Asset\Images\team\03.jpg" />
     <Content Include="Asset\ListUser.png" />
+    <Content Include="Asset\style.css" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
@@ -303,6 +310,12 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\BusquedaProducto\BusquedaProducto.cshtml" />
     <Content Include="Views\BusquedaProducto\AgregarCarrito.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\Login\Registro.cshtml" />
+    <Content Include="Views\Inicio\Inicio.cshtml" />
+    <Content Include="Views\BusquedaProductos\BusquedaProductos.cshtml" />
+    <Content Include="Views\Carrito\VerCarrito.cshtml" />
+    <Content Include="Views\ConfiguracionUsuario\Configuracion.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

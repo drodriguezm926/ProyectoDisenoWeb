@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewBag.Title = "BusquedaProductos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="col-sm col-5 p-5">
+    <div class="form-group input-group-sm mb-3 col-3">
+        <label for="pais">Lineas de comida</label>
+        <select name="pais" id="pais" class="form-control">
+            <option value="mexico">Combos</option>
+            <option value="espana">Postres</option>
+            <option value="colombia">Ensaladas</option>
+        </select>
+    </div>
+    <div class="form-group">
+        &nbsp;&nbsp;<label for="pais">Producto</label>
+        <span class="lead">#</span>
+    </div>
+
+
+    <div class="form-group input-group-lg mb-3 col-4">
+        <label for="nombre">Contenido</label>
+        <input type="text" class="form-control" placeholder="" name="nombre" id="nombre" style="height: : 1110px;">
+    </div>
+
+    &nbsp;&nbsp;   <label for="nombre">Precios</label>
+
+    <div class="form-check">
+        <label class="form-check-label">
+            <input type="radio" name="" id="" class="form-check-input mr-2">Pequeño $200
+        </label>
+    </div>
+    <div class="form-check">
+        <label class="form-check-label">
+            <input type="radio" name="" id="" class="form-check-input mr-2">Mediano $600
+        </label>
+    </div>
+    <div class="form-check">
+        <label class="form-check-label">
+            <input type="radio" name="" id="" class="form-check-input mr-2">Grande $1200
+        </label>
+    </div>
+
+
+    <div class="form-group input-group-sm mb-3 col-2 pt-4">
+        <label for="nombre">Cantidad</label>
+        <input type="text" class="form-control" placeholder="" name="nombre" id="nombre" style="height: : 1110px;">
+    </div>
+
+    <div class="input-group input-group-sm mb-3 justify-content-center pt-5">
+        <button type="button" class="btn btn-outline-info rounded-bottom" style="border-radius: 12px">Agregar</button>
+    </div>
+</div>
