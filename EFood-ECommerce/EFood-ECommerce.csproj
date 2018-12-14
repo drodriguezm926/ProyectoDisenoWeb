@@ -130,6 +130,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BusquedaProductoController.cs" />
     <Compile Include="Controllers\BusquedaProductosController.cs" />
+    <Compile Include="Controllers\CarritoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InicioController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -312,6 +313,7 @@
     <Content Include="Views\Login\Registro.cshtml" />
     <Content Include="Views\Inicio\Inicio.cshtml" />
     <Content Include="Views\BusquedaProductos\BusquedaProductos.cshtml" />
+    <Content Include="Views\Carrito\VerCarrito.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
