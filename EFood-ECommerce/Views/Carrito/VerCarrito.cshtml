@@ -1,4 +1,4 @@
-﻿@model Models.CarritoModel
+﻿@model Models.ProductoModel
 @{
     ViewBag.Title = "VerCarrito";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -39,7 +39,7 @@
                         string nombreModal = string.Empty;
                         foreach (var item in @ViewBag.Carrito)
                         {
-                            btnEditar = "btnEditar_" + item.CartID;
+                            btnEditar = "btnEditar_" + item.ProductCode;
                             nombreModal = "fm-btn-modal_" + item.ProductCode;
                             <tr>
                                 <td>
@@ -72,11 +72,11 @@
 
                                 <td>
                                     <div class="btn-group btn-group-sm">
-                                        @using (Html.BeginForm("BusquedaProductosAgregarCarrito", "BusquedaProductos"))
+                                        @using (Html.BeginForm("VerCarritoDelete", "Carrito"))
                                         {
                                             string valor = btnEditar.Split('_')[1];
-                                            @Html.HiddenFor(Model => Model.CartID, new { Value = valor })
-                                            <button class="btn btn-sm btn-success btn-outline-danger text-sm-center" style="border-radius: 8px" type="submit">Probar</button>
+                                            @Html.HiddenFor(Model => Model.ProductCode, new { Value = valor })
+                                            <button class="btn btn-sm btn-success btn-outline-danger text-sm-center" style="border-radius: 8px" type="submit">Eliminar</button>
                                         }
                                     </div>
 

@@ -112,6 +112,39 @@ namespace Models
             catch (Exception x) { ErrorLogModel.AddError(x); return null; }
         }
 
+        public static void DeleteProductDB(ProductoModel modelo, int Carrito)
+        {
+            using (efooddatabaseEntities db = new efooddatabaseEntities())
+            {
+                try
+                {
+                    var log = (from valor in db.Payments
+                               where valor.CartID == Carrito
+                               select valor).SingleOrDefault();
+
+                    var precio = (from valor in db.PriceTypeToProducts
+                                  where valor.ProductCode == modelo.ProductCode
+                                  select valor).SingleOrDefault();
+
+                    var productoAEliminar = (from producto in db.ProductToCars
+                                             where producto.CartID == Carrito &&
+                                                   producto.ProductCode == modelo.ProductCode
+                                             select producto).SingleOrDefault();
+
+                    log.Quantity = log.Quantity - 1;
+                    log.Total = log.Total - precio.Price;
+                    db.SaveChanges();
+
+                    
+                    db.ProductToCars.Remove(productoAEliminar);
+                    db.SaveChanges();
+                    //BitacoraModel.AddLogBook("a", "Anadir", Customer.ObtenerIdCustomer());
+                    
+                }
+                catch (Exception e) { ErrorLogModel.AddError(e); }
+            }
+        }
+
 
     }
 }

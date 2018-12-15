@@ -25,6 +25,15 @@ namespace EFood_ECommerce.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult VerCarritoDelete(ProductoModel model)
+        {
+            Customer usuarioLogueado = (Customer)System.Web.HttpContext.Current.Session["Usuario"];
+            CarritoModel.DeleteProductDB(model, usuarioLogueado.CustomerID);
+            ViewBag.Carrito = CarritoModel.CargarCarrito(usuarioLogueado.CustomerID);
+            return View("VerCarrito");
+        }
+
         [HttpGet]
         public ActionResult Pagar()
         {
