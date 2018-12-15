@@ -69,7 +69,7 @@ namespace EFood_ECommerce.Controllers
                 //Se declara una varible vacia para el mensaje
                 string mensaje = string.Empty;
                 //Se consulta al WebService
-                mensaje = PagarModel.actualizarMontoPut(tarjeta, mensaje);
+                mensaje = PagarModel.actualizarMontoPut(tarjeta, mensaje, usuarioLogueado.CustomerID);
 
                 if (mensaje.Equals("OK"))
                 {

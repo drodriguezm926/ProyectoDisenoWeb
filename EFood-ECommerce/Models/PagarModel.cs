@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Web;
 using System.Net.Http.Formatting;
+using Models;
 
 namespace EFood_ECommerce.Models
 {
@@ -20,7 +21,7 @@ namespace EFood_ECommerce.Models
         public Nullable<decimal> limite_credito { get; set; }
         public string codUsuario { get; set; }
 
-        public static string actualizarMontoPut(PagarModel tarjeta, string mensaje)
+        public static string actualizarMontoPut(PagarModel tarjeta, string mensaje, int Carrito)
         {
             //Se conecta a WS
             HttpClient clienteHttp = new HttpClient();
@@ -31,7 +32,7 @@ namespace EFood_ECommerce.Models
 
             if (request.IsSuccessStatusCode)
             {
-
+                CarritoModel.DeleteAllCarritoDB(Carrito);
                 return "OK";
             }
             else
