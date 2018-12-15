@@ -206,23 +206,24 @@ namespace EFOOD.Controllers
         }
 
         [HttpPost]
-        public ActionResult ProductoAdd(ProductoModel model, TipoPrecioToProduct modeloTipoPrecio)
+        //public ActionResult ProductoAdd(ProductoModel model, TipoPrecioToProduct modeloTipoPrecio)
+        public ActionResult ProductoAdd(IntermedioProductoTipoPrecio model)
         {
 
             string cadenaRuta = string.Empty;
 
 
-            if (model.Archivo != null && model.Archivo.ContentLength > 0)
+            if (model.productoModel.Archivo != null && model.productoModel.Archivo.ContentLength > 0)
             {
-                var fileName = Path.GetFileName(model.Archivo.FileName);
+                var fileName = Path.GetFileName(model.productoModel.Archivo.FileName);
 
                 var rutaImagen = Path.Combine(Server.MapPath("~/Asset/Images/Producto"), fileName);
                 cadenaRuta = "~/Asset/Images/Producto/" + fileName;
-                model.Archivo.SaveAs(rutaImagen);
-                model.ProductImage = cadenaRuta;
+                model.productoModel.Archivo.SaveAs(rutaImagen);
+                model.productoModel.ProductImage = cadenaRuta;
             }
 
-            ProductoModel.AddDB(model, modeloTipoPrecio);
+            ProductoModel.AddDB(model.productoModel, model.TipoPrecio);
             ViewBag.lista = ProductoModel.ObtenerProductos();
             ViewBag.ListaFoodOption = LineaComidaModel.ObtenerLineasComida();
             ViewBag.listaTipoPrecios = TipoPrecioModelo.ObtenerTerritorio();
