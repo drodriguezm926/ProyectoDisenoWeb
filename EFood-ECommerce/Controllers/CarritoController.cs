@@ -20,21 +20,24 @@ namespace EFood_ECommerce.Controllers
         [HttpGet]
         public ActionResult VerCarrito()
         {
-            ViewBag.Carrito = CarritoModel.CargarCarrito();
+            Customer usuarioLogueado = (Customer)System.Web.HttpContext.Current.Session["Usuario"];
+            ViewBag.Carrito = CarritoModel.CargarCarrito(usuarioLogueado.CustomerID);
             return View();
         }
 
         [HttpGet]
         public ActionResult Pagar()
         {
-            ViewBag.Carrito = CarritoModel.CargarCarrito();
+            Customer usuarioLogueado = (Customer)System.Web.HttpContext.Current.Session["Usuario"];
+            ViewBag.Carrito = CarritoModel.CargarCarrito(usuarioLogueado.CustomerID);
             return View();
         }
 
         [HttpPost]
         public ActionResult Pagar(PagarModel model)
         {
-            ViewBag.Carrito = CarritoModel.CargarCarrito();
+            Customer usuarioLogueado = (Customer)System.Web.HttpContext.Current.Session["Usuario"];
+            ViewBag.Carrito = CarritoModel.CargarCarrito(usuarioLogueado.CustomerID);
             return View("Pagar");
         }
 
