@@ -5,7 +5,7 @@ using System.Web;
 
 namespace EFood_ECommerce.Models
 {
-    public class CarritoModel
+    public class PagarModel
     {
     }
 }

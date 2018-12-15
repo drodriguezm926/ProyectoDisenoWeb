@@ -4,9 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Models;
 
 namespace EFood_ECommerce.Controllers
 {
+
     public class CarritoController : Controller
     {
         // GET: Carrito
@@ -18,6 +20,7 @@ namespace EFood_ECommerce.Controllers
         [HttpGet]
         public ActionResult VerCarrito()
         {
+            ViewBag.Carrito = CarritoModel.CargarCarrito();
             return View();
         }
 
@@ -32,5 +35,6 @@ namespace EFood_ECommerce.Controllers
         {
             return View();
         }
+
     }
 }
