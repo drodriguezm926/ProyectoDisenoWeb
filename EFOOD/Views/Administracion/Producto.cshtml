@@ -4,6 +4,7 @@
 @{
     ViewBag.Title = "Producto";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    
 }
 
 <main role="main" class="container pt-5">
@@ -62,10 +63,10 @@
                             List<SelectListItem>
                                  listTpoPrecio = new List<SelectListItem>();
 
-                            foreach (var item in ViewBag.listaTipoPrecio)
+                            foreach (var item in ViewBag.listaTipoPrecios)
                             {
 
-                                listItems.Add(new SelectListItem
+                                listTpoPrecio.Add(new SelectListItem
                                 {
                                     Text = item.PriceTypeDescription,
                                     Value = item.PriceTypeDescription
@@ -79,14 +80,7 @@
                                     @Html.DropDownListFor(model => model.productoModel.FoodOptionCode, listItems, "-- Seleciona descripcion --", new { htmlAttributes = new { @class = "form-control", @type = "text" } })
                                 </div>
                             </div>
-
-                            <div class="input-group input-group-sm mb-1 pt-4">
-                                <div class="col-8 col-6-xsmall">
-                                    <label>Linea de comida&nbsp;&nbsp;</label>
-                                    @Html.DropDownListFor(model => model.productoModel.FoodOptionCode, listItems, "-- Seleciona descripcion --", new { htmlAttributes = new { @class = "form-control", @type = "text" } })
-                                </div>
-                            </div>
-
+                            
                             <div class="input-group input-group-sm mb-1 pt-4">
                                 <div class="col-8 col-6-xsmall">
                                     <label>Tipo de precio&nbsp;&nbsp;</label>
@@ -97,7 +91,7 @@
                             <div class="input-group input-group-sm mb-1 pt-4">
                                 <div class="col-8 col-6-xsmall">
                                     <label>Precio&nbsp;&nbsp;</label>
-                                    @Html.EditorFor(Model => Model.TipoPrecio.Price, new { htmlAttributes = new { @class = "form-control", @type = "text" } })
+                                    @Html.EditorFor(Model => Model.TipoPrecio.Price, new { htmlAttributes = new { @class = "form-control", @type = "numeric" } })
                                 </div>
                             </div>
 

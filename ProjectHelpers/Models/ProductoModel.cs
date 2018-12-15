@@ -17,7 +17,7 @@ namespace Models
         public HttpPostedFileBase Archivo { get; set; }
 
 
-        public static void AddDB(ProductoModel modelo)
+        public static void AddDB(ProductoModel modelo, TipoPrecioToProduct modeloTipoPrecio)
         {
             using (efooddatabaseEntities db = new efooddatabaseEntities())
             {
@@ -38,10 +38,11 @@ namespace Models
 
                     PriceTypeToProduct priceToProduct = new PriceTypeToProduct
                     {
-                        //PriceTypeCode = idTipoDeProducto,
+                        PriceTypeCode = modeloTipoPrecio.PriceTypeCode,
                         ProductCode = codigoDeProducto,
-                        //Price = precio
+                        Price = modeloTipoPrecio.Price
                     };
+
                     db.PriceTypeToProducts.Add(priceToProduct);
                     db.SaveChanges();
                     BitacoraModel.AddLogBook("a", "Anadir", Admin.ObtenerIdUsuario());

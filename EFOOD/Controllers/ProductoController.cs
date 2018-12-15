@@ -21,7 +21,7 @@ namespace EFOOD.Controllers
         {
             ViewBag.lista = ProductoModel.ObtenerProductos();
             ViewBag.ListaFoodOption = LineaComidaModel.ObtenerLineasComida();
-            ViewBag.listaTipoPrecio = TipoPrecioModelo.ObtenerTerritorio();
+            ViewBag.listaTipoPrecios = TipoPrecioModelo.ObtenerTerritorio();
 
             return View();
         }
@@ -43,11 +43,11 @@ namespace EFOOD.Controllers
                 model.ProductImage = cadenaRuta;
             }
 
-            ProductoModel.AddDB(model);
+            ProductoModel.AddDB(model, modelTipo);
             ViewBag.lista = ProductoModel.ObtenerProductos();
+            ViewBag.listaTipoPrecios = TipoPrecioModelo.ObtenerTerritorio();
             ViewBag.ListaFoodOption = LineaComidaModel.ObtenerLineasComida();
-            ViewBag.listaTipoPrecio = TipoPrecioModelo.ObtenerTerritorio();
-
+            
             return View("Producto");
         }
 

@@ -200,11 +200,13 @@ namespace EFOOD.Controllers
         {
             ViewBag.lista = ProductoModel.ObtenerProductos();
             ViewBag.ListaFoodOption = LineaComidaModel.ObtenerLineasComida();
+            ViewBag.listaTipoPrecios = TipoPrecioModelo.ObtenerTerritorio();
+
             return View();
         }
 
         [HttpPost]
-        public ActionResult ProductoAdd(ProductoModel model)
+        public ActionResult ProductoAdd(ProductoModel model, TipoPrecioToProduct modeloTipoPrecio)
         {
 
             string cadenaRuta = string.Empty;
@@ -220,9 +222,11 @@ namespace EFOOD.Controllers
                 model.ProductImage = cadenaRuta;
             }
 
-            ProductoModel.AddDB(model);
+            ProductoModel.AddDB(model, modeloTipoPrecio);
             ViewBag.lista = ProductoModel.ObtenerProductos();
             ViewBag.ListaFoodOption = LineaComidaModel.ObtenerLineasComida();
+            ViewBag.listaTipoPrecios = TipoPrecioModelo.ObtenerTerritorio();
+
             return View("Producto");
         }
 
