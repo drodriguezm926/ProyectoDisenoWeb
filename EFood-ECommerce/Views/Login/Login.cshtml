@@ -58,13 +58,20 @@
                             <button class="btn btn-block" type="submit">
                                 Iniciar
                             </button>
-                            <button class="btn btn-block btn-primary">
-                                Iniciar con Facebook
-                            </button>
-
-                            <button class="btn btn-block btn-info">
-                                Iniciar con Twitter
-                            </button>
+                            <div class="form-group">
+                                <a href="@Url.Action("Facebook", "Facebook")">
+                                    <button class="btn btn-block btn-primary" type="button">
+                                        Iniciar sesión con Facebook
+                                    </button>
+                                </a>
+                            </div>
+                            <div class="form-group">
+                                <a href="@Url.Action("Authorize", "Twitter")">
+                                    <button class="btn btn-block btn-secondary" type="button">
+                                        Iniciar sesión con Twitter
+                                    </button>
+                                </a>
+                            </div>
                             <div>
                                 <p>
                                     ¿No tienes cuenta?

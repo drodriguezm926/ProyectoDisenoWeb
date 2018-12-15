@@ -28,6 +28,77 @@ namespace Models
             int id = customer.CustomerID;
             return id;
         }
+        
+        public static void AgregarCustomer(CustomerModel newCustomer)
+        {
+            using (efooddatabaseEntities db = new efooddatabaseEntities())
+            {
+                try
+                {   //Entidades de la base de datos
+                    ProjectHelpers.AppData.Customer customer = new ProjectHelpers.AppData.Customer
+                    {
+                        CustomerID = newCustomer.CustomerID,
+                        CustomerName = newCustomer.CustomerName,
+                        CustomerLastname = newCustomer.CustomerLastname,
+                        Telephone = newCustomer.Telephone,
+                        Address = "No indica",
+                        Email = newCustomer.Email,
+                        ContrasenaEmail = newCustomer.ContrasenaEmail
+                    };
+                    db.Customers.Add(customer);
+                    db.SaveChanges();
+
+                    Payment payment = new Payment
+                    {
+                        CartID = newCustomer.CustomerID,
+                        Quantity = 0,
+                        Total = 0,
+                        Description = "Carrito de " + newCustomer.CustomerName
+                    };
+                    db.Payments.Add(payment);
+                    db.SaveChanges();
+                }
+                catch (Exception e) { ErrorLogModel.AddError(e); }
+            }
+        }
+
+        public static bool ExisteCustomer(CustomerModel modelo)
+        {
+            using (efooddatabaseEntities db = new efooddatabaseEntities())
+            {
+                var log = (from valor in db.Customers
+                           where valor.Email == modelo.Email
+                           select valor).SingleOrDefault();
+                if (log != null)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
+        public static List<CustomerModel> LoginCustomer(string email, string password)
+        {
+            using (efooddatabaseEntities db = new efooddatabaseEntities())
+            {
+                return (from customer in db.Customers
+                        where customer.Email == email &&
+                              customer.ContrasenaEmail == password
+
+                        select new CustomerModel
+                        {
+                            Email = customer.Email,
+                            ContrasenaEmail = password,
+                            CustomerID = customer.CustomerID,
+                            CustomerName = customer.CustomerName,
+                            CustomerLastname = customer.CustomerLastname
+                        }).ToList();
+
+            }
+        }
 
         private string Encriptar(string cadena)
         {
@@ -42,25 +113,7 @@ namespace Models
             string resultado = new UnicodeEncoding().GetString(desencriptar);
             return resultado;
         }
-
-        public static List<CustomerModel> LoginCustomer(string email, string password)
-        {
-            using (efooddatabaseEntities db = new efooddatabaseEntities())
-            {
-                return (from customer in db.Customers
-                        where customer.Email == email &&
-                              customer.ContrasenaEmail == password
-                                    
-                        select new CustomerModel
-                        {
-                            Email = customer.Email,
-                            ContrasenaEmail = password,
-                            CustomerID = customer.CustomerID
-                        }).ToList();
-
-            }
-        }
-
+        
         private List<CustomerModel> GetConsumidores()
         {
             List<CustomerModel> consumidores = new List<CustomerModel>();
@@ -153,7 +206,6 @@ namespace Models
                 cliente.CustomerName = consumidor.CustomerName;
                 cliente.CustomerLastname = consumidor.CustomerLastname;
                 cliente.FacebookID = consumidor.FacebookID;
-
 
                 vuelosData.Customers.Add(cliente);
                 vuelosData.SaveChanges();

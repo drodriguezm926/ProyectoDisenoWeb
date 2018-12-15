@@ -12,7 +12,7 @@ namespace EFood_ECommerce.Controllers
         // GET: Inicio
         public ActionResult Inicio()
         {
-            Customer customer = (Customer)Session["Usuario"];
+            CustomerModel customer = (CustomerModel)Session["Usuario"];
             Session["NombreDeUsuario"] = customer.CustomerName;
             return View();
         }

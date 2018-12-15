@@ -62,27 +62,27 @@ namespace EFood_ECommerce.Controllers
             }
         }
 
-        public ActionResult Registro(Customer customer)
+        public ActionResult Registro(CustomerModel customer)
         {
             try
             {
-                List<Customer> loginCustomer = Customer.LoginCustomer(customer.Email, customer.ContrasenaEmail);
+                List<CustomerModel> loginCustomer = CustomerModel.LoginCustomer(customer.Email, customer.ContrasenaEmail);
 
-                if (Customer.ExisteCustomer(customer))
+                if (CustomerModel.ExisteCustomer(customer))
                 {
                     AddAlertMessage("El correo ingresado, ya se encuentra registrado.");
                     return RedirectToAction("Registro", "Login");
                 }
                 else
                 {
-                    if(customer.ContrasenaEmail != customer.ConfirmaContrasena)
+                    if(customer.ContrasenaEmail != customer.ContrasenaEmail)
                     {
                         AddAlertMessage("Las contraseñas no coinciden.");
                         return RedirectToAction("Registro", "Login");
                     }
                     else
                     {
-                        Customer.AgregarCustomer(customer);
+                        CustomerModel.AgregarCustomer(customer);
                         AddAlertMessage("Se ha agregado correctamente.");
                         return RedirectToAction("Login", "Login");
                     }

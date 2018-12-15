@@ -1,4 +1,5 @@
 ﻿using Facebook;
+using Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -69,16 +70,16 @@ namespace EFood_ECommerce.Controllers
             string email = me.email;
 
             //Se valida si el usuario de Facebook existe, en caso de que no se registra, en caso contrario se agrega a cuenta de correo actual
-            Consumidor consumidor = new Consumidor();
+            CustomerModel consumidor = new CustomerModel();
             consumidor.ValidarUsuarioFacebook(email, me.id, me.first_name, me.last_name, "");
 
             //Se agrega los datos del usuario al objeto
-            consumidor.codFacebook = me.id;
-            consumidor.correo = me.email;
-            consumidor.nombre = me.first_name;
-            consumidor.primerApellido = me.last_name;
-            consumidor.segundoApellido = me.last_name;
-            consumidor.ProfileURL = me.picture.data.url;
+            //consumidor.codFacebook = me.id;
+            //consumidor.correo = me.email;
+           //consumidor.nombre = me.first_name;
+           // consumidor.primerApellido = me.last_name;
+           // consumidor.segundoApellido = me.last_name;
+            //consumidor.ProfileURL = me.picture.data.url;
 
             //Se guarda en sesion datos el usuario
             Session["facebook"] = consumidor;
