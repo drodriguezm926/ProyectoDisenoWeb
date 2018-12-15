@@ -14,6 +14,7 @@ namespace Models
         public string FoodOptionCode { get; set; }
         public string ProductContent { get; set; }
         public string ProductImage { get; set; }
+        public int cantidad { get; set; }
         public HttpPostedFileBase Archivo { get; set; }
 
 

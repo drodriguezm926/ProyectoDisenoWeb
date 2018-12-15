@@ -131,8 +131,8 @@ namespace Models
                                                    producto.ProductCode == modelo.ProductCode
                                              select producto).SingleOrDefault();
 
-                    log.Quantity = log.Quantity - 1;
-                    log.Total = log.Total - precio.Price;
+                    log.Quantity = log.Quantity - productoAEliminar.Quantity;
+                    log.Total = log.Total - (precio.Price * productoAEliminar.Quantity);
                     db.SaveChanges();
 
                     
@@ -140,6 +140,61 @@ namespace Models
                     db.SaveChanges();
                     //BitacoraModel.AddLogBook("a", "Anadir", Customer.ObtenerIdCustomer());
                     
+                }
+                catch (Exception e) { ErrorLogModel.AddError(e); }
+            }
+        }
+
+        public static void EditProductDB(ProductoModel modelo, int Carrito)
+        {
+            using (efooddatabaseEntities db = new efooddatabaseEntities())
+            {
+                try
+                {
+                    var log = (from valor in db.Payments
+                               where valor.CartID == Carrito
+                               select valor).SingleOrDefault();
+
+                    var precio = (from valor in db.PriceTypeToProducts
+                                  where valor.ProductCode == modelo.ProductCode
+                                  select valor).SingleOrDefault();
+
+                    var productoAEditar = (from producto in db.ProductToCars
+                                           where producto.CartID == Carrito &&
+                                                 producto.ProductCode == modelo.ProductCode
+                                           select producto).SingleOrDefault();
+
+                    int valorACalcular = productoAEditar.Quantity - modelo.cantidad;
+
+                    if (modelo.cantidad == 0)
+                    {
+                        DeleteProductDB(modelo, Carrito);
+                    } 
+                    else if (valorACalcular < 0)
+                    {
+                        // Si la resta del valor actual menos la cantidad nueva ingresada da valores negativo,
+                        // este significa que esta agregando más productos.
+                        log.Quantity = log.Quantity + Math.Abs(valorACalcular);
+                        log.Total = log.Total + (precio.Price * Math.Abs(valorACalcular));
+                        db.SaveChanges();
+                    }
+                    else if (valorACalcular > 0)
+                    {
+                        // Si la resta del valor actual menos la cantidad nueva ingresada da valores positivos,
+                        // este significa que están eliminando productos.
+                        log.Quantity = log.Quantity - Math.Abs(valorACalcular);
+                        log.Total = log.Total - (precio.Price * Math.Abs(valorACalcular));
+                        db.SaveChanges();
+                    }
+
+                    if(modelo.cantidad != 0)
+                    {
+                        productoAEditar.Quantity = modelo.cantidad;
+                        db.SaveChanges();
+                    }
+                    
+                    //BitacoraModel.AddLogBook("a", "Anadir", Customer.ObtenerIdCustomer());
+
                 }
                 catch (Exception e) { ErrorLogModel.AddError(e); }
             }
