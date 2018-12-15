@@ -66,7 +66,7 @@ namespace Models
                     {
                         CartID = Carrito,
                         ProductCode = modelo.ProductCode,
-                        Quantity = log.Quantity + 1,
+                        Quantity = 1,
                     };
                     db.ProductToCars.Add(agregarACarro);
                     db.SaveChanges();
