@@ -358,6 +358,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Asset\Images\Producto\" />
+    <Folder Include="Views\Facebook\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

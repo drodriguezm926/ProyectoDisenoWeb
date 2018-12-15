@@ -74,17 +74,19 @@ namespace EFood_ECommerce.Controllers
             consumidor.ValidarUsuarioFacebook(email, me.id, me.first_name, me.last_name, "");
 
             //Se agrega los datos del usuario al objeto
-            //consumidor.codFacebook = me.id;
-            //consumidor.correo = me.email;
-           //consumidor.nombre = me.first_name;
-           // consumidor.primerApellido = me.last_name;
-           // consumidor.segundoApellido = me.last_name;
-            //consumidor.ProfileURL = me.picture.data.url;
+            consumidor.FacebookID = me.id;
+            consumidor.Email = me.email;
+            consumidor.CustomerName = me.first_name;
+            consumidor.CustomerLastname = me.last_name;
+            consumidor.Telephone = "";
+            consumidor.Address = "";
+            consumidor.ContrasenaEmail = "";
+            
 
             //Se guarda en sesion datos el usuario
             Session["facebook"] = consumidor;
 
-            return RedirectToAction("Busqueda", "Vuelo");
+            return RedirectToAction("Inicio", "Inicio");
         }
 
         #endregion

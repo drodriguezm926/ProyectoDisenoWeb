@@ -206,6 +206,9 @@ namespace Models
                 cliente.CustomerName = consumidor.CustomerName;
                 cliente.CustomerLastname = consumidor.CustomerLastname;
                 cliente.FacebookID = consumidor.FacebookID;
+                cliente.Address = "";
+                cliente.Telephone = "";
+                cliente.TicketCode = null;
 
                 vuelosData.Customers.Add(cliente);
                 vuelosData.SaveChanges();
