@@ -133,7 +133,7 @@
     <Compile Include="Models\BitacoraModel.cs" />
     <Compile Include="Models\CarritoModel.cs" />
     <Compile Include="Models\ConsecutivoModel.cs" />
-    <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\CustomerModel.cs" />
     <Compile Include="Models\ErrorLogModel.cs" />
     <Compile Include="Models\IntermedioProductoTipoPrecio.cs" />
     <Compile Include="Models\LineaComidaModel.cs" />

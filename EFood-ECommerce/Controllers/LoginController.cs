@@ -30,11 +30,11 @@ namespace EFood_ECommerce.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        public ActionResult LoginAction(Customer customer)
+        public ActionResult LoginAction(CustomerModel customer)
         {
             try
             {
-                List<Customer> loginCustomer = Customer.LoginCustomer(customer.Email, customer.ContrasenaEmail);
+                List<CustomerModel> loginCustomer = CustomerModel.LoginCustomer(customer.Email, customer.ContrasenaEmail);
 
                 if (loginCustomer != null)
                 {

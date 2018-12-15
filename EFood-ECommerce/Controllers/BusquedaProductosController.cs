@@ -26,7 +26,7 @@ namespace EFood_ECommerce.Controllers
         [HttpPost]
         public ActionResult BusquedaProductosAgregarCarrito(ProductoModel model)
         {
-            Customer usuarioLogueado = (Customer)System.Web.HttpContext.Current.Session["Usuario"];
+            CustomerModel usuarioLogueado = (CustomerModel)System.Web.HttpContext.Current.Session["Usuario"];
             if (CarritoModel.ExisteEnCarrito(model, usuarioLogueado.CustomerID))
             {
                 AddAlertMessage("El producto ya existe en el carro");
