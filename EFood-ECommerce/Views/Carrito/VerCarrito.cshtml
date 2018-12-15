@@ -95,4 +95,10 @@
 
 <body>
     <a href="@Url.Action("Pagar", "Carrito")" class="btn btn-success btn-lg page-scroll">Pagar</a>
+    <script>
+        $(document).ready(function () {
+            var respuesta = @Html.Raw(Json.Encode(ViewBag.Carrito));
+            console.log(respuesta)
+        });
+    </script>
 </body>
