@@ -32,7 +32,8 @@ namespace Models
             using (efooddatabaseEntities db = new efooddatabaseEntities())
             {
                 var log = (from valor in db.ProductToCars
-                           where valor.ProductCode == modelo.ProductCode
+                           where valor.ProductCode == modelo.ProductCode &&
+                                 valor.CartID == Carrito
                            select valor).SingleOrDefault();
                 if(log != null)
                 {

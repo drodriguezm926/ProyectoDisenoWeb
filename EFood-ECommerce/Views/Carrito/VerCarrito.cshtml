@@ -120,7 +120,13 @@
         </div>
     </div>
 </div>
-<label>@ViewBag.Carrito[0].Total</label>
+<label>
+    @{if (@ViewBag.Carrito.Count != 0)
+        {
+            @ViewBag.Carrito[0].Total
+        }
+     }
+</label>
 <body>
     <a href="@Url.Action("Pagar", "Carrito")" class="btn btn-success btn-lg page-scroll">Pagar</a>
     <script>
