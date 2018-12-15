@@ -79,7 +79,7 @@ namespace Models
             }
         }
 
-        public static List<ConsultaCarrito> CargarCarrito()
+        public static List<ConsultaCarrito> CargarCarrito(int idCarrito)
         {
             try
             {
@@ -90,6 +90,7 @@ namespace Models
                               join productosEnCarrito in db.ProductToCars on carrito.CartID equals productosEnCarrito.CartID
                               join productos in db.Products on productosEnCarrito.ProductCode equals productos.ProductCode
                               join preciosProducto in db.PriceTypeToProducts on productos.ProductCode equals preciosProducto.ProductCode
+                              where carrito.CartID == idCarrito
 
                               select new ConsultaCarrito
                               {
