@@ -1,4 +1,4 @@
-﻿
+﻿@model Models.CustomerModel
 @{
     ViewBag.Title = "Configuracion";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -68,28 +68,27 @@
 
                 <div class="row register-form">
                     <div class="col-md-12">
-                        <form>
+                        @using (Html.BeginForm("CambiarContrasena", "ConfiguracionUsuario"))
+                        {
                             <h2>Cambiar contraseña</h2>
                             <div class="form-group">
                                 <label for="textActContra">Contraseña actual</label>
-                                <input type="password" class="form-control" id="textActContra" placeholder="Debe tener al menos 8 caracteres">
+                                <input type="password" name="ContrasenaEmail" class="form-control" id="textActContra" placeholder="Debe tener al menos 8 caracteres">
                             </div>
 
                             <div class="form-group">
                                 <label for="textNuevaContra">Contraseña nueva</label>
-                                <input type="password" class="form-control" id="textNuevaContra" placeholder="Debe tener al menos 8 caracteres">
+                                <input type="password" name="ContrasenaNueva" class="form-control" id="textNuevaContra" placeholder="Debe tener al menos 8 caracteres">
                             </div>
 
                             <div class="form-group">
                                 <label for="textConfContra">Confirmación contraseña</label>
-                                <input type="password" class="form-control" id="textConfContra" placeholder="Debe tener al menos 8 caracteres">
+                                <input type="password" name="ConfirmaContrasena" class="form-control" id="textConfContra" placeholder="Debe tener al menos 8 caracteres">
                             </div>
 
                             <button type="submit" class="btn btn-default">Guardar cambios</button>
-
-
-                        </form>
-                    </div>
+                        }
+                        </div>
                 </div>
             </div>
 
@@ -120,7 +119,6 @@
                     </div>
                 </div>
             </div>-->
-
             <!--Form Metodos de Pago-->
             <div class="tab-pane fade show text-align form-new" id="metodoPago" role="tabpanel" aria-labelledby="metodoPago-tab">
 
@@ -135,4 +133,5 @@
         </div>
     </div>
 </div>
+@Html.Raw(TempData["msg"])
 
