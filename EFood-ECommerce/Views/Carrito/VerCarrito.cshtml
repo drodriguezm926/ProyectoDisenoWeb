@@ -75,6 +75,7 @@
                                         @using (Html.BeginForm("BusquedaProductosAgregarCarrito", "BusquedaProductos"))
                                         {
                                             string valor = btnEditar.Split('_')[1];
+                                            @ViewBag.CodigoDeComida=item.ProductCode;
                                             @Html.HiddenFor(Model => Model.CartID, new { Value = valor })
                                             <button class="btn btn-sm btn-success btn-outline-danger text-sm-center" style="border-radius: 8px" type="submit">Probar</button>
                                         }
