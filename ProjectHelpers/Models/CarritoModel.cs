@@ -53,6 +53,10 @@ namespace Models
                            where valor.CartID == Carrito
                            select valor).SingleOrDefault();
 
+                var precio = (from valor in db.PriceTypeToProducts
+                             where valor.ProductCode == modelo.ProductCode
+                             select valor).SingleOrDefault();
+
 
                 try
                 {
@@ -61,9 +65,13 @@ namespace Models
                     {
                         CartID = Carrito,
                         ProductCode = modelo.ProductCode,
-                        Quantity = log.Quantity + 1
+                        Quantity = log.Quantity + 1,
                     };
                     db.ProductToCars.Add(agregarACarro);
+                    db.SaveChanges();
+                    
+                    log.Quantity = log.Quantity + 1;
+                    log.Total = log.Total + precio.Price;
                     db.SaveChanges();
                     //BitacoraModel.AddLogBook("a", "Anadir", Customer.ObtenerIdCustomer());
                 }
