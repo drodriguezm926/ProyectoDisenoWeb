@@ -75,7 +75,7 @@ namespace EFood_ECommerce.Controllers
                 }
                 else
                 {
-                    if(customer.ContrasenaEmail != customer.ContrasenaEmail)
+                    if(customer.ContrasenaEmail != customer.ConfirmaContrasena)
                     {
                         AddAlertMessage("Las contraseñas no coinciden.");
                         return RedirectToAction("Registro", "Login");

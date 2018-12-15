@@ -18,8 +18,31 @@ namespace Models
         public string TicketCode { get; set; }
         public Nullable<int> RoleID { get; set; }
         public string ContrasenaEmail { get; set; }
+        public string ContrasenaNueva { get; set; }
+        public string ConfirmaContrasena { get; set; }
         public string FacebookID { get; set; }
         public string TwitterID { get; set; }
+
+        public static void CambiarContrasena(CustomerModel model)
+        {
+            using (efooddatabaseEntities db = new efooddatabaseEntities())
+            {
+                try
+                {
+                    var log = (from customer in db.Customers
+                               where customer.CustomerID == model.CustomerID
+                               select customer).SingleOrDefault();
+
+
+                    // Si la resta del valor actual menos la cantidad nueva ingresada da valores positivos,
+                    // este significa que están eliminando productos.
+                    log.ContrasenaEmail = model.ContrasenaNueva;
+                    db.SaveChanges();
+
+                }
+                catch (Exception e) { ErrorLogModel.AddError(e); }
+            }
+        }
 
         public static int ObtenerIdCustomer()
         {
