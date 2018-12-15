@@ -1,19 +1,93 @@
-﻿
+﻿@model Models.CarritoModel
 @{
     ViewBag.Title = "VerCarrito";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<div class="container">
+    <div class="row">
+        <div class="col-12 mr-lg-5">
+            <div class="card">
+                <div class="card card-body bg-dark">
 
-<div class="row">
-    <div class="col-12 mr-lg-5">
-        <div class="card">
-            <div class="card card-body bg-dark">
+                    <h5 class="card-title text-center text-white">
+                        Carrito de compras
+                    </h5>
 
-                <h5 class="card-title text-center text-white">
-                    Carrito de compras
-                </h5>
-
+                </div>
             </div>
+        </div>
+    </div>
+
+
+    <div class="row pt-1">
+        <div class="col">
+            <table class="table table-light table-sm table-hover table-bordered table-responsive-lg">
+                <thead class="text-info">
+                    <tr>
+                        <th>Código de producto</th>
+                        <th>Descripción de producto</th>
+                        <th>Precio unitario</th>
+                        <th>Cantidad</th>
+                        <th>Imagen</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                @*            Inicia la carga de datos en la tabla             *@
+                <tbody class="text-dark">
+                    @{
+                        string btnEditar = string.Empty;
+                        string nombreModal = string.Empty;
+                        foreach (var item in @ViewBag.Carrito)
+                        {
+                            btnEditar = "btnEditar_" + item.CartID;
+                            nombreModal = "fm-btn-modal_" + item.ProductCode;
+                            <tr>
+                                <td>
+                                    @item.ProductCode
+                                </td>
+                                <td>
+                                    @item.ProductDescription
+                                </td>
+                                <td>
+                                    @item.PrecioUnitario
+                                </td>
+                                <td>
+                                    @item.Quantity
+                                </td>
+
+                                @if (!string.IsNullOrEmpty(item.ProductImage))
+                                {
+
+
+                                    <td>
+                                        <img class="rounded-circle" src="@Url.Content(item.ProductImage)" style="width: 40px; height: 40px;" />
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td>
+                                        <p>Imagen no disponible</p>
+                                    </td>
+                                }
+
+                                <td>
+                                    <div class="btn-group btn-group-sm">
+                                        @using (Html.BeginForm("BusquedaProductosAgregarCarrito", "BusquedaProductos"))
+                                        {
+                                            string valor = btnEditar.Split('_')[1];
+                                            @Html.HiddenFor(Model => Model.CartID, new { Value = valor })
+                                            <button class="btn btn-sm btn-success btn-outline-danger text-sm-center" style="border-radius: 8px" type="submit">Probar</button>
+                                        }
+                                    </div>
+
+                                </td>
+                            </tr>
+                        }
+
+                    }
+
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

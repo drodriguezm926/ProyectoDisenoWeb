@@ -9,10 +9,23 @@ namespace Models
 {
     public class CarritoModel
     {
+        public class ConsultaCarrito
+        {
+            public int CartID { get; set; }
+            public string ProductCode { get; set; }
+            public string DescriptionCarrito { get; set; }
+            public string ProductDescription { get; set; }
+            public double PrecioUnitario { get; set; }
+            public int Quantity { get; set; }
+            public double Total { get; set; }
+            public string ProductImage { get; set; }
+        }
+
         public int CartID { get; set; }
         public int Quantity { get; set; }
         public double Total { get; set; }
         public string Description { get; set; }
+
 
         public static bool ExisteEnCarrito(ProductoModel modelo, int Carrito)
         {
@@ -57,5 +70,39 @@ namespace Models
                 catch (Exception e) { ErrorLogModel.AddError(e); }
             }
         }
+
+        public static List<ConsultaCarrito> CargarCarrito()
+        {
+            try
+            {
+                using (efooddatabaseEntities db = new efooddatabaseEntities())
+                {
+
+                    var log = from carrito in db.Payments
+                              join productosEnCarrito in db.ProductToCars on carrito.CartID equals productosEnCarrito.CartID
+                              join productos in db.Products on productosEnCarrito.ProductCode equals productos.ProductCode
+                              join preciosProducto in db.PriceTypeToProducts on productos.ProductCode equals preciosProducto.ProductCode
+
+                              select new ConsultaCarrito
+                              {
+                                  CartID = carrito.CartID,
+                                  ProductCode = productos.ProductCode,
+                                  DescriptionCarrito = carrito.Description,
+                                  ProductDescription = productos.ProductDescription,
+                                  PrecioUnitario = preciosProducto.Price,
+                                  Quantity = productosEnCarrito.Quantity,
+                                  Total = carrito.Total,
+                                  ProductImage = productos.ProductImage
+                              };
+
+                    return log.ToList();
+
+                }
+
+            }
+            catch (Exception x) { ErrorLogModel.AddError(x); return null; }
+        }
+
+
     }
 }
