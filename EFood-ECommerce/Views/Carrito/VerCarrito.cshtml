@@ -21,107 +21,121 @@
 
     <div class="row pt-1">
         <div class="col">
-            <table class="table table-light table-sm table-hover table-bordered table-responsive-lg">
-                <thead class="text-info">
-                    <tr>
-                        <th>Código de producto</th>
-                        <th>Descripción de producto</th>
-                        <th>Precio unitario</th>
-                        <th>Cantidad</th>
-                        <th>Imagen</th>
-                        <th>Acción</th>
-                    </tr>
-                </thead>
-                @*            Inicia la carga de datos en la tabla             *@
-                <tbody class="text-dark">
-                    @{
-                        string btnEditar = string.Empty;
-                        string nombreModal = string.Empty;
-                        foreach (var item in @ViewBag.Carrito)
-                        {
-                            btnEditar = "btnEditar_" + item.ProductCode;
-                            nombreModal = "fm-btn-modal_" + item.ProductCode;
+            @{
+                if (@ViewBag.Carrito.Count != 0)
+                {
+                    <table class="table table-light table-sm table-hover table-bordered table-responsive-lg">
+                        <thead class="text-info">
                             <tr>
-                                <td>
-                                    @item.ProductCode
-                                </td>
-                                <td>
-                                    @item.ProductDescription
-                                </td>
-                                <td>
-                                    @item.PrecioUnitario
-                                </td>
-                                <td>
-                                    @item.Quantity
-                                </td>
-
-                                @if (!string.IsNullOrEmpty(item.ProductImage))
+                                <th>Código de producto</th>
+                                <th>Descripción de producto</th>
+                                <th>Precio unitario</th>
+                                <th>Cantidad</th>
+                                <th>Imagen</th>
+                                <th>Acción</th>
+                            </tr>
+                        </thead>
+                        @*            Inicia la carga de datos en la tabla             *@
+                        <tbody class="text-dark">
+                            @{
+                                string btnEditar = string.Empty;
+                                string nombreModal = string.Empty;
+                                foreach (var item in @ViewBag.Carrito)
                                 {
+                                    btnEditar = "btnEditar_" + item.ProductCode;
+                                    nombreModal = "fm-btn-modal_" + item.ProductCode;
+                                    <tr>
+                                        <td>
+                                            @item.ProductCode
+                                        </td>
+                                        <td>
+                                            @item.ProductDescription
+                                        </td>
+                                        <td>
+                                            @item.PrecioUnitario
+                                        </td>
+                                        <td>
+                                            @item.Quantity
+                                        </td>
+
+                                        @if (!string.IsNullOrEmpty(item.ProductImage))
+                                        {
 
 
-                                    <td>
-                                        <img class="rounded-circle" src="@Url.Content(item.ProductImage)" style="width: 40px; height: 40px;" />
-                                    </td>
-                                }
-                                else
-                                {
-                                    <td>
-                                        <p>Imagen no disponible</p>
-                                    </td>
-                                }
+                                            <td>
+                                                <img class="rounded-circle" src="@Url.Content(item.ProductImage)" style="width: 40px; height: 40px;" />
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            <td>
+                                                <p>Imagen no disponible</p>
+                                            </td>
+                                        }
 
-                                <td>
-                                    <div class="btn-group btn-group-sm">
-                                        <div class="btn-group btn-group-sm">
-                                            <button type="button" class="btn btn-sm btn-success btn-outline-secondary rounded-bottom text-sm-center" style="border-radius: 8px" id="@btnEditar" data-toggle="modal" data-target="#@nombreModal">Editar</button>
-                                            <div class="modal fade" id="@nombreModal" tabindex="-1" role="dialog" aria-labelledby="fm-modal2" aria-hidden="true">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header bg-secondary">
-                                                            <h5 class="modal-title text-white text-center" id="">Editar cantidad de @item.ProductDescription</h5>
-                                                            <button class="close" data-dismiss="modal" aria-label="Cerrar">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body">
-
-                                                            @using (Html.BeginForm("VerCarritoEdit", "Carrito", new { id = "" }))
-                                                            {
-                                                                <div>
-                                                                    <label>Nueva cantidad de producto:</label>
-                                                                    @Html.HiddenFor(Model => Model.ProductCode, new { Value = btnEditar.Split('_')[1] })
-                                                                    @Html.EditorFor(Model => Model.cantidad, new { htmlAttributes = new { @class = "form-control", @type = "text" } })
-
-                                                                    <br />
-                                                                    <input class="btn btn-sm btn-secondary" type="submit" value="Guardar" />
+                                        <td>
+                                            <div class="btn-group btn-group-sm">
+                                                <div class="btn-group btn-group-sm">
+                                                    <button type="button" class="btn btn-sm btn-success btn-outline-secondary rounded-bottom text-sm-center" style="border-radius: 8px" id="@btnEditar" data-toggle="modal" data-target="#@nombreModal">Editar</button>
+                                                    <div class="modal fade" id="@nombreModal" tabindex="-1" role="dialog" aria-labelledby="fm-modal2" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header bg-secondary">
+                                                                    <h5 class="modal-title text-white text-center" id="">Editar cantidad de @item.ProductDescription</h5>
+                                                                    <button class="close" data-dismiss="modal" aria-label="Cerrar">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
                                                                 </div>
+                                                                <div class="modal-body">
 
-                                                            }
+                                                                    @using (Html.BeginForm("VerCarritoEdit", "Carrito", new { id = "" }))
+                                                                    {
+                                                                        <div>
+                                                                            <label>Nueva cantidad de producto:</label>
+                                                                            @Html.HiddenFor(Model => Model.ProductCode, new { Value = btnEditar.Split('_')[1] })
+                                                                            @Html.EditorFor(Model => Model.cantidad, new { htmlAttributes = new { @class = "form-control", @type = "text" } })
+
+                                                                            <br />
+                                                                            <input class="btn btn-sm btn-secondary" type="submit" value="Guardar" />
+                                                                        </div>
+
+                                                                    }
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
+                                                    @using (Html.BeginForm("VerCarritoDelete", "Carrito"))
+                                                    {
+                                                        string valor = btnEditar.Split('_')[1];
+                                                        @Html.HiddenFor(Model => Model.ProductCode, new { Value = valor })
+                                                        <button class="btn btn-sm btn-success btn-outline-danger text-sm-center" style="border-radius: 8px" type="submit">Eliminar</button>
+                                                    }
                                                 </div>
                                             </div>
-                                            @using (Html.BeginForm("VerCarritoDelete", "Carrito"))
-                                            {
-                                                string valor = btnEditar.Split('_')[1];
-                                                @Html.HiddenFor(Model => Model.ProductCode, new { Value = valor })
-                                                <button class="btn btn-sm btn-success btn-outline-danger text-sm-center" style="border-radius: 8px" type="submit">Eliminar</button>
-                                            }
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
+                                        </td>
+                                    </tr>
+                                }
+
+                            }
+
+                        </tbody>
+                    </table>
+                    <label>
+                        @{if (@ViewBag.Carrito.Count != 0)
+                            {
+                                @ViewBag.Carrito[0].Total
+                            }
                         }
+                    </label>
+                    <a href="@Url.Action("Pagar", "Carrito")" class="btn btn-success btn-lg page-scroll">Pagar</a>
+                    
+                }
+                else
+                {
+                    <h1>No posee objetos en el carrito</h1>
+                }
 
-                    }
-
-                </tbody>
-            </table>
+            }
         </div>
     </div>
 </div>
-<label>@ViewBag.Carrito[0].Total</label>
-<body>
-    <a href="@Url.Action("Pagar", "Carrito")" class="btn btn-success btn-lg page-scroll">Pagar</a>
-    
-</body>

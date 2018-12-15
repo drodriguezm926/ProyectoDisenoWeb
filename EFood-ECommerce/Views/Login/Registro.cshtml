@@ -54,46 +54,61 @@
                         <h5 class="card-title text-center">
                             Registro
                         </h5>
-                        <form class="form-control-label">
-                            <div class="form-group">
-                                <input autofocus="" class="form-control" id="txtEmail" placeholder="Correo electrónico"
-                                       required="" type="email" />
-                            </div>
-                            <div class="form-group">
-                                <input class="form-control" id="txtNombre" placeholder="Nombre" required="" type="text" />
-                            </div>
-                            <div class="form-group">
-                                <input class="form-control" id="txtPrimerApellido" placeholder="Primer apellido"
-                                       required="" type="text" />
-                            </div>
-                            <div class="form-group">
-                                <input class="form-control" id="txtSegundoApellido" placeholder="Segundo apellido"
-                                       required="" type="text" />
-                            </div>
-                            <div class="form-group">
-                                <input class="form-control" id="txtPassword" placeholder="Contraseña" required="" type="password" />
-                            </div>
-                            <div class="form-group">
-                                <input class="form-control" id="txtConfPassword" placeholder="Confirmacion contraseña"
-                                       required="" type="password" />
-                            </div>
-                            <button class="btn btn-block btn-default" type="submit">
-                                Registrarse
-                            </button>
-                            <button class="btn btn-block btn-primary" type="submit">
-                                Registrarse con Facebook
-                            </button>
-                            <button class="btn btn-block btn-info" type="submit">
-                                Registrarse con Twitter
-                            </button>
-                        </form>
+                        @using (Html.BeginForm("Registro", "Login"))
+                        {
+                            <form class="form-control-label">
+                                <div class="form-group">
+                                    <input autofocus="" name="Email" class="form-control" id="txtEmail" placeholder="Correo electrónico"
+                                           required="" type="email" />
+                                </div>
+                                <div class="form-group">
+                                    <input autofocus="" name="CustomerID" class="form-control" id="txtIdentificacion" placeholder="Identificación"
+                                           required="" type="text" />
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" name="CustomerName" id="txtNombre" placeholder="Nombre" required="" type="text" />
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" name="CustomerLastname" id="txtApellidos" placeholder="Apellidos"
+                                           required="" type="text" />
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" name="Telephone" id="txtTelefono" placeholder="Número telefonico"
+                                           required="" type="text" />
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" name="ContrasenaEmail" id="txtPassword" placeholder="Contraseña" required="" type="password" />
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" name="ConfirmaContrasena" id="txtConfPassword" placeholder="Confirmacion contraseña"
+                                           required="" type="password" />
+                                </div>
+                                <button class="btn btn-block btn-default" type="submit">
+                                    Registrarse
+                                </button>
+                                <button class="btn btn-block btn-primary" type="submit">
+                                    Registrarse con Facebook
+                                </button>
+                                <button class="btn btn-block btn-info" type="submit">
+                                    Registrarse con Twitter
+                                </button>
+                            </form>
+                        }
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-
+    @Html.Raw(TempData["msg"])
+    <footer class="footer bg-dark">
+        <div id="google_translate_element" style="text-align: center"></div>
+        <script type="text/javascript">
+            function googleTranslateElementInit() {
+                new google.translate.TranslateElement({ pageLanguage: 'es', includedLanguages: 'de,en,es,it', autoDisplay: false }, 'google_translate_element');
+            }
+        </script>
+        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    </footer>
 </body>
 
 </html>
