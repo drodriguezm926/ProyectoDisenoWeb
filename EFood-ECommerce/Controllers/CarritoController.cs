@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EFood_ECommerce.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,6 +17,18 @@ namespace EFood_ECommerce.Controllers
 
         [HttpGet]
         public ActionResult VerCarrito()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Pagar()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Pagar(PagarModel model)
         {
             return View();
         }

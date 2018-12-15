@@ -138,6 +138,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CarritoModel.cs" />
+    <Compile Include="Models\PagarModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -206,6 +208,8 @@
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\Carrito\CSS\componentes.css" />
+    <Content Include="Scripts\Carrito\JS\app.js" />
     <Content Include="Scripts\contact_me.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
@@ -316,11 +320,11 @@
     <Content Include="Views\BusquedaProductos\BusquedaProductos.cshtml" />
     <Content Include="Views\Carrito\VerCarrito.cshtml" />
     <Content Include="Views\ConfiguracionUsuario\Configuracion.cshtml" />
+    <Content Include="Views\Carrito\Pagar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Asset\Images\Producto\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
