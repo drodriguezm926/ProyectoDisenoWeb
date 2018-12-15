@@ -21,6 +21,14 @@ namespace Models
         public string FacebookID { get; set; }
         public string TwitterID { get; set; }
 
+        public static int ObtenerIdCustomer()
+        {
+            Customer customer = (Customer)System.Web.HttpContext.Current.Session["Usuario"];
+
+            int id = customer.CustomerID;
+            return id;
+        }
+
         public static List<Customer> LoginCustomer(string email, string password)
         {
             using (efooddatabaseEntities db = new efooddatabaseEntities())
@@ -32,7 +40,8 @@ namespace Models
                         select new Customer
                         {
                             Email = customer.Email,
-                            ContrasenaEmail = password
+                            ContrasenaEmail = password,
+                            CustomerID = customer.CustomerID
                         }).ToList();
 
             }

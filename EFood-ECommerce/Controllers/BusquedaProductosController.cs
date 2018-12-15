@@ -22,5 +22,29 @@ namespace EFood_ECommerce.Controllers
             ViewBag.listaProd = ProductoModel.ObtenerProductos();
             return View();
         }
+
+        [HttpPost]
+        public ActionResult BusquedaProductosAgregarCarrito(ProductoModel model)
+        {
+            Customer usuarioLogueado = (Customer)System.Web.HttpContext.Current.Session["Usuario"];
+            if (CarritoModel.ExisteEnCarrito(model, usuarioLogueado.CustomerID))
+            {
+                AddAlertMessage("El producto ya existe en el carro");
+                ViewBag.lista = LineaComidaModel.ObtenerLineasComida();
+                ViewBag.listaProd = ProductoModel.ObtenerProductos();
+                return View("BusquedaProductos");
+            }
+            
+            CarritoModel.AddProductDB(model, usuarioLogueado.CustomerID);
+            ViewBag.lista = LineaComidaModel.ObtenerLineasComida();
+            ViewBag.listaProd = ProductoModel.ObtenerProductos();
+            AddAlertMessage("El producto se ha agregado correctamente.");
+            return View("BusquedaProductos");
+        }
+
+        private void AddAlertMessage(string message)
+        {
+            TempData["msg"] = "<script>alert('" + message + "');</script>";
+        }
     }
 }

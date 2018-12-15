@@ -26,7 +26,7 @@
           <Key>
             <PropertyRef Name="CustomerID" />
           </Key>
-          <Property Name="CustomerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerID" Type="int" Nullable="false" />
           <Property Name="CustomerName" Type="nvarchar" MaxLength="30" Nullable="false" />
           <Property Name="CustomerLastname" Type="nvarchar" MaxLength="60" Nullable="false" />
           <Property Name="Telephone" Type="nvarchar" MaxLength="30" Nullable="false" />
@@ -70,8 +70,7 @@
           <Key>
             <PropertyRef Name="CartID" />
           </Key>
-          <Property Name="CartID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ProductCode" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CartID" Type="int" Nullable="false" />
           <Property Name="Quantity" Type="int" Nullable="false" />
           <Property Name="Total" Type="float" Nullable="false" />
           <Property Name="Description" Type="nvarchar" MaxLength="200" Nullable="false" />
@@ -103,7 +102,6 @@
           </Key>
           <Property Name="CartID" Type="int" Nullable="false" />
           <Property Name="CustomerID" Type="int" Nullable="false" />
-          <Property Name="Status" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="PriceType">
           <Key>
@@ -186,7 +184,7 @@
           <Property Name="UserID" Type="int" Nullable="false" />
           <Property Name="RoleID" Type="int" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Customer__Ticket__59063A47">
+        <Association Name="FK__Customer__Ticket__7E37BEF6">
           <End Role="TicketDiscount" Type="Self.TicketDiscount" Multiplicity="0..1" />
           <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
           <ReferentialConstraint>
@@ -207,18 +205,6 @@
             </Principal>
             <Dependent Role="LogBook">
               <PropertyRef Name="UserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Payment__Product__5BE2A6F2">
-          <End Role="Product" Type="Self.Product" Multiplicity="1" />
-          <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Product">
-              <PropertyRef Name="ProductCode" />
-            </Principal>
-            <Dependent Role="Payment">
-              <PropertyRef Name="ProductCode" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -246,7 +232,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PaymentTo__CartI__5EBF139D">
+        <Association Name="FK__PaymentTo__CartI__0A9D95DB">
           <End Role="Payment" Type="Self.Payment" Multiplicity="1" />
           <End Role="PaymentToCustomer" Type="Self.PaymentToCustomer" Multiplicity="*" />
           <ReferentialConstraint>
@@ -258,7 +244,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PaymentTo__Custo__5FB337D6">
+        <Association Name="FK__PaymentTo__Custo__0B91BA14">
           <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
           <End Role="PaymentToCustomer" Type="Self.PaymentToCustomer" Multiplicity="*" />
           <ReferentialConstraint>
@@ -306,7 +292,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ProductTo__Custo__75A278F5">
+        <Association Name="FK__ProductTo__Custo__01142BA1">
           <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
           <End Role="ProductToCustomer" Type="Self.ProductToCustomer" Multiplicity="*" />
           <ReferentialConstraint>
@@ -318,7 +304,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ProductTo__Produ__74AE54BC">
+        <Association Name="FK__ProductTo__Produ__02084FDA">
           <End Role="Product" Type="Self.Product" Multiplicity="1" />
           <End Role="ProductToCustomer" Type="Self.ProductToCustomer" Multiplicity="*" />
           <ReferentialConstraint>
@@ -374,17 +360,13 @@
           <EntitySet Name="TicketDiscount" EntityType="Self.TicketDiscount" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserToRole" EntityType="Self.UserToRole" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Customer__Ticket__59063A47" Association="Self.FK__Customer__Ticket__59063A47">
+          <AssociationSet Name="FK__Customer__Ticket__7E37BEF6" Association="Self.FK__Customer__Ticket__7E37BEF6">
             <End Role="TicketDiscount" EntitySet="TicketDiscount" />
             <End Role="Customer" EntitySet="Customer" />
           </AssociationSet>
           <AssociationSet Name="FK__LogBook__UserID__5441852A" Association="Self.FK__LogBook__UserID__5441852A">
             <End Role="User" EntitySet="User" />
             <End Role="LogBook" EntitySet="LogBook" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Payment__Product__5BE2A6F2" Association="Self.FK__Payment__Product__5BE2A6F2">
-            <End Role="Product" EntitySet="Product" />
-            <End Role="Payment" EntitySet="Payment" />
           </AssociationSet>
           <AssociationSet Name="FK__PaymentPr__CardC__46E78A0C" Association="Self.FK__PaymentPr__CardC__46E78A0C">
             <End Role="Card" EntitySet="Card" />
@@ -394,11 +376,11 @@
             <End Role="PaymentProcessor" EntitySet="PaymentProcessor" />
             <End Role="PaymentProcessorToCard" EntitySet="PaymentProcessorToCard" />
           </AssociationSet>
-          <AssociationSet Name="FK__PaymentTo__CartI__5EBF139D" Association="Self.FK__PaymentTo__CartI__5EBF139D">
+          <AssociationSet Name="FK__PaymentTo__CartI__0A9D95DB" Association="Self.FK__PaymentTo__CartI__0A9D95DB">
             <End Role="Payment" EntitySet="Payment" />
             <End Role="PaymentToCustomer" EntitySet="PaymentToCustomer" />
           </AssociationSet>
-          <AssociationSet Name="FK__PaymentTo__Custo__5FB337D6" Association="Self.FK__PaymentTo__Custo__5FB337D6">
+          <AssociationSet Name="FK__PaymentTo__Custo__0B91BA14" Association="Self.FK__PaymentTo__Custo__0B91BA14">
             <End Role="Customer" EntitySet="Customer" />
             <End Role="PaymentToCustomer" EntitySet="PaymentToCustomer" />
           </AssociationSet>
@@ -414,11 +396,11 @@
             <End Role="FoodOption" EntitySet="FoodOption" />
             <End Role="Product" EntitySet="Product" />
           </AssociationSet>
-          <AssociationSet Name="FK__ProductTo__Custo__75A278F5" Association="Self.FK__ProductTo__Custo__75A278F5">
+          <AssociationSet Name="FK__ProductTo__Custo__01142BA1" Association="Self.FK__ProductTo__Custo__01142BA1">
             <End Role="Customer" EntitySet="Customer" />
             <End Role="ProductToCustomer" EntitySet="ProductToCustomer" />
           </AssociationSet>
-          <AssociationSet Name="FK__ProductTo__Produ__74AE54BC" Association="Self.FK__ProductTo__Produ__74AE54BC">
+          <AssociationSet Name="FK__ProductTo__Produ__02084FDA" Association="Self.FK__ProductTo__Produ__02084FDA">
             <End Role="Product" EntitySet="Product" />
             <End Role="ProductToCustomer" EntitySet="ProductToCustomer" />
           </AssociationSet>
@@ -458,7 +440,7 @@
           <Key>
             <PropertyRef Name="CustomerID" />
           </Key>
-          <Property Name="CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerID" Type="Int32" Nullable="false" />
           <Property Name="CustomerName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="CustomerLastname" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Telephone" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
@@ -469,8 +451,8 @@
           <Property Name="ContrasenaEmail" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="FacebookID" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="TwitterID" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="TicketDiscount" Relationship="Self.FK__Customer__Ticket__59063A47" FromRole="Customer" ToRole="TicketDiscount" />
-          <NavigationProperty Name="PaymentToCustomers" Relationship="Self.FK__PaymentTo__Custo__5FB337D6" FromRole="Customer" ToRole="PaymentToCustomer" />
+          <NavigationProperty Name="TicketDiscount" Relationship="Self.FK__Customer__Ticket__7E37BEF6" FromRole="Customer" ToRole="TicketDiscount" />
+          <NavigationProperty Name="Payments" Relationship="Self.PaymentToCustomer" FromRole="Customer" ToRole="Payment" />
           <NavigationProperty Name="Products" Relationship="Self.ProductToCustomer" FromRole="Customer" ToRole="Product" />
         </EntityType>
         <EntityType Name="ErrorLog">
@@ -507,13 +489,11 @@
           <Key>
             <PropertyRef Name="CartID" />
           </Key>
-          <Property Name="CartID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ProductCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CartID" Type="Int32" Nullable="false" />
           <Property Name="Quantity" Type="Int32" Nullable="false" />
           <Property Name="Total" Type="Double" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Product" Relationship="Self.FK__Payment__Product__5BE2A6F2" FromRole="Payment" ToRole="Product" />
-          <NavigationProperty Name="PaymentToCustomers" Relationship="Self.FK__PaymentTo__CartI__5EBF139D" FromRole="Payment" ToRole="PaymentToCustomer" />
+          <NavigationProperty Name="Customers" Relationship="Self.PaymentToCustomer" FromRole="Payment" ToRole="Customer" />
         </EntityType>
         <EntityType Name="PaymentProcessor">
           <Key>
@@ -527,17 +507,6 @@
           <Property Name="PaymentProcessorVerify" Type="Boolean" />
           <Property Name="PaymentProcessorMethod" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Cards" Relationship="Self.PaymentProcessorToCard" FromRole="PaymentProcessor" ToRole="Card" />
-        </EntityType>
-        <EntityType Name="PaymentToCustomer">
-          <Key>
-            <PropertyRef Name="CartID" />
-            <PropertyRef Name="CustomerID" />
-          </Key>
-          <Property Name="CartID" Type="Int32" Nullable="false" />
-          <Property Name="CustomerID" Type="Int32" Nullable="false" />
-          <Property Name="Status" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Customer" Relationship="Self.FK__PaymentTo__Custo__5FB337D6" FromRole="PaymentToCustomer" ToRole="Customer" />
-          <NavigationProperty Name="Payment" Relationship="Self.FK__PaymentTo__CartI__5EBF139D" FromRole="PaymentToCustomer" ToRole="Payment" />
         </EntityType>
         <EntityType Name="PriceType">
           <Key>
@@ -568,7 +537,6 @@
           <Property Name="ProductContent" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ProductImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="FoodOption" Relationship="Self.FK__Product__FoodOpt__4D94879B" FromRole="Product" ToRole="FoodOption" />
-          <NavigationProperty Name="Payments" Relationship="Self.FK__Payment__Product__5BE2A6F2" FromRole="Product" ToRole="Payment" />
           <NavigationProperty Name="PriceTypeToProducts" Relationship="Self.FK__PriceType__Produ__5165187F" FromRole="Product" ToRole="PriceTypeToProduct" />
           <NavigationProperty Name="Customers" Relationship="Self.ProductToCustomer" FromRole="Product" ToRole="Customer" />
         </EntityType>
@@ -598,7 +566,7 @@
           <Property Name="TicketDescription" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="TicketDiscountPercentage" Type="Double" Nullable="false" />
           <Property Name="RemainingTickets" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Customers" Relationship="Self.FK__Customer__Ticket__59063A47" FromRole="TicketDiscount" ToRole="Customer" />
+          <NavigationProperty Name="Customers" Relationship="Self.FK__Customer__Ticket__7E37BEF6" FromRole="TicketDiscount" ToRole="Customer" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -615,7 +583,7 @@
           <NavigationProperty Name="LogBooks" Relationship="Self.FK__LogBook__UserID__5441852A" FromRole="User" ToRole="LogBook" />
           <NavigationProperty Name="Roles" Relationship="Self.UserToRole" FromRole="User" ToRole="Role" />
         </EntityType>
-        <Association Name="FK__Customer__Ticket__59063A47">
+        <Association Name="FK__Customer__Ticket__7E37BEF6">
           <End Role="TicketDiscount" Type="Self.TicketDiscount" Multiplicity="0..1" />
           <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
           <ReferentialConstraint>
@@ -624,18 +592,6 @@
             </Principal>
             <Dependent Role="Customer">
               <PropertyRef Name="TicketCode" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PaymentTo__Custo__5FB337D6">
-          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
-          <End Role="PaymentToCustomer" Type="Self.PaymentToCustomer" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Customer">
-              <PropertyRef Name="CustomerID" />
-            </Principal>
-            <Dependent Role="PaymentToCustomer">
-              <PropertyRef Name="CustomerID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -660,30 +616,6 @@
             </Principal>
             <Dependent Role="LogBook">
               <PropertyRef Name="UserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Payment__Product__5BE2A6F2">
-          <End Role="Product" Type="Self.Product" Multiplicity="1" />
-          <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Product">
-              <PropertyRef Name="ProductCode" />
-            </Principal>
-            <Dependent Role="Payment">
-              <PropertyRef Name="ProductCode" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PaymentTo__CartI__5EBF139D">
-          <End Role="Payment" Type="Self.Payment" Multiplicity="1" />
-          <End Role="PaymentToCustomer" Type="Self.PaymentToCustomer" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Payment">
-              <PropertyRef Name="CartID" />
-            </Principal>
-            <Dependent Role="PaymentToCustomer">
-              <PropertyRef Name="CartID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -715,6 +647,10 @@
           <End Role="Card" Type="Self.Card" Multiplicity="*" />
           <End Role="PaymentProcessor" Type="Self.PaymentProcessor" Multiplicity="*" />
         </Association>
+        <Association Name="PaymentToCustomer">
+          <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+        </Association>
         <Association Name="ProductToCustomer">
           <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
           <End Role="Product" Type="Self.Product" Multiplicity="*" />
@@ -732,7 +668,6 @@
           <EntitySet Name="LogBooks" EntityType="Self.LogBook" />
           <EntitySet Name="Payments" EntityType="Self.Payment" />
           <EntitySet Name="PaymentProcessors" EntityType="Self.PaymentProcessor" />
-          <EntitySet Name="PaymentToCustomers" EntityType="Self.PaymentToCustomer" />
           <EntitySet Name="PriceTypes" EntityType="Self.PriceType" />
           <EntitySet Name="PriceTypeToProducts" EntityType="Self.PriceTypeToProduct" />
           <EntitySet Name="Products" EntityType="Self.Product" />
@@ -740,13 +675,9 @@
           <EntitySet Name="Roles" EntityType="Self.Role" />
           <EntitySet Name="TicketDiscounts" EntityType="Self.TicketDiscount" />
           <EntitySet Name="Users" EntityType="Self.User" />
-          <AssociationSet Name="FK__Customer__Ticket__59063A47" Association="Self.FK__Customer__Ticket__59063A47">
+          <AssociationSet Name="FK__Customer__Ticket__7E37BEF6" Association="Self.FK__Customer__Ticket__7E37BEF6">
             <End Role="TicketDiscount" EntitySet="TicketDiscounts" />
             <End Role="Customer" EntitySet="Customers" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PaymentTo__Custo__5FB337D6" Association="Self.FK__PaymentTo__Custo__5FB337D6">
-            <End Role="Customer" EntitySet="Customers" />
-            <End Role="PaymentToCustomer" EntitySet="PaymentToCustomers" />
           </AssociationSet>
           <AssociationSet Name="FK__Product__FoodOpt__4D94879B" Association="Self.FK__Product__FoodOpt__4D94879B">
             <End Role="FoodOption" EntitySet="FoodOptions" />
@@ -755,14 +686,6 @@
           <AssociationSet Name="FK__LogBook__UserID__5441852A" Association="Self.FK__LogBook__UserID__5441852A">
             <End Role="User" EntitySet="Users" />
             <End Role="LogBook" EntitySet="LogBooks" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Payment__Product__5BE2A6F2" Association="Self.FK__Payment__Product__5BE2A6F2">
-            <End Role="Product" EntitySet="Products" />
-            <End Role="Payment" EntitySet="Payments" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PaymentTo__CartI__5EBF139D" Association="Self.FK__PaymentTo__CartI__5EBF139D">
-            <End Role="Payment" EntitySet="Payments" />
-            <End Role="PaymentToCustomer" EntitySet="PaymentToCustomers" />
           </AssociationSet>
           <AssociationSet Name="FK__PriceType__Price__5070F446" Association="Self.FK__PriceType__Price__5070F446">
             <End Role="PriceType" EntitySet="PriceTypes" />
@@ -775,6 +698,10 @@
           <AssociationSet Name="PaymentProcessorToCard" Association="Self.PaymentProcessorToCard">
             <End Role="Card" EntitySet="Cards" />
             <End Role="PaymentProcessor" EntitySet="PaymentProcessors" />
+          </AssociationSet>
+          <AssociationSet Name="PaymentToCustomer" Association="Self.PaymentToCustomer">
+            <End Role="Payment" EntitySet="Payments" />
+            <End Role="Customer" EntitySet="Customers" />
           </AssociationSet>
           <AssociationSet Name="ProductToCustomer" Association="Self.ProductToCustomer">
             <End Role="Customer" EntitySet="Customers" />
@@ -862,7 +789,6 @@
             <EntityTypeMapping TypeName="efooddatabaseModel.Payment">
               <MappingFragment StoreEntitySet="Payment">
                 <ScalarProperty Name="CartID" ColumnName="CartID" />
-                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
                 <ScalarProperty Name="Quantity" ColumnName="Quantity" />
                 <ScalarProperty Name="Total" ColumnName="Total" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
@@ -879,15 +805,6 @@
                 <ScalarProperty Name="PaymentProcessorStatus" ColumnName="PaymentProcessorStatus" />
                 <ScalarProperty Name="PaymentProcessorVerify" ColumnName="PaymentProcessorVerify" />
                 <ScalarProperty Name="PaymentProcessorMethod" ColumnName="PaymentProcessorMethod" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PaymentToCustomers">
-            <EntityTypeMapping TypeName="efooddatabaseModel.PaymentToCustomer">
-              <MappingFragment StoreEntitySet="PaymentToCustomer">
-                <ScalarProperty Name="CartID" ColumnName="CartID" />
-                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -969,6 +886,14 @@
               <ScalarProperty Name="PaymentProcessorCode" ColumnName="PaymentProcessorCode" />
             </EndProperty>
           </AssociationSetMapping>
+          <AssociationSetMapping Name="PaymentToCustomer" TypeName="efooddatabaseModel.PaymentToCustomer" StoreEntitySet="PaymentToCustomer">
+            <EndProperty Name="Payment">
+              <ScalarProperty Name="CartID" ColumnName="CartID" />
+            </EndProperty>
+            <EndProperty Name="Customer">
+              <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+            </EndProperty>
+          </AssociationSetMapping>
           <AssociationSetMapping Name="ProductToCustomer" TypeName="efooddatabaseModel.ProductToCustomer" StoreEntitySet="ProductToCustomer">
             <EndProperty Name="Customer">
               <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
@@ -1002,7 +927,7 @@
         <DesignerProperty Name="EnablePluralization" Value="true" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
-        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->
