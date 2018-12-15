@@ -21,11 +21,13 @@ namespace EFOOD.Controllers
         {
             ViewBag.lista = ProductoModel.ObtenerProductos();
             ViewBag.ListaFoodOption = LineaComidaModel.ObtenerLineasComida();
+            ViewBag.listaTipoPrecio = TipoPrecioModelo.ObtenerTerritorio();
+
             return View();
         }
 
         [HttpPost]
-        public ActionResult ProductoAdd(ProductoModel model, string id)
+        public ActionResult ProductoAdd(ProductoModel model, TipoPrecioToProduct modelTipo)
         {
 
             string cadenaRuta = string.Empty;
@@ -44,6 +46,8 @@ namespace EFOOD.Controllers
             ProductoModel.AddDB(model);
             ViewBag.lista = ProductoModel.ObtenerProductos();
             ViewBag.ListaFoodOption = LineaComidaModel.ObtenerLineasComida();
+            ViewBag.listaTipoPrecio = TipoPrecioModelo.ObtenerTerritorio();
+
             return View("Producto");
         }
 

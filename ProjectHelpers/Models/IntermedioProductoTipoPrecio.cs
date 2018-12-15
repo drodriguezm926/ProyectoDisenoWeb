@@ -1,12 +1,14 @@
-﻿using System;
+﻿using Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace ProjectHelpers.Models
+namespace Models
 {
-    class IntermedioProductoTipoPrecio
+    public class IntermedioProductoTipoPrecio
     {
+        public ProductoModel productoModel { get; set; }
+        public TipoPrecioToProduct TipoPrecio { get; set; }
     }
 }
