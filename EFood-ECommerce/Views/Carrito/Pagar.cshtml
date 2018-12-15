@@ -1,12 +1,10 @@
-﻿
+﻿@model EFood_ECommerce.Models.PagarModel
 @{
     ViewBag.Title = "Pagar";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<link rel="stylesheet" type="text/css" href="~/Scripts/Carrito/CSS/componentes.css" />
-<script src="~/Scripts/Carrito/JS/app.js"></script>
 
 <body>
 
@@ -28,6 +26,7 @@
             </div>
         </div>
     </div>
+
 
 
     <div class="row">
@@ -86,8 +85,8 @@
                 @using (Html.BeginForm("Pagar", "Carrito", FormMethod.Post, new { enctype = "multipart/form-data" }))
                 {
                     <!-- Son inputs para validar  -->
-                    <input class="txtVuelo form-control" type="text" name="vuelo_id" value="@ViewBag.Carrito[0].Total" id="txtvueloSelected" style="display:none" />
-                   
+                    <input class="txtVuelo form-control" type="text" name="saldo_disponible" value="@ViewBag.Carrito[0].Total" id="txtvueloSelected" style="display:block" />
+
                     <label>Número de tarjeta</label>
                     <input class="number text-white" name="numeroTarjeta" type="text" ng-model="ncard" minlength="16" maxlength="19" onkeypress='return event.charCode >= 48 && event.charCode <= 57' required />
                     <label>Nombre del propietario</label>
@@ -108,7 +107,17 @@
 
     </div>
 
+    <script>
+        $(document).ready(function () {
+            var respuesta = @Html.Raw(Json.Encode(ViewBag.mensaje));
+            if (respuesta != "") {
+                $("#modalRespuesta").modal("show")
+            }
+        });
+    </script>
 
+    <link rel="stylesheet" type="text/css" href="~/Scripts/Carrito/CSS/componentes.css" />
+    <script src="~/Scripts/Carrito/JS/app.js"></script>
 
 </body>
 
