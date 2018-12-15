@@ -44,7 +44,19 @@
         </div>
     </div>
 
+    <div class="row justify-content-center">
+        <div class="col-4 mr-lg-5">
+            <div class="card">
+                <div class="card card-body bg-white">
 
+                    <h5 class="card-title text-center text-dark">
+                        Total por pagar @ViewBag.Carrito[0].Total
+                    </h5>
+
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="row" id="cardRegister">
         <!-- Aca seria el codigo del diseño de tarjeta -->
@@ -71,14 +83,11 @@
             <div class="col2">
                 <!-- Finaliza con diseño del codigo de tarjeta -->
                 <!-- Inicio de inputs para la validacion de la tarjetas -->
-                @using (Html.BeginForm("Compra", "Boleto", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                @using (Html.BeginForm("Pagar", "Carrito", FormMethod.Post, new { enctype = "multipart/form-data" }))
                 {
                     <!-- Son inputs para validar  -->
-                    <input class="txtVuelo form-control" type="text" name="vuelo_id" value="" id="txtvueloSelected" style="display:none" />
-                    <input class="txtVuelo form-control" type="text" name="destinoF" value="" id="txtvueloSelected2" style="display:none" />
-                    <input class="txtCantidad form-control" type="text" name="cantidadBoletos" value="" id="txtCantidadDisabled" style="display:none" />
-                    <input class="txtmonto form-control" type="text" name="total" value="" id="txtMonto" style="display:none" />
-
+                    <input class="txtVuelo form-control" type="text" name="vuelo_id" value="@ViewBag.Carrito[0].Total" id="txtvueloSelected" style="display:none" />
+                   
                     <label>Número de tarjeta</label>
                     <input class="number text-white" name="numeroTarjeta" type="text" ng-model="ncard" minlength="16" maxlength="19" onkeypress='return event.charCode >= 48 && event.charCode <= 57' required />
                     <label>Nombre del propietario</label>

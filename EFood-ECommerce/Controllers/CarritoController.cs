@@ -27,13 +27,15 @@ namespace EFood_ECommerce.Controllers
         [HttpGet]
         public ActionResult Pagar()
         {
+            ViewBag.Carrito = CarritoModel.CargarCarrito();
             return View();
         }
 
         [HttpPost]
         public ActionResult Pagar(PagarModel model)
         {
-            return View();
+            ViewBag.Carrito = CarritoModel.CargarCarrito();
+            return View("Pagar");
         }
 
     }
