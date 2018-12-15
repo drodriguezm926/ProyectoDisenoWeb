@@ -50,9 +50,36 @@
                         <li class="dropdown text-center">
                             <a href="#" class="dropdown-toggle profile-image" data-toggle="dropdown">
                                 <img src="../Asset/Images/avatar.png" class="avatar">
-                                <div>
-                                    <span></span>
-                                </div><b class="caret"></b>
+
+                                @if (Session["facebook"] != null)
+                                {
+
+                                    Models.CustomerModel consumidor = (Models.CustomerModel)HttpContext.Current.Session["facebook"];
+
+                                    <div>
+                                        <span>@consumidor.CustomerName</span>
+                                    </div><b class="caret"></b>
+                                }
+                                else if (Session["twitter"] != null)
+                                {
+                                    Models.CustomerModel consumidor = (Models.CustomerModel)HttpContext.Current.Session["twitter"];
+
+                                    <div>
+                                        <span>@consumidor.CustomerName</span>
+                                    </div><b class="caret"></b>
+
+                                }
+                                else
+                                {
+                                    Models.CustomerModel consumidor = (Models.CustomerModel)HttpContext.Current.Session["Usuario"];
+                                    <div>
+                                        <span>
+                                            @consumidor.CustomerName
+                                        </span>
+                                    </div><b class="caret"></b>
+                                }
+
+
                             </a>
                             <ul class="dropdown-menu dropdown-menu-center dropdownAvatar text-center">
                                 <li><a href=@Url.Action("Configuracion", "ConfiguracionUsuario")><i class="fa"></i>Configuracion</a></li>

@@ -237,5 +237,75 @@ namespace Models
                 vuelosData.SaveChanges();
             }
         }
+
+        #region Twitter
+        public void ValidarUsuarioTwitter(string email, string idTwitter, string nombre, string primerApellido, string segundoApellido)
+        {
+            List<CustomerModel> clientes = GetConsumidores();
+            bool userExiste = false;
+            foreach (var item in clientes)
+            {
+                if (item.Email == email)
+                {
+                    userExiste = true;
+                    if (item.TwitterID == null)
+                    {
+                        UpdateTwitter(email, idTwitter);
+                        break;
+                    }
+                }
+            }
+
+            if (!userExiste)
+            {
+                CustomerModel consumidor = new CustomerModel
+                {
+                    Email = email,
+                    TwitterID = idTwitter,
+                    CustomerName = nombre,
+                    CustomerLastname = primerApellido,
+                };
+                AddTwitterUser(consumidor);
+            }
+        }
+
+
+
+        private void UpdateTwitter(string email, string codTwitter)
+        {
+            using (efooddatabaseEntities vuelosData = new efooddatabaseEntities())
+            {
+                var datos = (from valor in vuelosData.Customers
+                             where valor.Email == email
+                             select valor).SingleOrDefault();
+                datos.TwitterID = codTwitter;
+                vuelosData.SaveChanges();
+            }
+        }
+
+        private void AddTwitterUser(CustomerModel consumidor)
+        {
+            using (efooddatabaseEntities vuelosData = new efooddatabaseEntities())
+            {
+                Customer cliente = new Customer();
+                cliente.CustomerID = GetConsecutivo();
+                cliente.Email = consumidor.Email;
+                cliente.ContrasenaEmail = consumidor.ContrasenaEmail;
+                cliente.CustomerName = consumidor.CustomerName;
+                cliente.CustomerLastname = consumidor.CustomerLastname;
+                cliente.TwitterID = consumidor.TwitterID;
+                cliente.Address = "";
+                cliente.Telephone = "";
+                cliente.TicketCode = null;
+
+                vuelosData.Customers.Add(cliente);
+                vuelosData.SaveChanges();
+            }
+        }
+
+        #endregion
+
+
+
     }
 }

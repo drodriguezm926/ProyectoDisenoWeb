@@ -27,7 +27,7 @@ namespace EFood_ECommerce.Controllers
         {
             FormsAuthentication.SignOut();
             Session.Abandon(); // Limpia la sesion
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login", "Login");
         }
 
         public ActionResult LoginAction(CustomerModel customer)
