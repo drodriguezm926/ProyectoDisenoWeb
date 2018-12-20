@@ -93,5 +93,13 @@ namespace EFood_ECommerce.Controllers
 
         }
 
+        public ActionResult CancelarPedido()
+        {
+            CustomerModel usuarioLogueado = (CustomerModel)System.Web.HttpContext.Current.Session["Usuario"];
+            CarritoModel.DeleteAllPedido(usuarioLogueado.CustomerID);
+            ViewBag.Carrito = CarritoModel.CargarCarrito(usuarioLogueado.CustomerID);
+            return View("VerCarrito");
+        }
+
     }
 }

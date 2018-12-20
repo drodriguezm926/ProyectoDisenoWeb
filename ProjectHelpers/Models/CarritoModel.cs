@@ -173,6 +173,35 @@ namespace Models
             }
         }
 
+        public static void DeleteAllPedido(int Carrito)
+        {
+            using (efooddatabaseEntities db = new efooddatabaseEntities())
+            {
+                try
+                {
+                    var productToCar = (from productos in db.ProductToCars
+                                        where productos.CartID == Carrito
+                                        select productos);
+
+                    var carrito = (from carro in db.Payments
+                                   where carro.CartID == Carrito
+                                   select carro).SingleOrDefault();
+                    foreach (var item in productToCar)
+                    {
+                        db.ProductToCars.Remove(item);
+                    }
+                    db.SaveChanges();
+
+                    carrito.Quantity = 0;
+                    carrito.Total = 0;
+                    db.SaveChanges();
+                    //BitacoraModel.AddLogBook("a", "Anadir", Customer.ObtenerIdCustomer());
+
+                }
+                catch (Exception e) { ErrorLogModel.AddError(e); }
+            }
+        }
+
         public static void EditProductDB(ProductoModel modelo, int Carrito)
         {
             using (efooddatabaseEntities db = new efooddatabaseEntities())

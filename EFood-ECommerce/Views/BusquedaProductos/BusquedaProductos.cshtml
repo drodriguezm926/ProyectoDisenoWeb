@@ -78,47 +78,48 @@
                             {
                                 btnEditar = "btnEditar_" + item.ProductCode;
                                 nombreModal = "fm-btn-modal_" + item.ProductCode;
-                                <tr>
-                                    <td>
-                                        @item.ProductCode
-                                    </td>
-                                    <td>
-                                        @item.ProductDescription
-                                    </td>
-                                    <td>
-                                        @item.FoodOptionCode
-                                    </td>
-                                    <td>
-                                        @item.ProductContent
-                                    </td>
+                        <tr>
+                            <td>
+                                @item.ProductCode
+                            </td>
+                            <td>
+                                @item.ProductDescription
+                            </td>
+                            <td>
+                                @item.FoodOptionCode
+                            </td>
+                            <td>
+                                @item.ProductContent
+                            </td>
 
-                                    @if (!string.IsNullOrEmpty(item.ProductImage))
+                            @if (!string.IsNullOrEmpty(item.ProductImage))
+                            {
+                                string productImage = item.ProductImage; 
+                                var imagePath = @"http://localhost:51201/" + productImage.Replace("~/", string.Empty);
+                                <td>
+
+                                    <img class="rounded-circle" src="@Url.Content(imagePath)" style="width: 40px; height: 40px;" />
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    <p>Imagen no disponible</p>
+                                </td>
+                            }
+
+                            <td>
+                                <div class="btn-group btn-group-sm">
+                                    @using (Html.BeginForm("BusquedaProductosAgregarCarrito", "BusquedaProductos"))
                                     {
-
-
-                                        <td>
-                                            <img class="rounded-circle" src="@Url.Content(item.ProductImage)" style="width: 40px; height: 40px;" />
-                                        </td>
+                                        string valor = btnEditar.Split('_')[1];
+                                        @Html.HiddenFor(Model => Model.ProductCode, new { Value = valor })
+                                        <button class="btn btn-sm btn-success btn-outline-danger text-sm-center" style="border-radius: 8px" type="submit">Agregar</button>
                                     }
-                                    else
-                                    {
-                                        <td>
-                                            <p>Imagen no disponible</p>
-                                        </td>
-                                    }
+                                </div>
 
-                                    <td>
-                                        <div class="btn-group btn-group-sm">
-                                            @using (Html.BeginForm("BusquedaProductosAgregarCarrito", "BusquedaProductos"))
-                                            {
-                                                string valor = btnEditar.Split('_')[1];
-                                                @Html.HiddenFor(Model => Model.ProductCode, new { Value = valor })
-                                                <button class="btn btn-sm btn-success btn-outline-danger text-sm-center" style="border-radius: 8px" type="submit">Agregar</button>
-                                            }
-                                        </div>
-
-                                    </td>
-                                </tr>
+                            </td>
+                        </tr>
                             }
 
                         }
