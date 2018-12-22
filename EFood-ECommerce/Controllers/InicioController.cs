@@ -25,10 +25,7 @@ namespace EFood_ECommerce.Controllers
             {
                 name = customerFace.CustomerName;
             }
-            else
-            {
-                name  = customerTwitter.CustomerName;
-            }
+           
 
             Session["NombreDeUsuario"] = name;
             return View();
