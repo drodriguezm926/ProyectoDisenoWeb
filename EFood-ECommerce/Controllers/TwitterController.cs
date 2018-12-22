@@ -10,8 +10,8 @@ namespace EFood_ECommerce.Controllers
 {
     public class TwitterController : Controller
     {
-        private string _consumerKey = "7rJJpdlyF92nE2cxysRX3DFj2";
-        private string _consumerSecret = "KlbZ2GFAaLKuIpi951tpJjcm3rdJ6hkTYe8NGEcI1r1mg4LI74";
+        private string _consumerKey = "3yxFJ03dDLNqHDovr5D5VQoWZ";
+        private string _consumerSecret = "CMC3qDSW7JzertlSV8TK9WPrYbnWhdi6AsYrbLxO3UiJ0SYw0Q";
 
         public ActionResult Authorize()
         {
@@ -19,7 +19,7 @@ namespace EFood_ECommerce.Controllers
             TwitterService service = new TwitterService(_consumerKey, _consumerSecret);
 
             // This is the registered callback URL
-            OAuthRequestToken requestToken = service.GetRequestToken("https://localhost:44336/Twitter/AuthorizeCallback");
+            OAuthRequestToken requestToken = service.GetRequestToken("https://localhost:51768/Twitter/AuthorizeCallback");
 
             // Step 2 - Redirect to the OAuth Authorization URL
             Uri uri = service.GetAuthorizationUri(requestToken);
@@ -42,10 +42,6 @@ namespace EFood_ECommerce.Controllers
                 // Step 4 - User authenticates using the Access Token
                 service.AuthenticateWith(accessToken.Token, accessToken.TokenSecret);
                 TwitterUser user = service.VerifyCredentials(option);
-
-
-
-
 
                 string[] splited = user.Name.Split(' ');
                 string name = splited[0];
