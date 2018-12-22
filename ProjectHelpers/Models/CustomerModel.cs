@@ -54,6 +54,7 @@ namespace Models
 
         public static int ObtenerCustomerPedido()
         {
+            efooddatabaseEntities db = new efooddatabaseEntities();
             return 0;
         }
 
