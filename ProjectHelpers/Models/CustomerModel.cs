@@ -51,7 +51,12 @@ namespace Models
             int id = customer.CustomerID;
             return id;
         }
-        
+
+        public static int ObtenerCustomerPedido()
+        {
+            return 0;
+        }
+
         public static void AgregarCustomer(CustomerModel newCustomer)
         {
             using (efooddatabaseEntities db = new efooddatabaseEntities())

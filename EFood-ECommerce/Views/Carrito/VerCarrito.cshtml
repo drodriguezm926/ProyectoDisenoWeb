@@ -127,8 +127,13 @@
                             }
                         }
                     </label>
-                    <a href="@Url.Action("Pagar", "Carrito")" class="btn btn-success btn-lg page-scroll">Pagar</a>
-                    
+                    @Html.ActionLink("Pagar", "Pagar", new { id = "" }, new
+                    { @class = "btn btn-success btn-lg page-scroll",
+                        onclick = "return confirm('Seguro que quiere proceder con el pago?');" })
+                    @Html.ActionLink("Cancelar pedido", "CancelarPedido", new { id = "" }, new
+                        { @class = "btn btn-danger btn-lg page-scroll",
+                        onclick = "return confirm('Seguro que quiere cancelar el pedido?');" })
+
                 }
                 else
                 {

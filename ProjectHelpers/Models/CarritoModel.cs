@@ -66,7 +66,7 @@ namespace Models
                     {
                         CartID = Carrito,
                         ProductCode = modelo.ProductCode,
-                        Quantity = log.Quantity + 1,
+                        Quantity = 1,
                     };
                     db.ProductToCars.Add(agregarACarro);
                     db.SaveChanges();
@@ -161,6 +161,35 @@ namespace Models
                                    select carro).SingleOrDefault();
 
                     db.ProductToCars.Remove(productToCar);
+                    db.SaveChanges();
+
+                    carrito.Quantity = 0;
+                    carrito.Total = 0;
+                    db.SaveChanges();
+                    //BitacoraModel.AddLogBook("a", "Anadir", Customer.ObtenerIdCustomer());
+
+                }
+                catch (Exception e) { ErrorLogModel.AddError(e); }
+            }
+        }
+
+        public static void DeleteAllPedido(int Carrito)
+        {
+            using (efooddatabaseEntities db = new efooddatabaseEntities())
+            {
+                try
+                {
+                    var productToCar = (from productos in db.ProductToCars
+                                        where productos.CartID == Carrito
+                                        select productos);
+
+                    var carrito = (from carro in db.Payments
+                                   where carro.CartID == Carrito
+                                   select carro).SingleOrDefault();
+                    foreach (var item in productToCar)
+                    {
+                        db.ProductToCars.Remove(item);
+                    }
                     db.SaveChanges();
 
                     carrito.Quantity = 0;
