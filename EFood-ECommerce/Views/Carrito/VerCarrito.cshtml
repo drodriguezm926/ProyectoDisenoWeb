@@ -61,7 +61,8 @@
                                         @if (!string.IsNullOrEmpty(item.ProductImage))
                                         {
 
-
+                                            string productImage = item.ProductImage;
+                                            var imagePath = @"http://localhost:51201/" + productImage.Replace("~/", string.Empty);
                                             <td>
                                                 <img class="rounded-circle" src="@Url.Content(item.ProductImage)" style="width: 40px; height: 40px;" />
                                             </td>
