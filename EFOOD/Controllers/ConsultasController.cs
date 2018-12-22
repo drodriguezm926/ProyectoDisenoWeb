@@ -12,6 +12,7 @@ namespace EFOOD.Controllers
         [HttpGet]
         public ActionResult Pedidos()
         {
+            ViewBag.Customers = CustomerModel.ObtenerIdCustomer();
             return View();
         }
 
